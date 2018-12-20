@@ -15,7 +15,7 @@
             <span class="fa fa-lock form-control-feedback"></span>
             <input type="password" class="form-control" placeholder="Password">
           </div>
-          <div class="checkbox icheck">
+          <div class="checkbox">
             <label>
               <input type="checkbox"> Remember Me
             </label>
@@ -39,6 +39,7 @@ export default {
 <style scoped>
 .passwd{
   text-align: center;
+  padding-top: 10px;
 }
 </style>
 

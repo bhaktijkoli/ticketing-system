@@ -11866,7 +11866,7 @@ exports = module.exports = __webpack_require__(36)(false);
 
 
 // module
-exports.push([module.i, "\n.passwd[data-v-3bec1f87]{\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.passwd[data-v-3bec1f87]{\n  text-align: center;\n  padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -12328,7 +12328,7 @@ var staticRenderFns = [
               })
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "checkbox icheck" }, [
+            _c("div", { staticClass: "checkbox" }, [
               _c("label", [
                 _c("input", { attrs: { type: "checkbox" } }),
                 _vm._v(" Remember Me\n          ")
