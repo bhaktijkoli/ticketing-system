@@ -288,9 +288,7 @@ process.umask = function() { return 0; };
 /* 6 */,
 /* 7 */,
 /* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -341,6 +339,8 @@ module.exports = Component.exports
 
 
 /***/ }),
+/* 10 */,
+/* 11 */,
 /* 12 */,
 /* 13 */,
 /* 14 */,
@@ -461,12 +461,12 @@ module.exports = __webpack_require__(40);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_Login_Login_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_Login_Login_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_Login_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__app_Login_Login_vue__);
 window.Vue = __webpack_require__(41);
 
 
-Vue.component('Login', __webpack_require__(11));
+Vue.component('Login', __webpack_require__(9));
 var app = new Vue({
     el: '#app'
 });
@@ -12309,25 +12309,22 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("form", { attrs: { method: "post" } }, [
             _c("div", { staticClass: "form-group has-feedback" }, [
+              _c("span", {
+                staticClass: "fa fa-envelope-o form-control-feedback"
+              }),
+              _vm._v(" "),
               _c("input", {
                 staticClass: "form-control",
                 attrs: { type: "email", placeholder: "Email" }
-              }),
-              _vm._v(" "),
-              _c("span", {
-                staticClass:
-                  "glyphicon glyphicon-envelope form-control-feedback"
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group has-feedback" }, [
+              _c("span", { staticClass: "fa fa-lock form-control-feedback" }),
+              _vm._v(" "),
               _c("input", {
                 staticClass: "form-control",
                 attrs: { type: "password", placeholder: "Password" }
-              }),
-              _vm._v(" "),
-              _c("span", {
-                staticClass: "glyphicon glyphicon-lock form-control-feedback"
               })
             ]),
             _vm._v(" "),
