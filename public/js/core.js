@@ -13269,18 +13269,6 @@ jQuery.ajaxTransport( "script", function( s ) {
 
 
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-__webpack_require__(12);
-__webpack_require__(34);
-=======
-__webpack_require__(13);
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
-__webpack_require__(35);
-__webpack_require__(37);
-module.exports = __webpack_require__(38);
->>>>>>> 6d4eb0e0578bac95537c85dc8d3535195bb306ef
 
 var oldCallbacks = [],
 	rjsonp = /(=)\?(?=&|$)|\?\?/;
@@ -13298,7 +13286,6 @@ jQuery.ajaxSetup( {
 // Detect, normalize options and install callbacks for jsonp requests
 jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
-<<<<<<< HEAD
 	var callbackName, overwritten, responseContainer,
 		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 			"url" :
@@ -13307,13 +13294,6 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 					.indexOf( "application/x-www-form-urlencoded" ) === 0 &&
 				rjsonp.test( s.data ) && "data"
 		);
-=======
-<<<<<<< HEAD
-__webpack_require__(33);
-=======
-__webpack_require__(34);
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
->>>>>>> 6d4eb0e0578bac95537c85dc8d3535195bb306ef
 
 	// Handle iff the expected data type is "jsonp" or we have a parameter to set
 	if ( jsonProp || s.dataTypes[ 0 ] === "jsonp" ) {
@@ -17268,11 +17248,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 33 */
-=======
 /* 34 */
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -18374,32 +18350,20 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /***/ }),
-<<<<<<< HEAD
-/* 34 */
-=======
 /* 35 */
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-<<<<<<< HEAD
-/* 35 */
-=======
 /* 36 */,
 /* 37 */
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-<<<<<<< HEAD
-/* 36 */
-=======
 /* 38 */
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

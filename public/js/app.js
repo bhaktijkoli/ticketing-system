@@ -452,10 +452,6 @@ function toComment(sourceMap) {
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-window.Vue = __webpack_require__(39);
-Vue.component('login', __webpack_require__(42));
-=======
 module.exports = __webpack_require__(40);
 
 
@@ -470,12 +466,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.Vue = __webpack_require__(41);
 
 
-<<<<<<< HEAD
 Vue.component('Login', __webpack_require__(9));
-=======
-Vue.component('Login', __webpack_require__(11));
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
->>>>>>> 6d4eb0e0578bac95537c85dc8d3535195bb306ef
 var app = new Vue({
     el: '#app'
 });
@@ -11884,40 +11875,6 @@ exports.push([module.i, "\n.passwd[data-v-3bec1f87]{\n  text-align: center;\n}\n
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-/***/ 42:
-/***/ (function(module, exports, __webpack_require__) {
-
-var normalizeComponent = __webpack_require__(43)
-/* script */
-var __vue_script__ = null
-/* template */
-var __vue_template__ = null
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/app/Login/Login.vue"
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 43:
-=======
 /*
   MIT License http://www.opensource.org/licenses/mit-license.php
   Author Tobias Koppers @sokra
@@ -12177,7 +12134,6 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 /* 48 */
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -12285,8 +12241,6 @@ module.exports = function normalizeComponent (
 }
 
 
-<<<<<<< HEAD
-=======
 /***/ }),
 /* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -12412,6 +12366,5 @@ if (false) {
   }
 }
 
->>>>>>> 10af77de6f8ea360cccfdc23daa3fbc6928cae38
 /***/ })
 /******/ ]);
