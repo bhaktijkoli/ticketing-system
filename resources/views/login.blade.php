@@ -8,9 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+    <style>
+    body{
+      background:#cac2c21c;
+    }
+    </style>
   </head>
   <body>
-
+    <div id="app">
+      <Login/>
+    </div>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
   </body>

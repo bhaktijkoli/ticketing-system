@@ -17455,15 +17455,13 @@ table.text-center th {
   color: #444;
 }
 
-.login-page,
-.register-page {
-  background: #d2d6de;
-}
-
 .login-box,
 .register-box {
   width: 360px;
+  height: auto;
   margin: 7% auto;
+  -webkit-box-shadow: 2px 8px 20px 0px #5555;
+          box-shadow: 2px 8px 20px 0px #5555;
 }
 
 @media (max-width: 768px) {
