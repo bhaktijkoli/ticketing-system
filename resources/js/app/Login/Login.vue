@@ -1,21 +1,19 @@
 <template>
   <div>
     <!-- logo -->
-
-
     <div class="login-box">
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <form method="post">
           <div class="form-group has-feedback">
-             <span class="fa fa-envelope-o form-control-feedback"></span>
+            <span class="fa fa-envelope-o form-control-feedback"></span>
             <input type="email" class="form-control" placeholder="Email">
           </div>
           <div class="form-group has-feedback">
             <span class="fa fa-lock form-control-feedback"></span>
             <input type="password" class="form-control" placeholder="Password">
           </div>
-          <div class="checkbox">
+          <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Remember Me
             </label>
@@ -26,6 +24,7 @@
           </div>
           <br>
         </form>
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -37,9 +36,8 @@ export default {
 };
 </script>
 <style scoped>
-.passwd{
+.passwd {
   text-align: center;
-  padding-top: 10px;
 }
 </style>
 
