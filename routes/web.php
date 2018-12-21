@@ -13,3 +13,9 @@
 
 Route::get('/', 'IndexController@getLogin');
 Route::get('/home', 'DashboardController@getHome');
+
+
+Route::prefix('api')->group(function () {
+  // Authentication
+  Route::post('/auth/login','Auth\LoginController@login');
+});
