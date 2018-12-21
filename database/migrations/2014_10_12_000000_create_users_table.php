@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+use Illuminate\Support\Facades\Hash;
+
 class CreateUsersTable extends Migration
 {
   /**
@@ -26,7 +28,7 @@ class CreateUsersTable extends Migration
     DB::table('users')->insert([
       'name' => 'admin',
       'email' => 'admin',
-      'password' => 'admin',
+      'password' => Hash::make('admin'),
       'role' => '0',
       'created_at' => date('Y-m-d H:i:s'),
       'updated_at' => date('Y-m-d H:i:s'),
