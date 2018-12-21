@@ -1,5 +1,5 @@
 <template>
-  <aside class="main-sidebar bg-info">
+  <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
       <!-- Sidebar user panel -->
@@ -12,7 +12,7 @@
           >
         </div>
         <div class="pull-left info">
-          <p class="user_name">Alexander Pierce</p>
+          <p class="user_name">User Name</p>
         </div>
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -56,7 +56,7 @@
         <!-- for Super admin -->
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user-o"></i>
+            <i class="fa fa-users"></i>
             <span>Users</span>
           </a>
         </li>

@@ -236,6 +236,7 @@ a:focus {
     position: relative;
     max-height: 100px;
     z-index: 1030;
+    background: #0397ecc2;
 }
 
 .main-header .navbar {
@@ -247,6 +248,7 @@ a:focus {
     border: none;
     min-height: 50px;
     border-radius: 0;
+    color: white;
 }
 
 .layout-top-nav .main-header .navbar {
@@ -6041,4 +6043,8 @@ table.text-center th {
     .table-responsive>.table tr td {
         white-space: normal !important;
     }
+}
+
+.detail-view {
+    padding-left: 64px;
 }
