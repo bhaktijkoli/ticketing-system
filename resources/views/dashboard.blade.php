@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
   </head>
   <body>
-    <div id="app">
-      
+    <div id="dashboard">
+      <Dashboard/>
     </div>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/dashboard.js') }}"></script>
