@@ -18,4 +18,5 @@ Route::get('/home', 'DashboardController@getHome');
 Route::prefix('api')->group(function () {
   // Authentication
   Route::post('/auth/login','Auth\LoginController@login');
+  Route::get('/auth/user','Auth\UserController@getUser');
 });
