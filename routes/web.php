@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'IndexController@getLogin');
+Route::get('/home', 'DashboardController@getHome');
