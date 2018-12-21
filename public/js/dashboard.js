@@ -11588,18 +11588,23 @@ var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue__ = __webpack_require__(55);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue__);
 //
 //
 //
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
   components: {
-    MainHeader: __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue___default.a
+    MainHeader: __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue___default.a,
+    SideBar: __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue___default.a
   }
 });
 
@@ -11658,7 +11663,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -12199,7 +12203,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("MainHeader")], 1)
+  return _c("div", [_c("MainHeader"), _vm._v(" "), _c("SideBar")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -12475,6 +12479,268 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(2)))
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(79)
+/* template */
+var __vue_template__ = __webpack_require__(80)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/SideBar.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c2dcee08", Component.options)
+  } else {
+    hotAPI.reload("data-v-c2dcee08", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 79:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "SideBar"
+});
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("aside", { staticClass: "main-sidebar bg-info" }, [
+      _c("section", { staticClass: "sidebar" }, [
+        _c("div", { staticClass: "user-panel" }, [
+          _c("div", { staticClass: "pull-left image" }, [
+            _c("img", {
+              staticClass: "img-circle",
+              attrs: {
+                src:
+                  "https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg",
+                alt: "User Image"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "pull-left info" }, [
+            _c("p", { staticClass: "user_name" }, [_vm._v("Alexander Pierce")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
+          [
+            _c("li", { staticClass: "active treeview menu-open" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fa fa-dashboard" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Dashboard")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "treeview" }, [
+              _c("a", { attrs: { href: "/" } }, [
+                _c("i", { staticClass: "fa fa-ticket" }),
+                _vm._v(" "),
+                _c("span", { attrs: { title: "for admin" } }, [
+                  _vm._v("All Tickets")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "pull-right-container" }, [
+                  _c(
+                    "span",
+                    { staticClass: "label label-primary pull-right" },
+                    [_vm._v("4")]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "treeview" }, [
+              _c("a", { attrs: { href: "/" } }, [
+                _c("i", { staticClass: "fa fa-ticket" }),
+                _vm._v(" "),
+                _c("span", { attrs: { title: "for user" } }, [
+                  _vm._v("All Tickets")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "pull-right-container" }, [
+                  _c(
+                    "span",
+                    { staticClass: "label label-primary pull-right" },
+                    [_vm._v("4")]
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { attrs: { href: "/" } }, [
+                _c("i", { staticClass: "fa fa-plus" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Ex New Ticket")]),
+                _vm._v(" "),
+                _c("span", { staticClass: "pull-right-container" }, [
+                  _c("small", { staticClass: "label pull-right bg-green" }, [
+                    _vm._v("new")
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "treeview" }, [
+              _c("a", { attrs: { href: "#" } }, [
+                _c("i", { staticClass: "fa fa-user-o" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Users")])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("li", { staticClass: "treeview" }, [
+              _c("a", { attrs: { href: "/" } }, [
+                _c("i", { staticClass: "fa fa-question" }),
+                _vm._v(" "),
+                _c("span", [_vm._v("Faq")])
+              ])
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c2dcee08", module.exports)
+  }
+}
 
 /***/ })
 

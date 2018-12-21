@@ -1,0 +1,81 @@
+<template>
+  <aside class="main-sidebar bg-info">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img
+            src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg"
+            class="img-circle"
+            alt="User Image"
+          >
+        </div>
+        <div class="pull-left info">
+          <p class="user_name">Alexander Pierce</p>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="active treeview menu-open">
+          <a href="#">
+            <i class="fa fa-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- Ticket for admin -->
+        <li class="treeview">
+          <a href="/">
+            <i class="fa fa-ticket"></i>
+            <span title="for admin">All Tickets</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+        </li>
+        <!-- My Ticket for user -->
+        <li class="treeview">
+          <a href="/">
+            <i class="fa fa-ticket"></i>
+            <span title="for user">All Tickets</span>
+            <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+          </a>
+        </li>
+        <!-- New ticket for user -->
+        <li>
+          <a href="/">
+            <i class="fa fa-plus"></i>
+            <span>Ex New Ticket</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-green">new</small>
+            </span>
+          </a>
+        </li>
+        <!-- for Super admin -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user-o"></i>
+            <span>Users</span>
+          </a>
+        </li>
+        <!-- faq section -->
+        <li class="treeview">
+          <a href="/">
+            <i class="fa fa-question"></i>
+            <span>Faq</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+</template>
+
+<script>
+export default {
+  name: "SideBar"
+};
+</script>
+

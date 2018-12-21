@@ -11888,6 +11888,7 @@ a:focus {
   transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  background: #212c31;
 }
 
 @media (max-width: 767px) {
@@ -11936,6 +11937,10 @@ a:focus {
 .user-panel:after {
   content: " ";
   display: table;
+}
+
+.user_name {
+  color: #fff;
 }
 
 .user-panel:after {
