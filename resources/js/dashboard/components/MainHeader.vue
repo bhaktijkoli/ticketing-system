@@ -1,7 +1,7 @@
 <template>
-  <header class="main-header">
+  <header class="main-header bg-primary">
     <!-- Logo -->
-    <a href="/dashboard" class="logo">
+    <a href="/home" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini">
         <b>A</b>LT
