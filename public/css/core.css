@@ -12961,7 +12961,7 @@ a:focus {
 }
 
 .icheck > label {
-  padding-left: 0;
+  padding-left: 5%;
 }
 
 /* support Font Awesome icons in form-control */
@@ -14644,6 +14644,16 @@ a:focus {
   border: 0;
 }
 
+td {
+  padding: 10px;
+  border-bottom: 1px solid lightslategray;
+}
+
+tr:hover {
+  background: gray;
+  border-radius: 7px;
+}
+
 /* .text-center in tables */
 
 table.text-center,
@@ -15354,7 +15364,6 @@ table.text-center th {
 .register-box-body {
   background: #fff;
   padding: 20px;
-  border-top: 0;
   color: #666;
 }
 
@@ -15436,6 +15445,9 @@ table.text-center th {
   border: 1px solid #f4f4f4;
   padding: 20px;
   margin: 10px 25px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 2px 12px 1px #96939352;
+          box-shadow: 0px 2px 12px 1px #96939352;
 }
 
 .invoice-title {
@@ -17022,10 +17034,6 @@ table.text-center th {
 
 .no-border {
   border: 0 !important;
-}
-
-.no-padding {
-  padding: 0 !important;
 }
 
 .no-margin {

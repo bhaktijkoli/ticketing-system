@@ -17,15 +17,9 @@
       </div>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="active treeview menu-open">
-          <a href="#">
-            <i class="fa fa-dashboard"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
         <!-- Ticket for admin -->
         <li class="treeview">
-          <a href="/">
+          <a href="/home/inbox">
             <i class="fa fa-ticket"></i>
             <span title="for admin">All Tickets</span>
             <span class="pull-right-container">
@@ -60,11 +54,11 @@
             <span>Users</span>
           </a>
         </li>
-        <!-- faq section -->
+        <!-- Help section -->
         <li class="treeview">
           <a href="/">
             <i class="fa fa-question"></i>
-            <span>Faq</span>
+            <span>Help</span>
           </a>
         </li>
       </ul>
