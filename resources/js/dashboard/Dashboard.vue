@@ -2,9 +2,8 @@
   <div>
     <MainHeader></MainHeader>
     <SideBar></SideBar>
-    <!-- <Tbody></Tbody> -->
+    <Tbody></Tbody>-->
     <AllTicket></AllTicket>
-    <!-- <router-view></router-view> -->
   </div>
 </template>
 

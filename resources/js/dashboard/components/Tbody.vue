@@ -19,7 +19,7 @@
           </h2>
         </div>
         <!-- Ticket details -->
-        <div class="detail-view">
+        <div class="detail-view ticket-body">
           <h3>Details</h3>
         </div>
         <!-- Action btn -->
@@ -51,3 +51,14 @@ export default {
   name: "Tbody"
 };
 </script>
+
+<style scoped>
+@import url('https://fonts.googleapis.com/css?family=Lora" rel="stylesheet');
+
+h1,
+h2,
+h3 {
+  font-family: "Lora", serif;
+}
+</style>
+

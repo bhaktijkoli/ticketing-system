@@ -190,8 +190,15 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Lora" rel="stylesheet');
 h1 {
   padding-bottom: 7px;
+  font-family: "Lora", serif;
+}
+
+div,
+h3 {
+  font-family: "Lora", serif;
 }
 </style>
 

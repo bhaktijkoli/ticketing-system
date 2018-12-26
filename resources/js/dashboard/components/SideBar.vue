@@ -19,13 +19,13 @@
       <ul class="sidebar-menu" data-widget="tree">
         <!-- Ticket for admin -->
         <li class="treeview">
-          <a href="/home/inbox">
+          <router-link to="/home/inbox">
             <i class="fa fa-ticket"></i>
             <span title="for admin">All Tickets</span>
             <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span>
-          </a>
+          </router-link>
         </li>
         <!-- My Ticket for user -->
         <li class="treeview">
@@ -49,7 +49,7 @@
         </li>
         <!-- for Super admin -->
         <li class="treeview">
-          <a href="#">
+          <a href="/home">
             <i class="fa fa-users"></i>
             <span>Users</span>
           </a>
@@ -73,3 +73,10 @@ export default {
 };
 </script>
 
+<style scoped>
+@import url('https://fonts.googleapis.com/css?family=Lora" rel="stylesheet');
+p,
+span {
+  font-family: "Lora", serif;
+}
+</style>
