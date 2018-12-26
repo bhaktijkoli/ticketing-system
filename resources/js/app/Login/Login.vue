@@ -7,11 +7,11 @@
         <form @submit.prevent="authUser(email, password)" method="post">
           <div class="form-group has-feedback">
             <span class="fa fa-envelope-o form-control-feedback"></span>
-            <input type="email" class="form-control" placeholder="Email" v-model="email">
+            <input v-model="email" type="email" class="form-control" placeholder="Email">
           </div>
           <div class="form-group has-feedback">
             <span class="fa fa-lock form-control-feedback"></span>
-            <input type="password" class="form-control" placeholder="Password" v-model="password">
+            <input v-model="password" type="password" class="form-control" placeholder="Password">
           </div>
           <div class="checkbox icheck">
             <label>
