@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Dashboard from './dashboard/Dashboard'
 import AllTicket from './dashboard/components/AllTicket.vue'
 import Tbody from './dashboard/components/Tbody.vue'
+import NewTicket from './dashboard/components/NewTicket.vue'
 // Vue.component('Dashboard', require('./dashboard/Dashboard'));
 
 Vue.use(VueRouter);

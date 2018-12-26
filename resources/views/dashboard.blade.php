@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/core.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard.css') }}">
   </head>
-  <body>
+  <body class="skin-blue sidebar-mini sidebar-collapse">
     <div id="dashboard">
       <!-- <Dashboard/> -->
       <router-view></router-view>
