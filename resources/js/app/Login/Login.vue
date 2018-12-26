@@ -1,9 +1,12 @@
 <template>
   <div>
-    <!-- logo -->
+    <!--logo-->
     <div class="login-box">
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Login to start your session</p>
+        <p class="alert alert-danger" role="alert" v-if="error">
+          Incorrect Credentials. Please Try again!
+        </p>
         <form @submit.prevent="authUser(email, password)" method="post">
           <div class="form-group has-feedback">
             <span class="fa fa-envelope-o form-control-feedback"></span>
@@ -30,28 +33,28 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "Login",
   data() {
     return {
-      email: '',
-      password: '',
-      error: ''
+      email: "",
+      password: "",
+      error: false
     };
   },
   methods: {
     authUser: function(email, password) {
       axios
-        .post("api/auth/login")
+        .post("api/auth/login", { email, password })
         .then(response => {
-          // this.email = response.data.email;
-          // this.password = response.data.password;
           console.log(response);
+          if (response.status == 200) {
+            window.location.href = "/home";
+          }
         })
         .catch(error => {
-          // this.error = error;
-          console.log(error);
+          this.error = true;
         });
     }
   }
