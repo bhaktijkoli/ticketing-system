@@ -13828,27 +13828,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   data: function data() {
     return {
-      email: '',
-      password: '',
-      error: ''
+      email: "",
+      password: "",
+      error: false
     };
   },
 
   methods: {
     authUser: function authUser(email, password) {
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("api/auth/login").then(function (response) {
-        // this.email = response.data.email;
-        // this.password = response.data.password;
+      var _this = this;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("api/auth/login", { email: email, password: password }).then(function (response) {
         console.log(response);
+        if (response.status == 200) {
+          window.location.href = "/home";
+        }
       }).catch(function (error) {
-        // this.error = error;
-        console.log(error);
+        _this.error = true;
       });
     }
   }
@@ -13866,8 +13871,20 @@ var render = function() {
     _c("div", { staticClass: "login-box" }, [
       _c("div", { staticClass: "login-box-body" }, [
         _c("p", { staticClass: "login-box-msg" }, [
-          _vm._v("Sign in to start your session")
+          _vm._v("Login to start your session")
         ]),
+        _vm._v(" "),
+        _vm.error
+          ? _c(
+              "p",
+              { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+              [
+                _vm._v(
+                  "\n        Incorrect Credentials. Please Try again!\n      "
+                )
+              ]
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "form",
