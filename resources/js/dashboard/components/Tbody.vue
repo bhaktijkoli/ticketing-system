@@ -52,13 +52,3 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css?family=Lora" rel="stylesheet');
-
-h1,
-h2,
-h3 {
-  font-family: "Lora", serif;
-}
-</style>
-

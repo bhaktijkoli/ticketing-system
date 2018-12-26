@@ -2,8 +2,8 @@
   <div>
     <MainHeader></MainHeader>
     <SideBar></SideBar>
-    <Tbody></Tbody>-->
-    <AllTicket></AllTicket>
+    <Tbody></Tbody>
+    <!-- <AllTicket></AllTicket> -->
   </div>
 </template>
 

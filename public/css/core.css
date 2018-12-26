@@ -11581,7 +11581,7 @@ h6,
 /* General Links */
 
 a {
-  color: #3c8dbc;
+  color: #fff;
 }
 
 a:hover,
@@ -11589,7 +11589,7 @@ a:active,
 a:focus {
   outline: none;
   text-decoration: none;
-  color: #72afd2;
+  color: #fff;
 }
 
 /* Page Header */
@@ -11614,7 +11614,7 @@ a:focus {
   position: relative;
   max-height: 100px;
   z-index: 1030;
-  background: #0397ecc2;
+  background: #3c8dbc;
 }
 
 .main-header .navbar {
@@ -11723,6 +11723,7 @@ a:focus {
   font-size: 9px;
   padding: 2px 3px;
   line-height: .9;
+  color: #fff;
 }
 
 .main-header .logo {
@@ -11890,7 +11891,7 @@ a:focus {
   transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
-  background: #212c31;
+  background: #222d32;
 }
 
 @media (max-width: 767px) {
@@ -11978,6 +11979,7 @@ a:focus {
 .user-panel > .info > a > .ion,
 .user-panel > .info > a > .glyphicon {
   margin-right: 3px;
+  color: #fff;
 }
 
 .sidebar-menu {
@@ -12001,6 +12003,7 @@ a:focus {
 .sidebar-menu > li > a > .glyphicon,
 .sidebar-menu > li > a > .ion {
   width: 20px;
+  color: #fff;
 }
 
 .sidebar-menu > li .label,

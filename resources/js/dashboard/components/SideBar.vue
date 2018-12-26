@@ -27,21 +27,11 @@
             </span>
           </router-link>
         </li>
-        <!-- My Ticket for user -->
-        <li class="treeview">
-          <a href="/">
-            <i class="fa fa-ticket"></i>
-            <span title="for user">All Tickets</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-        </li>
         <!-- New ticket for user -->
         <li>
           <a href="/">
             <i class="fa fa-plus"></i>
-            <span>Ex New Ticket</span>
+            <span>New Ticket</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>
@@ -73,10 +63,4 @@ export default {
 };
 </script>
 
-<style scoped>
-@import url('https://fonts.googleapis.com/css?family=Lora" rel="stylesheet');
-p,
-span {
-  font-family: "Lora", serif;
-}
-</style>
+
