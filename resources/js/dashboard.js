@@ -7,10 +7,10 @@ import Tbody from './dashboard/components/Tbody.vue'
 import UserTable from './dashboard/components/UserTable'
 import Help from './dashboard/components/Help'
 import NewTicket from './dashboard/components/NewTicket.vue'
-import store from './store.js'
-import axios from 'axios';
+import store from './store.js' //vuex store
+import axios from 'axios'
 
-
+//vue router
 Vue.use(VueRouter);
 
 
@@ -39,18 +39,17 @@ const router = new VueRouter({
     mode: 'history'
 });
 
+window.api = function (url) {
+    return '/api' + url;
+}
 const dashboard = new Vue({
     render: h => h(Dashboard),
     router: router,
     el: '#dashboard',
     store: store,
     mounted() {
-        axios.get(routes('/auth/user')).then(res => {
+        axios.get(api('/auth/user')).then(res => {
             store.commit('user', res.data);
         })
     }
 });
-
-window.api = function (url) {
-    return '/api' + url;
-}

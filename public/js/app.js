@@ -13482,7 +13482,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 window.Vue = __webpack_require__(29);
 
 
-
 Vue.component('Login', __webpack_require__(32));
 
 var app = new Vue({

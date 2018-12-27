@@ -13519,9 +13519,10 @@ window.Vue = __webpack_require__(29);
 
 
 
+ //vuex store
 
 
-
+//vue router
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -13545,6 +13546,9 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     mode: 'history'
 });
 
+window.api = function (url) {
+    return '/api' + url;
+};
 var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     render: function render(h) {
         return h(__WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue___default.a);
@@ -13553,15 +13557,11 @@ var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     el: '#dashboard',
     store: __WEBPACK_IMPORTED_MODULE_8__store_js__["a" /* default */],
     mounted: function mounted() {
-        __WEBPACK_IMPORTED_MODULE_9_axios___default.a.get(routes('/auth/user')).then(function (res) {
+        __WEBPACK_IMPORTED_MODULE_9_axios___default.a.get(api('/auth/user')).then(function (res) {
             __WEBPACK_IMPORTED_MODULE_8__store_js__["a" /* default */].commit('user', res.data);
         });
     }
 });
-
-window.api = function (url) {
-    return '/api' + url;
-};
 
 /***/ }),
 /* 56 */
@@ -17490,17 +17490,30 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
     state: {
-        user: null
+        user: null,
+        users: []
     },
     user: function user(state, _user) {
         state.user = _user;
+    },
+    users: function users(state, _users) {
+        state.users = _users;
     }
-
+    // actions: {
+    //     getusers: (context) => {
+    //         axios.get('/api/auth/user').then(res => {
+    //             context.commit('users', res.data);
+    //         })
+    //     }
+    // }
 }));
 
 /***/ }),
