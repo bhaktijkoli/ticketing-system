@@ -21,4 +21,7 @@ Route::prefix('api')->group(function () {
   // Authentication
   Route::post('/auth/login','Auth\LoginController@login');
   Route::get('/auth/user','Auth\UserController@getUser');
+  // User
+  Route::post('/user/add','Api\UserController@postAddUser');
+  Route::get('/user/all','Api\UserController@getAllUsers');
 });
