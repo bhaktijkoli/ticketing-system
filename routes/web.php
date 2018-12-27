@@ -17,7 +17,6 @@ Route::get('/new-ticket', 'DashboardController@getHome');
 Route::get('/users', 'DashboardController@getHome');
 Route::get('/help', 'DashboardController@getHome');
 
-
 Route::prefix('api')->group(function () {
   // Authentication
   Route::post('/auth/login','Auth\LoginController@login');
