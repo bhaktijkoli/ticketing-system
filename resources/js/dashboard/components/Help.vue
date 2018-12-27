@@ -1,9 +1,8 @@
 <template>
-
+    <p>Help section will go here!</p>
 </template>
-
 <script>
 export default {
-  name: "UserTable"
-};
+    name: 'Help'
+}
 </script>

@@ -11957,10 +11957,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__);
 
 window.Vue = __webpack_require__(10);
+
+
 
 
 
@@ -11977,7 +11983,15 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     }, {
         path: '/new-ticket',
         name: 'NewTicket',
-        component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default.a
+    }, {
+        path: '/users',
+        name: 'UserTable',
+        component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default.a
+    }, {
+        path: '/help',
+        name: 'Help',
+        component: __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help___default.a
     }],
     mode: 'history'
 });
@@ -15380,9 +15394,31 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm._m(2),
+              _c(
+                "li",
+                { staticClass: "treeview" },
+                [
+                  _c("router-link", { attrs: { to: "/users" } }, [
+                    _c("i", { staticClass: "fa fa-users" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Users")])
+                  ])
+                ],
+                1
+              ),
               _vm._v(" "),
-              _vm._m(3)
+              _c(
+                "li",
+                { staticClass: "treeview" },
+                [
+                  _c("router-link", { attrs: { to: "/help" } }, [
+                    _c("i", { staticClass: "fa fa-question" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("Help")])
+                  ])
+                ],
+                1
+              )
             ]
           )
         ])
@@ -15486,30 +15522,6 @@ var staticRenderFns = [
         _c("p", { staticClass: "user_name" }, [_vm._v("User Name")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "treeview" }, [
-      _c("a", { attrs: { href: "/home" } }, [
-        _c("i", { staticClass: "fa fa-users" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Users")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "treeview" }, [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("i", { staticClass: "fa fa-question" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Help")])
-      ])
-    ])
   }
 ]
 render._withStripped = true
@@ -15518,6 +15530,185 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-439b6b2b", module.exports)
+  }
+}
+
+/***/ }),
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/UserTable.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-23db91fa", Component.options)
+  } else {
+    hotAPI.reload("data-v-23db91fa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "UserTable"
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-23db91fa", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(4)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/Help.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c4caed9e", Component.options)
+  } else {
+    hotAPI.reload("data-v-c4caed9e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'Help'
+});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("p", [_vm._v("Help section will go here!")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c4caed9e", module.exports)
   }
 }
 

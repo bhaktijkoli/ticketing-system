@@ -88,17 +88,17 @@
         </li>
         <!-- for Super admin -->
         <li class="treeview">
-          <a href="/home">
+          <router-link to="/users">
             <i class="fa fa-users"></i>
             <span>Users</span>
-          </a>
+          </router-link>
         </li>
         <!-- Help section -->
         <li class="treeview">
-          <a href="/">
+          <router-link to="/help">
             <i class="fa fa-question"></i>
             <span>Help</span>
-          </a>
+          </router-link>
         </li>
       </ul>
     </section>
