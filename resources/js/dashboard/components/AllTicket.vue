@@ -15,7 +15,7 @@
               <tbody>
                 <tr>
                   <td class="mailbox-name">
-                    <a href="/home/ticket">Alexander Pierce</a>
+                    <a href="#">Alexander Pierce</a>
                   </td>
                   <td class="mailbox-subject">
                     <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...

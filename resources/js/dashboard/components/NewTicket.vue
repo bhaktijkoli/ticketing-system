@@ -1,8 +1,8 @@
 <template>
   <div class="content-wrapper">
-    <section class="content-header">
+    <div class="content-header">
       <h1>New Ticket</h1>
-    </section>
+    </div>
     <!-- Main content -->
     <div class="col-xs-12">
       <div class="box box-primary">
@@ -12,25 +12,23 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="form-group">
-            <input class="form-control" placeholder="Subject:">
+            <input class="form-control" placeholder="Subject">
           </div>
           <div class="form-group">
             <textarea
               id="compose-textarea"
               class="form-control"
               style="height: 300px"
-              placeholder="Write Details Here!"
+              placeholder="Write Details Here..."
             ></textarea>
           </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <div class="pull-right">
-            <button type="submit" class="btn btn-primary">
-              <i class="fa fa-paper-plane-o"></i> Send
-            </button>
-          </div>
-          <button type="reset" class="btn btn-danger">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-paper-plane-o"></i> Send
+          </button>
+          <button type="reset" class="btn btn-danger text-justify">
             <i class="fa fa-times"></i> Discard
           </button>
         </div>

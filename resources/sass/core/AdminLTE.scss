@@ -2239,8 +2239,8 @@ a:focus {
     border-top-right-radius: 0;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 3px;
-    border-top: 1px solid #f4f4f4;
     padding: 10px;
+    text-align: center;
     background-color: #ffffff;
 }
 
@@ -3844,6 +3844,7 @@ table.text-center th {
 
 .mailbox-messages>.table {
     margin: 0;
+    
 }
 
 .mailbox-controls {
