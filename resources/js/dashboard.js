@@ -42,3 +42,7 @@ const dashboard = new Vue({
     router: router,
     el: '#dashboard'
 });
+
+window.api = function(url){
+    return '/api' + url;
+}
