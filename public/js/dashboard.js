@@ -92,117 +92,8 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 3 */,
-/* 4 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -389,6 +280,115 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
 
 
 /***/ }),
@@ -11773,7 +11773,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(3)))
 
 /***/ }),
 /* 32 */,
@@ -11781,11 +11781,11 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(65)
+var __vue_script__ = __webpack_require__(59)
 /* template */
-var __vue_template__ = __webpack_require__(66)
+var __vue_template__ = __webpack_require__(60)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11828,11 +11828,11 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(67)
+var __vue_script__ = __webpack_require__(61)
 /* template */
-var __vue_template__ = __webpack_require__(68)
+var __vue_template__ = __webpack_require__(62)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11875,11 +11875,11 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(4)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(63)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(64)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11951,41 +11951,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__);
 
 window.Vue = __webpack_require__(10);
 
 
 
 
-// Vue.component('Dashboard', require('./dashboard/Dashboard'));
+
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     routes: [{
         path: '/home',
-        name: 'Dashboard',
-        component: __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard___default.a,
-        children: [{
-            path: '/inbox',
-            name: 'AllTicket',
-            component: __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default.a
-        }, {
-            path: 'ticket',
-            name: 'Tbody',
-            component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default.a
-        }]
+        name: 'AllTicket',
+        component: __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default.a
+    }, {
+        path: '/new-ticket',
+        name: 'NewTicket',
+        component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue___default.a
     }],
     mode: 'history'
 });
 
 var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+    render: function render(h) {
+        return h(__WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue___default.a);
+    },
     router: router,
     el: '#dashboard'
 });
@@ -14620,11 +14620,11 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(2)
+var normalizeComponent = __webpack_require__(4)
 /* script */
 var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(71)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14668,18 +14668,114 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Tbody_vue__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_Tbody_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue__ = __webpack_require__(88);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Tbody_vue__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Tbody_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AllTicket_vue__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_AllTicket_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NewTicket_vue__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_NewTicket_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -14692,469 +14788,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
-
-
+// import MainHeader from "./components/MainHeader.vue";
+// import SideBar from "./components/SideBar.vue";
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
   components: {
-    MainHeader: __WEBPACK_IMPORTED_MODULE_0__components_MainHeader_vue___default.a,
-    SideBar: __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue___default.a,
-    Tbody: __WEBPACK_IMPORTED_MODULE_2__components_Tbody_vue___default.a,
-    AllTicket: __WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue___default.a,
-    NewTicket: __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue___default.a,
-    UserTable: __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue___default.a
+    // MainHeader: MainHeader,
+    // SideBar: SideBar,
+    Tbody: __WEBPACK_IMPORTED_MODULE_0__components_Tbody_vue___default.a,
+    AllTicket: __WEBPACK_IMPORTED_MODULE_1__components_AllTicket_vue___default.a,
+    NewTicket: __WEBPACK_IMPORTED_MODULE_2__components_NewTicket_vue___default.a
   }
 });
 
 /***/ }),
 /* 59 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(60)
-/* template */
-var __vue_template__ = __webpack_require__(61)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/dashboard/components/MainHeader.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c522b9d4", Component.options)
-  } else {
-    hotAPI.reload("data-v-c522b9d4", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 60 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "MainHeader"
-});
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "wrapper hold-transition skin-blue sidebar-mini" },
-      [
-        _c("header", { staticClass: "main-header" }, [
-          _c("a", { staticClass: "logo", attrs: { href: "/" } }, [
-            _c("span", { staticClass: "logo-mini" }, [
-              _c("b", [_vm._v("A")]),
-              _vm._v("LT\n      ")
-            ]),
-            _vm._v(" "),
-            _c("span", { staticClass: "logo-lg" }, [
-              _c("b", [_vm._v("Admin")]),
-              _vm._v("LTE\n      ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("nav", { staticClass: "navbar navbar-static-top" }, [
-            _c(
-              "a",
-              {
-                staticClass: "sidebar-toggle",
-                attrs: { href: "/", "data-toggle": "push-menu", role: "button" }
-              },
-              [
-                _c("span", { staticClass: "sr-only" }, [
-                  _vm._v("Toggle navigation")
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "navbar-custom-menu" }, [
-              _c("ul", { staticClass: "nav navbar-nav" }, [
-                _c("li", [
-                  _c("a", { attrs: { href: "/" } }, [
-                    _c("i", { staticClass: "fa fa-plus" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("New Ticket")])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "dropdown user user-menu" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "dropdown-toggle",
-                      attrs: { href: "#", "data-toggle": "dropdown" }
-                    },
-                    [
-                      _c("img", {
-                        staticClass: "user-image",
-                        attrs: {
-                          src:
-                            "https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg",
-                          alt: "User Image"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "hidden-xs" }, [
-                        _vm._v("User Name")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c522b9d4", module.exports)
-  }
-}
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(63)
-/* template */
-var __vue_template__ = __webpack_require__(64)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/dashboard/components/SideBar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c2dcee08", Component.options)
-  } else {
-    hotAPI.reload("data-v-c2dcee08", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 63 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "SideBar"
-});
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("aside", { staticClass: "main-sidebar" }, [
-    _c("section", { staticClass: "sidebar" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "ul",
-        { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
-        [
-          _c(
-            "li",
-            { staticClass: "treeview" },
-            [
-              _c("router-link", { attrs: { to: "/home/inbox" } }, [
-                _c("i", { staticClass: "fa fa-ticket" }),
-                _vm._v(" "),
-                _c("span", { attrs: { title: "for admin" } }, [
-                  _vm._v("All Tickets")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "pull-right-container" }, [
-                  _c(
-                    "span",
-                    { staticClass: "label label-primary pull-right" },
-                    [_vm._v("4")]
-                  )
-                ])
-              ])
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          _vm._m(3)
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "user-panel" }, [
-      _c("div", { staticClass: "pull-left image" }, [
-        _c("img", {
-          staticClass: "img-circle",
-          attrs: {
-            src:
-              "https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg",
-            alt: "User Image"
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "pull-left info" }, [
-        _c("p", { staticClass: "user_name" }, [_vm._v("User Name")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("i", { staticClass: "fa fa-plus" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("New Ticket")]),
-        _vm._v(" "),
-        _c("span", { staticClass: "pull-right-container" }, [
-          _c("small", { staticClass: "label pull-right bg-green" }, [
-            _vm._v("new")
-          ])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "treeview" }, [
-      _c("a", { attrs: { href: "/home" } }, [
-        _c("i", { staticClass: "fa fa-users" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Users")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "treeview" }, [
-      _c("a", { attrs: { href: "/" } }, [
-        _c("i", { staticClass: "fa fa-question" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Help")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-c2dcee08", module.exports)
-  }
-}
-
-/***/ }),
-/* 65 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15213,7 +14864,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 66 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15312,7 +14963,7 @@ if (false) {
 }
 
 /***/ }),
-/* 67 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15435,7 +15086,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 68 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15530,7 +15181,7 @@ if (false) {
 }
 
 /***/ }),
-/* 69 */
+/* 63 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15583,7 +15234,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 70 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15637,7 +15288,7 @@ var staticRenderFns = [
                 { staticClass: "btn btn-primary", attrs: { type: "submit" } },
                 [
                   _c("i", { staticClass: "fa fa-paper-plane-o" }),
-                  _vm._v(" Submit\n          ")
+                  _vm._v(" Send\n          ")
                 ]
               )
             ]),
@@ -15666,7 +15317,7 @@ if (false) {
 }
 
 /***/ }),
-/* 71 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15676,118 +15327,197 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("MainHeader"),
+      _vm._m(0),
       _vm._v(" "),
-      _c("SideBar"),
+      _c("aside", { staticClass: "main-sidebar" }, [
+        _c("section", { staticClass: "sidebar" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
+            [
+              _c(
+                "li",
+                { staticClass: "treeview" },
+                [
+                  _c("router-link", { attrs: { to: "/home" } }, [
+                    _c("i", { staticClass: "fa fa-ticket" }),
+                    _vm._v(" "),
+                    _c("span", { attrs: { title: "for admin" } }, [
+                      _vm._v("All Tickets")
+                    ]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "pull-right-container" }, [
+                      _c(
+                        "span",
+                        { staticClass: "label label-primary pull-right" },
+                        [_vm._v("4")]
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/new-ticket" } }, [
+                    _c("i", { staticClass: "fa fa-plus" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("New Ticket")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "pull-right-container" }, [
+                      _c(
+                        "small",
+                        { staticClass: "label pull-right bg-green" },
+                        [_vm._v("new")]
+                      )
+                    ])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3)
+            ]
+          )
+        ])
+      ]),
       _vm._v(" "),
-      _c("UserTable")
+      _c("router-view")
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "wrapper hold-transition skin-blue sidebar-mini" },
+      [
+        _c("header", { staticClass: "main-header" }, [
+          _c("a", { staticClass: "logo", attrs: { href: "/" } }, [
+            _c("span", { staticClass: "logo-mini" }, [_c("b", [_vm._v("KC")])]),
+            _vm._v(" "),
+            _c("span", { staticClass: "logo-lg" }, [
+              _c("b", [_vm._v("KC")]),
+              _vm._v("COE\n      ")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("nav", { staticClass: "navbar navbar-static-top" }, [
+            _c(
+              "a",
+              {
+                staticClass: "sidebar-toggle",
+                attrs: { href: "/", "data-toggle": "push-menu", role: "button" }
+              },
+              [
+                _c("span", { staticClass: "sr-only" }, [
+                  _vm._v("Toggle navigation")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "navbar-custom-menu" }, [
+              _c("ul", { staticClass: "nav navbar-nav" }, [
+                _c("li", [
+                  _c("a", { attrs: { href: "/" } }, [
+                    _c("i", { staticClass: "fa fa-plus" }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("New Ticket")])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("li", { staticClass: "dropdown user user-menu" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "dropdown-toggle",
+                      attrs: { href: "#", "data-toggle": "dropdown" }
+                    },
+                    [
+                      _c("img", {
+                        staticClass: "user-image",
+                        attrs: {
+                          src:
+                            "https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg",
+                          alt: "User Image"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "hidden-xs" }, [
+                        _vm._v("User Name")
+                      ])
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "user-panel" }, [
+      _c("div", { staticClass: "pull-left image" }, [
+        _c("img", {
+          staticClass: "img-circle",
+          attrs: {
+            src:
+              "https://almsaeedstudio.com/themes/AdminLTE/dist/img/user2-160x160.jpg",
+            alt: "User Image"
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "pull-left info" }, [
+        _c("p", { staticClass: "user_name" }, [_vm._v("User Name")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "treeview" }, [
+      _c("a", { attrs: { href: "/home" } }, [
+        _c("i", { staticClass: "fa fa-users" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Users")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "treeview" }, [
+      _c("a", { attrs: { href: "/" } }, [
+        _c("i", { staticClass: "fa fa-question" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Help")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-439b6b2b", module.exports)
-  }
-}
-
-/***/ }),
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(89)
-/* template */
-var __vue_template__ = __webpack_require__(90)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/dashboard/components/UserTable.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-23db91fa", Component.options)
-  } else {
-    hotAPI.reload("data-v-23db91fa", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 89 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "UserTable"
-});
-
-/***/ }),
-/* 90 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-23db91fa", module.exports)
   }
 }
 

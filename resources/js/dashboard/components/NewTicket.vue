@@ -27,7 +27,7 @@
         <div class="box-footer">
           <div class="pull-right">
             <button type="submit" class="btn btn-primary">
-              <i class="fa fa-paper-plane-o"></i> Submit
+              <i class="fa fa-paper-plane-o"></i> Send
             </button>
           </div>
           <button type="reset" class="btn btn-danger">
