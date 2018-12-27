@@ -11877,9 +11877,9 @@ module.exports = Component.exports
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(86)
+var __vue_script__ = __webpack_require__(69)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(70)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11957,11 +11957,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_NewTicket_vue__);
 
 window.Vue = __webpack_require__(10);
-
 
 
 
@@ -14627,7 +14624,7 @@ var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(58)
 /* template */
-var __vue_template__ = __webpack_require__(69)
+var __vue_template__ = __webpack_require__(71)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -14681,6 +14678,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue__);
 //
 //
 //
@@ -14691,6 +14690,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
@@ -14704,7 +14705,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     SideBar: __WEBPACK_IMPORTED_MODULE_1__components_SideBar_vue___default.a,
     Tbody: __WEBPACK_IMPORTED_MODULE_2__components_Tbody_vue___default.a,
     AllTicket: __WEBPACK_IMPORTED_MODULE_3__components_AllTicket_vue___default.a,
-    NewTicket: __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue___default.a
+    NewTicket: __WEBPACK_IMPORTED_MODULE_4__components_NewTicket_vue___default.a,
+    UserTable: __WEBPACK_IMPORTED_MODULE_5__components_UserTable_vue___default.a
   }
 });
 
@@ -15529,52 +15531,6 @@ if (false) {
 
 /***/ }),
 /* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("MainHeader"),
-      _vm._v(" "),
-      _c("SideBar"),
-      _vm._v(" "),
-      _c("NewTicket")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-439b6b2b", module.exports)
-  }
-}
-
-/***/ }),
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */,
-/* 81 */,
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15627,7 +15583,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15681,7 +15637,7 @@ var staticRenderFns = [
                 { staticClass: "btn btn-primary", attrs: { type: "submit" } },
                 [
                   _c("i", { staticClass: "fa fa-paper-plane-o" }),
-                  _vm._v(" Send\n          ")
+                  _vm._v(" Submit\n          ")
                 ]
               )
             ]),
@@ -15706,6 +15662,132 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-c2cf66e8", module.exports)
+  }
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("MainHeader"),
+      _vm._v(" "),
+      _c("SideBar"),
+      _vm._v(" "),
+      _c("UserTable")
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-439b6b2b", module.exports)
+  }
+}
+
+/***/ }),
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(89)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/UserTable.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-23db91fa", Component.options)
+  } else {
+    hotAPI.reload("data-v-23db91fa", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 89 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "UserTable"
+});
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div")
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-23db91fa", module.exports)
   }
 }
 

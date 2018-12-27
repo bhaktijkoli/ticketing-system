@@ -4,7 +4,8 @@
     <SideBar></SideBar>
     <!-- <Tbody></Tbody> -->
     <!-- <AllTicket></AllTicket> -->
-    <NewTicket></NewTicket>
+    <!-- <NewTicket></NewTicket> -->
+    <UserTable></UserTable>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import SideBar from "./components/SideBar.vue";
 import Tbody from "./components/Tbody.vue";
 import AllTicket from "./components/AllTicket.vue";
 import NewTicket from "./components/NewTicket.vue";
+import UserTable from "./components/UserTable.vue";
 export default {
   name: "Dashboard",
   components: {
@@ -21,7 +23,8 @@ export default {
     SideBar: SideBar,
     Tbody: Tbody,
     AllTicket: AllTicket,
-    NewTicket: NewTicket
+    NewTicket: NewTicket,
+    UserTable: UserTable
   }
 };
 </script>
