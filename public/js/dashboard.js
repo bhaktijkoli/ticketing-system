@@ -11959,9 +11959,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__);
+<<<<<<< HEAD
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__ = __webpack_require__(71);
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__ = __webpack_require__(69);
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__);
@@ -12005,6 +12011,10 @@ var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     router: router,
     el: '#dashboard'
 });
+
+window.api = function (url) {
+    return '/api' + url;
+};
 
 /***/ }),
 /* 58 */
@@ -15546,15 +15556,25 @@ if (false) {
 }
 
 /***/ }),
+<<<<<<< HEAD
 /* 68 */
+=======
+/* 66 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
+<<<<<<< HEAD
 var __vue_script__ = __webpack_require__(69)
 /* template */
 var __vue_template__ = __webpack_require__(70)
+=======
+var __vue_script__ = __webpack_require__(67)
+/* template */
+var __vue_template__ = __webpack_require__(68)
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -15593,11 +15613,31 @@ module.exports = Component.exports
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 69 */
+=======
+/* 67 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -15672,7 +15712,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 70 */
+=======
+/* 68 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15688,6 +15732,50 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "content-wrapper" }, [
       _c("section", { staticClass: "content" }, [
+        _c("h3", [
+          _vm._v("\n        All Users\n        "),
+          _c("small", [_vm._v("Manage users")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "bs-example-modal-sm"
+              }
+            },
+            [_vm._v("Small modal")]
+          )
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "modal fade bs-example-modal-sm",
+            attrs: {
+              tabindex: "-1",
+              role: "dialog",
+              "aria-labelledby": "mySmallModalLabel"
+            }
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass: "modal-dialog modal-sm",
+                attrs: { role: "document" }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._v("\n      ...\n    ")
+                ])
+              ]
+            )
+          ]
+        ),
+        _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-xs-12" }, [
             _c("div", { staticClass: "box" }, [
@@ -15721,7 +15809,9 @@ var staticRenderFns = [
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("Win 95+")])
+                      _c("td", [_vm._v("Win 95+")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("A")])
                     ]),
                     _vm._v(" "),
                     _c("tr", [
@@ -15733,7 +15823,9 @@ var staticRenderFns = [
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("Win 95+")])
+                      _c("td", [_vm._v("Win 95+")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("A")])
                     ]),
                     _vm._v(" "),
                     _c("tr", [
@@ -15745,7 +15837,9 @@ var staticRenderFns = [
                         )
                       ]),
                       _vm._v(" "),
-                      _c("td", [_vm._v("Win 95+")])
+                      _c("td", [_vm._v("Win 95+")]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v("A")])
                     ])
                   ]),
                   _vm._v(" "),
@@ -15779,15 +15873,25 @@ if (false) {
 }
 
 /***/ }),
+<<<<<<< HEAD
 /* 71 */
+=======
+/* 69 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
+<<<<<<< HEAD
 var __vue_script__ = __webpack_require__(72)
 /* template */
 var __vue_template__ = __webpack_require__(73)
+=======
+var __vue_script__ = __webpack_require__(70)
+/* template */
+var __vue_template__ = __webpack_require__(71)
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -15826,7 +15930,11 @@ module.exports = Component.exports
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 72 */
+=======
+/* 70 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15840,14 +15948,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 73 */
+=======
+/* 71 */
+>>>>>>> 63113df201e4468512d5a8524f965d99c6c582c0
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("p", [_vm._v("Help section will go here!")])
+  return _c("div")
 }
 var staticRenderFns = []
 render._withStripped = true

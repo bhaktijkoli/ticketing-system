@@ -1,6 +1,19 @@
 <template>
 <div class="content-wrapper">
   <section class="content">
+    <h3>
+        All Users
+        <small>Manage users</small>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="bs-example-modal-sm">Small modal</button>
+ </h3>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+    <!--/.add user -->
     <div class="row">
       <div class="col-xs-12">
         <!-- /.box -->
@@ -27,6 +40,7 @@
                     Explorer 4.0
                   </td>
                   <td>Win 95+</td>
+                  <td>A</td>
                 </tr>
                 <tr>
                   <td>Trident</td>
@@ -35,6 +49,7 @@
                     Explorer 5.0
                   </td>
                   <td>Win 95+</td>
+                  <td>A</td>
                 </tr>
                 <tr>
                   <td>Trident</td>
@@ -43,6 +58,7 @@
                     Explorer 5.5
                   </td>
                   <td>Win 95+</td>
+                  <td>A</td>
                 </tr>
               </tbody>
               <tfoot>
