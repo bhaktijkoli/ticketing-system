@@ -25,10 +25,10 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
             <li>
-              <a href="/">
+              <router-link to="/new-ticket">
                 <i class="fa fa-plus"></i>
                 <span>New Ticket</span>
-              </a>
+              </router-link>
             </li>
 
             <li class="dropdown user user-menu">

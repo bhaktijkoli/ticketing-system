@@ -401,8 +401,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,10 +502,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -696,6 +695,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
+/* 4 */,
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -980,7 +980,7 @@ module.exports = __webpack_require__(12);
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(5);
 var Axios = __webpack_require__(14);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(2);
 
 /**
  * Create an instance of Axios
@@ -1063,7 +1063,7 @@ function isSlowBuffer (obj) {
 "use strict";
 
 
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
 var InterceptorManager = __webpack_require__(23);
 var dispatchRequest = __webpack_require__(24);
@@ -1602,7 +1602,7 @@ module.exports = InterceptorManager;
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(25);
 var isCancel = __webpack_require__(8);
-var defaults = __webpack_require__(3);
+var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(26);
 var combineURLs = __webpack_require__(27);
 
