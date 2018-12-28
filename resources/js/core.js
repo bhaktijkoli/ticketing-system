@@ -13,3 +13,4 @@ if (token) {
 }
 
 require('./core/adminlte')
+require('./core/formhandler')
