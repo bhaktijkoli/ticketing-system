@@ -10,7 +10,7 @@
           class="btn btn-primary"
           data-toggle="modal"
           data-target="#myModal"
-        >Add Users</button>
+        >Add User</button>
       </h3>
       <!-- Modal -->
       <div
@@ -112,15 +112,12 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>Trident</td>
-                    <td>
-                      Internet
-                      Explorer 4.0
-                    </td>
-                    <td>Win 95+</td>
-                    <td>A</td>
+                <tbody v-if="users">
+                  <tr v-for="user in users">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ getRoleName(user.role) }}</td>
+                    <!-- <td>A</td> -->
                   </tr>
                 </tbody>
                 <tfoot>
@@ -153,9 +150,18 @@ export default {
       email: "",
       password: "",
       role: 2,
-      error: false
+      error: false,
+      users: []
     };
   },
+  mounted() {
+    //do something after mounting vue instance
+      axios
+        .get("api/user/all")
+        .then(response => {
+          this.users = response.data;
+        })
+    },
   methods: {
     addUser: function(name, email, password, role) {
       fh.hide_button()
@@ -168,10 +174,13 @@ export default {
           else{
             fh.set_multierrors(response.data)
           }
-          console.log(response.data);
         }).finally(()=>{
           fh.show_button()
         })
+    },
+    getRoleName: function(role){
+      const roles = ['Admin', 'Support', 'Staff']
+      return roles[role];
     }
   }
 };
