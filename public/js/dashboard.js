@@ -16197,19 +16197,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Dashboard",
-  computed: {
-    username: function username() {
-      if (this.$store.state.user == null) return "";
-      return this.$store.state.user.name;
-    },
-    role: function role() {
-      if (this.$store.state.user == null) return -1;
-      return this.$store.state.user.role;
+    name: "Dashboard",
+    computed: {
+        username: function username() {
+            if (this.$store.state.user == null) return "";
+            return this.$store.state.user.name;
+        },
+        role: function role() {
+            if (this.$store.state.user == null) return -1;
+            return this.$store.state.user.role;
+        }
     }
-  }
 });
 
 /***/ }),
@@ -16352,7 +16355,9 @@ var render = function() {
                   ])
                 ],
                 1
-              )
+              ),
+              _vm._v(" "),
+              _vm._m(2)
             ]
           )
         ])
@@ -16373,7 +16378,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "logo-lg" }, [
         _c("b", [_vm._v("KC")]),
-        _vm._v("COE\n        ")
+        _vm._v("COE\n                ")
       ])
     ])
   },
@@ -16389,6 +16394,18 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "sr-only" }, [_vm._v("Toggle navigation")])]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", [
+      _c("a", { attrs: { href: "/logout" } }, [
+        _c("i", { staticClass: "fa fa-sign-out" }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Logout")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
