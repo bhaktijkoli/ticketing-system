@@ -16529,43 +16529,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTicket"
@@ -16587,65 +16550,94 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "content-wrapper" }, [
-      _c("section", { staticClass: "content-header" }, [
-        _c("h1", [_vm._v("All Tickets")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-12" }, [
-        _c("div", { staticClass: "box box-primary" }, [
-          _c("div", { staticClass: "box-header with-border" }, [
-            _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body no-padding" }, [
-            _c("div", { staticClass: "table-responsive mailbox-messages" }, [
-              _c("table", { staticClass: "table table-hover table-striped" }, [
-                _c("tbody", [
-                  _c("tr", [
-                    _c("td", { staticClass: "mailbox-name" }, [
-                      _c("a", { attrs: { href: "#" } }, [
-                        _vm._v("Alexander Pierce")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "mailbox-subject" }, [
-                      _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
-                      _vm._v(
-                        " - Trying to find a solution to this problem...\n                "
+      _c("section", { staticClass: "content" }, [
+        _c("h3", [_vm._v("All Ticket")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("div", { staticClass: "box box-primary" }, [
+              _c("div", { staticClass: "box-header with-border" }, [
+                _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body no-padding" }, [
+                _c(
+                  "div",
+                  { staticClass: "table-responsive mailbox-messages" },
+                  [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover table-striped" },
+                      [
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", { staticClass: "mailbox-name" }, [
+                              _c("a", { attrs: { href: "read-mail.html" } }, [
+                                _vm._v("Alexander Pierce")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
+                              _vm._v(
+                                " - Trying to find a solution to this problem...\n                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v("5 mins ago")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { staticClass: "mailbox-name" }, [
+                              _c("a", { attrs: { href: "read-mail.html" } }, [
+                                _vm._v("Alexander Pierce")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
+                              _vm._v(
+                                " - Trying to find a solution to this problem...\n                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v("5 mins ago")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-footer no-padding" }, [
+                _c("div", { staticClass: "mailbox-controls" }, [
+                  _c("div", { staticClass: "pull-right" }, [
+                    _vm._v("1-50/200\n                "),
+                    _c("div", { staticClass: "btn-group" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default btn-sm",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fa fa-chevron-left" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default btn-sm",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fa fa-chevron-right" })]
                       )
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "mailbox-date" }, [
-                      _vm._v("5 mins ago")
                     ])
                   ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-footer no-padding pdd" }, [
-            _c("div", { staticClass: "mailbox-controls" }, [
-              _c("div", { staticClass: "pull-right" }, [
-                _vm._v("1-50/200\n            "),
-                _c("div", { staticClass: "btn-group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default btn-sm",
-                      attrs: { type: "button" }
-                    },
-                    [_c("i", { staticClass: "fa fa-chevron-left" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-default btn-sm",
-                      attrs: { type: "button" }
-                    },
-                    [_c("i", { staticClass: "fa fa-chevron-right" })]
-                  )
                 ])
               ])
             ])
@@ -17660,6 +17652,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewTicket"
@@ -17681,59 +17680,61 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "content-wrapper" }, [
-      _c("div", { staticClass: "content-header" }, [
-        _c("h1", [_vm._v("New Ticket")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-xs-12" }, [
-        _c("div", { staticClass: "box box-primary" }, [
-          _c("div", { staticClass: "box-header with-border" }, [
-            _c("h3", { staticClass: "box-title" }, [
-              _vm._v("Compose New Ticket")
+      _c("section", { staticClass: "content" }, [
+        _c("h3", [_vm._v("New Ticket")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("div", { staticClass: "box box-primary" }, [
+              _c("div", { staticClass: "box-header with-border" }, [
+                _c("h3", { staticClass: "box-title" }, [
+                  _vm._v("Compose New Ticket")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Subject" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    staticClass: "form-control",
+                    staticStyle: { height: "300px" },
+                    attrs: {
+                      id: "compose-textarea",
+                      placeholder: "Write Details Here..."
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-footer" }, [
+                _c(
+                  "button",
+                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  [
+                    _c("i", { staticClass: "fa fa-paper-plane-o" }),
+                    _vm._v(" Send\n            ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger text-justify",
+                    attrs: { type: "reset" }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-times" }),
+                    _vm._v(" Discard\n            ")
+                  ]
+                )
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { placeholder: "Subject" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("textarea", {
-                staticClass: "form-control",
-                staticStyle: { height: "300px" },
-                attrs: {
-                  id: "compose-textarea",
-                  placeholder: "Write Details Here..."
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-footer" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [
-                _c("i", { staticClass: "fa fa-paper-plane-o" }),
-                _vm._v(" Send\n        ")
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger text-justify",
-                attrs: { type: "reset" }
-              },
-              [
-                _c("i", { staticClass: "fa fa-times" }),
-                _vm._v(" Discard\n        ")
-              ]
-            )
           ])
         ])
       ])
