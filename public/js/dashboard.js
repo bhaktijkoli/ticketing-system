@@ -17070,24 +17070,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserTable",
@@ -17468,34 +17450,6 @@ var staticRenderFns = [
                   _c("td", [
                     _vm._v(
                       "\n                    Internet\n                    Explorer 4.0\n                  "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Win 95+")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("A")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Trident")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      "\n                    Internet\n                    Explorer 5.0\n                  "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("Win 95+")]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v("A")])
-                ]),
-                _vm._v(" "),
-                _c("tr", [
-                  _c("td", [_vm._v("Trident")]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      "\n                    Internet\n                    Explorer 5.5\n                  "
                     )
                   ]),
                   _vm._v(" "),
