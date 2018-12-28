@@ -23,7 +23,7 @@ class UserController extends Controller
     $user->password = Hash::make($request->input('password', ''));
     $user->role = $request->input('role', '2');
     $user->save();
-    return ResponseBuilder::send(true, "User created.", "")
+    return ResponseBuilder::send(true, "User created.", "");
   }
 
   public function getAllUsers() {

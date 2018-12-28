@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 36);
+/******/ 	return __webpack_require__(__webpack_require__.s = 33);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1856,26 +1856,23 @@ module.exports = function spread(callback) {
 /* 30 */,
 /* 31 */,
 /* 32 */,
-/* 33 */,
-/* 34 */,
-/* 35 */,
-/* 36 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(37);
-__webpack_require__(42);
-__webpack_require__(44);
-module.exports = __webpack_require__(45);
+__webpack_require__(34);
+__webpack_require__(39);
+__webpack_require__(41);
+module.exports = __webpack_require__(42);
 
 
 /***/ }),
-/* 37 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window.Popper = __webpack_require__(38).default;
+window.Popper = __webpack_require__(35).default;
 try {
-    window.$ = window.jQuery = __webpack_require__(39);
-    __webpack_require__(40);
+    window.$ = window.jQuery = __webpack_require__(36);
+    __webpack_require__(37);
 } catch (e) {}
 window.axios = __webpack_require__(11);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -1886,10 +1883,11 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
-__webpack_require__(41);
+__webpack_require__(38);
+__webpack_require__(88);
 
 /***/ }),
-/* 38 */
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4470,7 +4468,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 39 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -14841,7 +14839,7 @@ return jQuery;
 
 
 /***/ }),
-/* 40 */
+/* 37 */
 /***/ (function(module, exports) {
 
 /*!
@@ -17255,7 +17253,7 @@ if (typeof jQuery === 'undefined') {
 
 
 /***/ }),
-/* 41 */
+/* 38 */
 /***/ (function(module, exports) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -18357,6 +18355,19 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 /***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 40 */,
+/* 41 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 42 */
 /***/ (function(module, exports) {
 
@@ -18364,16 +18375,134 @@ if (typeof jQuery === 'undefined') {
 
 /***/ }),
 /* 43 */,
-/* 44 */
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+// Form Handler
+window.fh = {
+  set_success: function set_success(element, message) {
+    $(element).closest('.form-group').removeClass('has-danger');
+    $(element).closest('.form-group').addClass('has-success');
+    $(element).closest('.form-group').find('.help-block').html(message);
+  },
+  set_multisuccess: function set_multisuccess(data) {
+    errors = data.messages;
+    for (var key in errors) {
+      this.set_success('#' + key, errors[key]);
+    }
+  },
+  set_single_error: function set_single_error(data) {
+    $('#error-result').show(100);
+    $('#error-result').html(data.messages);
+  },
+  set_error: function set_error(element, error) {
+    console.log(element);
+    console.log($(element).closest('.form-group'));
+    $(element).closest('.form-group').addClass('has-danger');
+    $(element).closest('.form-group').removeClass('has-success');
+    $(element).closest('.form-group').find('.help-block').html(error);
+  },
 
-/***/ }),
-/* 45 */
-/***/ (function(module, exports) {
+  remove_error: function remove_error(element) {
+    $(element).closest('.form-group').removeClass('has-danger');
+    $(element).closest('.form-group').find('.help-block').html('');
+  },
 
-// removed by extract-text-webpack-plugin
+  remove_all_errros: function remove_all_errros(element) {
+    $(element).find('.form-group').removeClass('has-danger');
+    $(element).find('.form-group').find('.help-block').html('');
+  },
+
+  set_multierrors: function set_multierrors(data) {
+    errors = data.messages;
+    for (var key in errors) {
+      this.set_error('#' + key, errors[key]);
+    }
+  },
+
+  hide_element: function hide_element(element) {
+    $(element).closest('.form-group').css("display", "none");
+  },
+
+  show_element: function show_element(element) {
+    $(element).closest('.form-group').css("display", "block");
+  },
+
+  is_success: function is_success(data) {
+    return data.success;
+  },
+
+  clear_all: function clear_all(element) {
+    $(element).find("input, textarea").val("");
+  },
+
+  redirect: function redirect(data) {
+    window.location = data.redirect;
+  },
+
+  hide_button: function hide_button() {
+    btn = $(document.activeElement);
+    document.btntext = btn[0].innerHTML;
+    btn[0].innerHTML = '<i class="fa fa-circle-o-notch fa-spin fa-fw"></i>';
+    btn.prop('disabled', true);
+    window.lastbutton = btn;
+  },
+
+  show_button: function show_button() {
+    var btn = window.lastbutton;
+    btn[0].innerHTML = document.btntext;
+    btn.prop('disabled', false);
+  },
+
+  show_errorpage: function show_errorpage(error) {
+    console.log(error);
+    this.show_button(window.lastbutton); // Remove This
+  }
+};
 
 /***/ })
 /******/ ]);
