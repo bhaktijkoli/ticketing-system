@@ -7,17 +7,20 @@ export default new Vuex.Store({
         user: null,
         users: []
     },
-    user: (state, user) => {
-        state.user = user;
+    getters: {},
+    mutations: {
+        user: (state, user) => {
+            state.user = user
+        },
+        users: (state, users) => {
+            state.users = users
+        }
     },
-    users: (state, users) => {
-        state.users = users;
-    },
-    // actions: {
-    //     getusers: (context) => {
-    //         axios.get('/api/auth/user').then(res => {
-    //             context.commit('users', res.data);
-    //         })
-    //     }
-    // }
+    actions: {
+        getusers: (context) => {
+            axios.get('/api/auth/user').then(res => {
+                context.commit('users', res.data);
+            })
+        }
+    }
 })

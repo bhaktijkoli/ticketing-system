@@ -38,7 +38,7 @@
                     class="user-image"
                     alt="User Image"
                   >
-                  <span class="hidden-xs">User Name</span>
+                  <span class="hidden-xs">{{username}}</span>
                 </a>
               </li>
             </ul>
@@ -61,7 +61,7 @@
             >
           </div>
           <div class="pull-left info">
-            <p class="user_name">User Name</p>
+            <p class="user_name">{{username}}</p>
           </div>
         </div>
         <!-- sidebar menu: : style can be found in sidebar.less -->
@@ -87,7 +87,7 @@
             </router-link>
           </li>
           <!-- for Super admin -->
-          <li class="treeview">
+          <li class="treeview" v-if="role == 0">
             <router-link to="/users">
               <i class="fa fa-users"></i>
               <span>Users</span>
@@ -110,6 +110,16 @@
 
 <script>
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  computed: {
+    username() {
+      if (this.$store.state.user == null) return "";
+      return this.$store.state.user.name;
+    },
+    role() {
+      if (this.$store.state.user == null) return -1;
+      return this.$store.state.user.role;
+    }
+  }
 };
 </script>
