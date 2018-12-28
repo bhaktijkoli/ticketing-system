@@ -32,46 +32,55 @@
               <div class="box box-info">
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form @submit.prevent="addUser(name, email, password, role)" method="post" class="form-horizontal">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                      <label for="name" class="col-sm-2 control-label">Name</label>
 
                       <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Name">
+                        <input v-model="name" type="text" class="form-control" id="name" placeholder="Name">
+                        <p class="help-block"></p>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <label for="email" class="col-sm-2 control-label">Email</label>
 
                       <div class="col-sm-10">
                         <input
+                          v-model="email"
                           type="email"
                           class="form-control"
-                          id="inputEmail3"
+                          id="email"
                           placeholder="Email"
                         >
+                        <p class="help-block"></p>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <label for="password" class="col-sm-2 control-label">Password</label>
 
                       <div class="col-sm-10">
                         <input
+                          v-model="password"
                           type="password"
                           class="form-control"
-                          id="inputPassword3"
+                          id="password"
                           placeholder="Password"
                         >
+                        <p class="help-block"></p>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">Role</label>
-
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputEmail3" placeholder="Role">
-                      </div>
-                    </div>
+                  <label for="role" class="col-sm-2 control-label">Role</label>
+                  <div class="col-sm-10">
+                    <select v-model="role" id="role" class="form-control">
+                      <option value="0">Admin</option>
+                      <option value="1">Support</option>
+                      <option value="2">Staff</option>
+                    </select>
+                    <p class="help-block"></p>
+                  </div>
+                </div>
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
@@ -155,6 +164,33 @@
 
 <script>
 export default {
-  name: "UserTable"
+  name: "UserTable",
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      role: 2,
+      error: false
+    };
+  },
+  methods: {
+    addUser: function(name, email, password, role) {
+      fh.hide_button()
+      axios
+        .post("api/user/add", { name, email, password, role })
+        .then(response => {
+          if(fh.is_success(response.data)){
+            window.location.reload();
+          }
+          else{
+            fh.set_multierrors(response.data)
+          }
+          console.log(response.data);
+        }).finally(()=>{
+          fh.show_button()
+        })
+    }
+  }
 };
 </script>
