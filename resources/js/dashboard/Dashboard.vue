@@ -85,6 +85,7 @@
                     </router-link>
                 </li>
 
+                <!--Logout section -->
                 <li>
                     <a href="/logout">
                         <i class="fa fa-sign-out"></i>
@@ -114,3 +115,10 @@ export default {
     }
 };
 </script>
+
+<style scoped>
+  .options{
+    flex: 1 0 0;
+    flex-grow: 1;
+  }
+</style>
