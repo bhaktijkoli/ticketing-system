@@ -18,7 +18,7 @@
                   <tbody>
                     <tr>
                       <td class="mailbox-name">
-                        <a href="read-mail.html">Alexander Pierce</a>
+                        <a href="/ticket">Alexander Pierce</a>
                       </td>
                       <td class="mailbox-subject">
                         <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                       <td class="mailbox-name">
-                        <a href="read-mail.html">Alexander Pierce</a>
+                        <a href="/ticket">Alexander Pierce</a>
                       </td>
                       <td class="mailbox-subject">
                         <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...

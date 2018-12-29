@@ -13733,6 +13733,10 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         name: 'NewTicket',
         component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default.a
     }, {
+        path: '/ticket',
+        name: 'Tbody',
+        component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default.a
+    }, {
         path: '/users',
         name: 'UserTable',
         component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default.a
@@ -16978,7 +16982,7 @@ var staticRenderFns = [
                         _c("tbody", [
                           _c("tr", [
                             _c("td", { staticClass: "mailbox-name" }, [
-                              _c("a", { attrs: { href: "read-mail.html" } }, [
+                              _c("a", { attrs: { href: "/ticket" } }, [
                                 _vm._v("Alexander Pierce")
                               ])
                             ]),
@@ -16997,7 +17001,7 @@ var staticRenderFns = [
                           _vm._v(" "),
                           _c("tr", [
                             _c("td", { staticClass: "mailbox-name" }, [
-                              _c("a", { attrs: { href: "read-mail.html" } }, [
+                              _c("a", { attrs: { href: "/ticket" } }, [
                                 _vm._v("Alexander Pierce")
                               ])
                             ]),

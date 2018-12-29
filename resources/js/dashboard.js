@@ -24,6 +24,11 @@ const router = new VueRouter({
             component: NewTicket
         },
         {
+            path: '/ticket',
+            name: 'Tbody',
+            component: Tbody
+        },
+        {
             path: '/users',
             name: 'UserTable',
             component: UserTable
