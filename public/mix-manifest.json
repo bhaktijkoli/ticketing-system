@@ -1,8 +1,8 @@
 {
+    "/js/dashboard.js": "/js/dashboard.js",
     "/js/app.js": "/js/app.js",
     "/js/core.js": "/js/core.js",
     "/css/core.css": "/css/core.css",
     "/css/app.css": "/css/app.css",
-    "/css/dashboard.css": "/css/dashboard.css",
-    "/js/dashboard.js": "/js/dashboard.js"
+    "/css/dashboard.css": "/css/dashboard.css"
 }
