@@ -633,6 +633,7 @@ a:focus {
 .sidebar-menu>li>a {
     padding: 12px 5px 12px 15px;
     display: block;
+    color: #fff;
 }
 
 .sidebar-menu>li>a>.fa,
@@ -3844,7 +3845,7 @@ table.text-center th {
 
 .mailbox-messages>.table {
     margin: 0;
-    
+
 }
 
 .mailbox-controls {
@@ -3858,6 +3859,10 @@ table.text-center th {
 .mailbox-read-info {
     border-bottom: 1px solid #f4f4f4;
     padding: 10px;
+}
+
+.mailbox-name>a {
+    color: rgba(54, 123, 228, 0.795);
 }
 
 .mailbox-read-info h3 {
