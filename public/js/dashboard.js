@@ -16720,7 +16720,7 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _vm.role == 1
+              _vm.role == 2 || _vm.role == 3
                 ? _c(
                     "li",
                     { staticClass: "treeview" },
