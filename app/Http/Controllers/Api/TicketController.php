@@ -19,7 +19,7 @@ class TicketController extends Controller
   {
     $this->middleware('auth');
   }
-  
+
   public function postAddTicket(AddTicketRequest $request)
   {
     $ticket = new Ticket();
@@ -32,5 +32,15 @@ class TicketController extends Controller
     $message->message = $request->input('message', '');
     $message->save();
     return ResponseBuilder::send(true, "Ticket created.", "");
+  }
+
+  public function getUnassigned(Request $request)
+  {
+    $tickets = Ticket::where('enrolled_by', '-1')->latest()->get();
+    $ticketsArray = [];
+    foreach ($tickets as $t) {
+      array_push($ticketsArray, $t->format());
+    }
+    return $ticketsArray;
   }
 }
