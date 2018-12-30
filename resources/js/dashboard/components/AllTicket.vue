@@ -76,6 +76,21 @@
 <script>
 export default {
   name: "AllTicket"
+  // data: {
+  //   tickets: {}
+  // },
+  // methods: {
+  //   gettickets() {
+  //     axiox
+  //       .get("")
+  //       .then(res => {
+  //         this.tickets = res.data;
+  //       })
+  //       .catch(error => {
+  //         alert(error);
+  //       });
+  //   }
+  // }
 };
 </script>
 
