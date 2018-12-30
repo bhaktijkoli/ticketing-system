@@ -15,6 +15,7 @@ Route::get('/', 'IndexController@getLogin')->name('login');
 Route::get('/home', 'DashboardController@getHome');
 Route::get('/new-ticket', 'DashboardController@getHome');
 Route::get('/ticket', 'DashboardController@getHome');
+Route::get('/mytickets', 'DashboardController@getHome');
 Route::get('/users', 'DashboardController@getHome');
 Route::get('/help', 'DashboardController@getHome');
 Route::get('/logout', 'Auth\LoginController@logout');

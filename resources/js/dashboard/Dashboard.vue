@@ -63,6 +63,16 @@
               </span>
             </router-link>
           </li>
+          <!-- my ticket for users -->
+          <li class="treeview" v-if="role == 1">
+            <router-link to="/mytickets">
+              <i class="fa fa-ticket"></i>
+              <span title="for admin">My Tickets</span>
+              <span class="pull-right-container">
+                <span class="label label-primary pull-right">4</span>
+              </span>
+            </router-link>
+          </li>
           <!-- New ticket for user -->
           <li>
             <router-link to="/new-ticket">

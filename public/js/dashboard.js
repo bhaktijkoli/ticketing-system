@@ -13699,19 +13699,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__ = __webpack_require__(60);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__dashboard_components_AllTicket_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__ = __webpack_require__(63);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__ = __webpack_require__(66);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__ = __webpack_require__(72);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__store_js__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_UserTable__ = __webpack_require__(66);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard_components_UserTable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__dashboard_components_UserTable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue__ = __webpack_require__(72);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__store_js__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_axios__);
 
 window.Vue = __webpack_require__(29);
+
 
 
 
@@ -13731,19 +13734,23 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
     }, {
         path: '/new-ticket',
         name: 'NewTicket',
-        component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue___default.a
+    }, {
+        path: '/mytickets',
+        name: 'MyTickets',
+        component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue___default.a
     }, {
         path: '/ticket',
         name: 'Tbody',
-        component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_Tbody_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue___default.a
     }, {
         path: '/users',
         name: 'UserTable',
-        component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_UserTable___default.a
+        component: __WEBPACK_IMPORTED_MODULE_6__dashboard_components_UserTable___default.a
     }, {
         path: '/help',
         name: 'Help',
-        component: __WEBPACK_IMPORTED_MODULE_6__dashboard_components_Help___default.a
+        component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help___default.a
     }],
     mode: 'history'
 });
@@ -13758,10 +13765,10 @@ var dashboard = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
     },
     el: '#dashboard',
     router: router,
-    store: __WEBPACK_IMPORTED_MODULE_8__store_js__["a" /* default */],
+    store: __WEBPACK_IMPORTED_MODULE_9__store_js__["a" /* default */],
     mounted: function mounted() {
-        __WEBPACK_IMPORTED_MODULE_9_axios___default.a.get(api('/auth/user')).then(function (res) {
-            __WEBPACK_IMPORTED_MODULE_8__store_js__["a" /* default */].commit('user', res.data);
+        __WEBPACK_IMPORTED_MODULE_10_axios___default.a.get(api('/auth/user')).then(function (res) {
+            __WEBPACK_IMPORTED_MODULE_9__store_js__["a" /* default */].commit('user', res.data);
         });
     }
 });
@@ -16593,6 +16600,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
@@ -16702,6 +16719,31 @@ var render = function() {
                 ],
                 1
               ),
+              _vm._v(" "),
+              _vm.role == 1
+                ? _c(
+                    "li",
+                    { staticClass: "treeview" },
+                    [
+                      _c("router-link", { attrs: { to: "/mytickets" } }, [
+                        _c("i", { staticClass: "fa fa-ticket" }),
+                        _vm._v(" "),
+                        _c("span", { attrs: { title: "for admin" } }, [
+                          _vm._v("My Tickets")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "pull-right-container" }, [
+                          _c(
+                            "span",
+                            { staticClass: "label label-primary pull-right" },
+                            [_vm._v("4")]
+                          )
+                        ])
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "li",
@@ -19251,6 +19293,294 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
+
+/***/ }),
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(8)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/MyTickets.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-cb67e84a", Component.options)
+  } else {
+    hotAPI.reload("data-v-cb67e84a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "MyTickets"
+  // data: {
+  //   tickets: {}
+  // },
+  // methods: {
+  //   gettickets() {
+  //     axiox
+  //       .get("")
+  //       .then(res => {
+  //         this.tickets = res.data;
+  //       })
+  //       .catch(error => {
+  //         alert(error);
+  //       });
+  //   }
+  // }
+});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-wrapper" }, [
+      _c("section", { staticClass: "content" }, [
+        _c("h3", [_vm._v("My Tickets")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("div", { staticClass: "box box-primary" }, [
+              _c("div", { staticClass: "box-header with-border" }, [
+                _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body no-padding" }, [
+                _c(
+                  "div",
+                  { staticClass: "table-responsive mailbox-messages" },
+                  [
+                    _c(
+                      "table",
+                      { staticClass: "table table-hover table-striped" },
+                      [
+                        _c("tbody", [
+                          _c("tr", [
+                            _c("td", { staticClass: "mailbox-name" }, [
+                              _c("a", { attrs: { href: "/ticket" } }, [
+                                _vm._v("Alexander Pierce")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
+                              _vm._v(
+                                " - Trying to find a solution to this problem...\n                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v("5 mins ago")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("tr", [
+                            _c("td", { staticClass: "mailbox-name" }, [
+                              _c("a", { attrs: { href: "/ticket" } }, [
+                                _vm._v("Alexander Pierce")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
+                              _vm._v(
+                                " - Trying to find a solution to this problem...\n                    "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v("5 mins ago")
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-footer no-padding" }, [
+                _c("div", { staticClass: "mailbox-controls" }, [
+                  _c("div", { staticClass: "pull-right" }, [
+                    _vm._v("1-50/200\n                "),
+                    _c("div", { staticClass: "btn-group" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default btn-sm",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fa fa-chevron-left" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-default btn-sm",
+                          attrs: { type: "button" }
+                        },
+                        [_c("i", { staticClass: "fa fa-chevron-right" })]
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "clearfix" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-cb67e84a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
