@@ -26,4 +26,6 @@ Route::prefix('api')->group(function () {
   // User
   Route::post('/user/add', 'Api\UserController@postAddUser');
   Route::get('/user/all', 'Api\UserController@getAllUsers');
+  // Ticket
+  Route::post('/ticket/add', 'Api\TicketController@postAddTicket');
 });

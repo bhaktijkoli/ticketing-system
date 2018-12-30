@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Http\Requests\AddTicketRequest;
+
+use App\User;
+use App\Ticket;
+use App\Message;
+use App\ResponseBuilder;
+use Auth;
+
+class TicketController extends Controller
+{
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
+  
+  public function postAddTicket(AddTicketRequest $request)
+  {
+    $ticket = new Ticket();
+    $ticket->subject = $request->input('subject', '');
+    $ticket->created_by = Auth::user()->id;
+    $ticket->save();
+    $message = new Message();
+    $message->ticket = $ticket->id;
+    $message->created_by = Auth::user()->id;
+    $message->message = $request->input('message', '');
+    $message->save();
+    return ResponseBuilder::send(true, "Ticket created.", "");
+  }
+}
