@@ -15,24 +15,23 @@
             <div class="box-body no-padding">
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
-                  <tbody>
+                  <thead>
                     <tr>
-                      <td class="mailbox-name">
-                        <a href="/ticket">Alexander Pierce</a>
-                      </td>
-                      <td class="mailbox-subject">
-                        <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                      </td>
-                      <td class="mailbox-date">5 mins ago</td>
+                      <th>Create By</th>
+                      <th>Subject</th>
+                      <th>Details</th>
+                      <th>Time</th>
                     </tr>
-                    <tr>
+                  </thead>
+                  <tbody v-if="tickets">
+                    <tr v-for="ticket in tickets">
                       <td class="mailbox-name">
-                        <a href="/ticket">Alexander Pierce</a>
+                        <a href="/ticket">{{ticket.created_by_name}}</a>
                       </td>
-                      <td class="mailbox-subject">
-                        <b>AdminLTE 2.0 Issue</b> - Trying to find a solution to this problem...
-                      </td>
-                      <td class="mailbox-date">5 mins ago</td>
+                      <td class="mailbox-subject">{{ticket.subject}}</td>
+                      <td class="mailbox-subject">{{ticket.last_message.message.slice(0,50)}} ...</td>
+
+                      <td class="mailbox-date">{{ticket.created_at_format}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -44,7 +43,7 @@
             <div class="box-footer no-padding">
               <div class="mailbox-controls">
                 <!-- Check all button -->
-                <div class="pull-right">1-50/200
+                <div class="pull-right">50/200
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm">
                       <i class="fa fa-chevron-left"></i>
@@ -75,22 +74,18 @@
 
 <script>
 export default {
-  name: "AllTicket"
-  // data: {
-  //   tickets: {}
-  // },
-  // methods: {
-  //   gettickets() {
-  //     axiox
-  //       .get("")
-  //       .then(res => {
-  //         this.tickets = res.data;
-  //       })
-  //       .catch(error => {
-  //         alert(error);
-  //       });
-  //   }
-  // }
+  name: "AllTicket",
+  data() {
+    return {
+      tickets: []
+    };
+  },
+  mounted() {
+    axios.get("api/ticket/get/unassigned").then(res => {
+      console.log(res.data);
+      this.tickets = res.data;
+    });
+  }
 };
 </script>
 

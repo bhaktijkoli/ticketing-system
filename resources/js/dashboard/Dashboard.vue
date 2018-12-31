@@ -59,7 +59,7 @@
               <i class="fa fa-ticket"></i>
               <span title="for admin">All Tickets</span>
               <span class="pull-right-container">
-                <span class="label label-primary pull-right">4</span>
+                <span class="label label-primary pull-right">{{ticket_length}}</span>
               </span>
             </router-link>
           </li>
@@ -69,7 +69,7 @@
               <i class="fa fa-ticket"></i>
               <span title="for admin">My Tickets</span>
               <span class="pull-right-container">
-                <span class="label label-primary pull-right">4</span>
+                <span class="label label-primary pull-right">{{ticket_length}}</span>
               </span>
             </router-link>
           </li>
@@ -116,6 +116,16 @@
 <script>
 export default {
   name: "Dashboard",
+  data() {
+    return {
+      ticket_length: ""
+    };
+  },
+  mounted() {
+    axios.get("api/ticket/get/unassigned").then(res => {
+      this.ticket_length = res.data.length;
+    });
+  },
   computed: {
     username() {
       if (this.$store.state.user == null) return "";
