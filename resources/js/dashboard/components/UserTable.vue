@@ -103,7 +103,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table class="table table-bordered">
+              <table class="table no-margin">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -117,7 +117,14 @@
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ getRoleName(user.role) }}</td>
-                    <!-- <td>A</td> -->
+                    <td>
+                      <button type="button" class="btn btn-warning">
+                        <i class="fa fa-pencil"></i>
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </td>
                   </tr>
                 </tbody>
                 <tfoot>

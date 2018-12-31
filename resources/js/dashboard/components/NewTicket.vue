@@ -14,7 +14,7 @@
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-primary">
-            <form @submit.prevent="newticket(subject,message)" method="post">
+            <form @submit.prevent="newTicket(subject,message)" method="post">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>
               </div>
@@ -62,7 +62,7 @@ export default {
     };
   },
   methods: {
-    newticket: function(subject, message) {
+    newTicket: function(subject, message) {
       axios.post("api/ticket/add", { subject, message }).then(res => {
         if (fh.is_success(res.data)) {
           this.success = true;

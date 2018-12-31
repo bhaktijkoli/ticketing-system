@@ -16764,15 +16764,7 @@ var render = function() {
                   _c("router-link", { attrs: { to: "/new-ticket" } }, [
                     _c("i", { staticClass: "fa fa-plus" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("New Ticket")]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "pull-right-container" }, [
-                      _c(
-                        "small",
-                        { staticClass: "label pull-right bg-green" },
-                        [_vm._v("new")]
-                      )
-                    ])
+                    _c("span", [_vm._v("New Ticket")])
                   ])
                 ],
                 1
@@ -17000,6 +16992,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTicket",
@@ -17081,13 +17075,15 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v(_vm._s(ticket.subject))
+                                  _c("a", { attrs: { href: "/ticket" } }, [
+                                    _vm._v(_vm._s(ticket.subject))
+                                  ])
                                 ]),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
                                   _vm._v(
                                     _vm._s(
-                                      ticket.last_message.message.slice(0, 50)
+                                      ticket.last_message.message.slice(0, 20)
                                     ) + " ..."
                                   )
                                 ]),
@@ -17555,17 +17551,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Tbody"
+  name: "Tbody",
+  data: function data() {
+    return {
+      user: '',
+      subject: '',
+      details: ''
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('').then(function (response) {
+      _this.subject = response.data.message;
+    });
+  }
 });
 
 /***/ }),
@@ -17576,85 +17578,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "invoice" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("h2", { staticClass: "page-header" }, [
+            _c("i", { staticClass: "fa fa-hand-o-right" }),
+            _vm._v(" " + _vm._s(_vm.subject) + "\n          "),
+            _c("small", { staticClass: "pull-right" }, [
+              _vm._v("Date: 2/10/2014")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("h3", [_vm._v(_vm._s(_vm.details))])
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-wrapper" }, [
-      _c("section", { staticClass: "content-header" }, [
-        _c("h1", [
-          _vm._v("\n      Ticket\n      "),
-          _c("small", [_vm._v("#007612")])
-        ])
-      ]),
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      Ticket\n      "),
+        _c("small", [_vm._v("#number")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-xs-12" }, [
+      _c("br"),
       _vm._v(" "),
-      _c("section", { staticClass: "invoice" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-12" }, [
-            _c("h2", { staticClass: "page-header" }, [
-              _c("i", { staticClass: "fa fa-hand-o-right" }),
-              _vm._v(" Subject\n          "),
-              _c("small", { staticClass: "pull-right" }, [
-                _vm._v("Date: 2/10/2014")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "detail-view ticket-body" }, [
-            _c("h3", [_vm._v("Details")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row no-print" }, [
-            _c("div", { staticClass: "col-xs-12" }, [
-              _c("span", [_vm._v("action btns")]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-default",
-                  attrs: { href: "invoice-print.html", target: "_blank" }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-print" }),
-                  _vm._v(" Print\n          ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success pull-right",
-                  attrs: { type: "button" }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-credit-card" }),
-                  _vm._v(" Submit Payment\n          ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary pull-right",
-                  staticStyle: { "margin-right": "5px" },
-                  attrs: { type: "button" }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-download" }),
-                  _vm._v(" Generate PDF\n          ")
-                ]
-              )
-            ])
-          ])
-        ])
-      ]),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-default",
+          attrs: { href: "invoice-print.html", target: "_blank" }
+        },
+        [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n          ")]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "clearfix" })
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary pull-right",
+          staticStyle: { "margin-right": "5px" },
+          attrs: { type: "button" }
+        },
+        [
+          _c("i", { staticClass: "fa fa-download" }),
+          _vm._v(" Generate PDF\n          ")
+        ]
+      )
     ])
   }
 ]
@@ -17720,6 +17707,13 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -18160,7 +18154,7 @@ var render = function() {
             _vm._m(3),
             _vm._v(" "),
             _c("div", { staticClass: "box-body" }, [
-              _c("table", { staticClass: "table table-bordered" }, [
+              _c("table", { staticClass: "table no-margin" }, [
                 _vm._m(4),
                 _vm._v(" "),
                 _vm.users
@@ -18172,14 +18166,18 @@ var render = function() {
                           _vm._v(" "),
                           _c("td", [_vm._v(_vm._s(user.email))]),
                           _vm._v(" "),
-                          _c("td", [_vm._v(_vm._s(_vm.getRoleName(user.role)))])
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.getRoleName(user.role)))
+                          ]),
+                          _vm._v(" "),
+                          _vm._m(5, true)
                         ])
                       }),
                       0
                     )
                   : _vm._e(),
                 _vm._v(" "),
-                _vm._m(5)
+                _vm._m(6)
               ])
             ])
           ])
@@ -18275,6 +18273,24 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Actions")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        { staticClass: "btn btn-warning", attrs: { type: "button" } },
+        [_c("i", { staticClass: "fa fa-pencil" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", attrs: { type: "button" } },
+        [_c("i", { staticClass: "fa fa-trash" })]
+      )
     ])
   },
   function() {
@@ -18502,7 +18518,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    newticket: function newticket(subject, message) {
+    newTicket: function newTicket(subject, message) {
       var _this = this;
 
       axios.post("api/ticket/add", { subject: subject, message: message }).then(function (res) {
@@ -18571,7 +18587,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    _vm.newticket(_vm.subject, _vm.message)
+                    _vm.newTicket(_vm.subject, _vm.message)
                   }
                 }
               },

@@ -35,8 +35,10 @@
                       <td class="mailbox-name">
                         <a href="/ticket">{{ticket.created_by_name}}</a>
                       </td>
-                      <td class="mailbox-subject">{{ticket.subject}}</td>
-                      <td class="mailbox-subject">{{ticket.last_message.message.slice(0,50)}} ...</td>
+                      <td class="mailbox-subject">
+                        <a href="/ticket">{{ticket.subject}}</a>
+                      </td>
+                      <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
 
                       <td class="mailbox-date">{{ticket.created_at_format}}</td>
                     </tr>
@@ -94,5 +96,3 @@ export default {
   }
 };
 </script>
-
-

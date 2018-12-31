@@ -15185,6 +15185,10 @@ table.text-center th {
   color: rgba(54, 123, 228, 0.795);
 }
 
+.mailbox-subject > a {
+  color: rgba(54, 123, 228, 0.795);
+}
+
 .mailbox-read-info h3 {
   font-size: 20px;
   margin: 0;

@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>#007612</small>
+        <small>#number</small>
       </h1>
     </section>
     <!-- Main content -->
@@ -14,41 +14,46 @@
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
-            <i class="fa fa-hand-o-right"></i> Subject
+            <i class="fa fa-hand-o-right"></i> {{ subject }}
             <small class="pull-right">Date: 2/10/2014</small>
           </h2>
         </div>
         <!-- Ticket details -->
-        <div class="detail-view ticket-body">
-          <h3>Details</h3>
+        <div class="col-xs-12">
+          <h3>{{ details }}</h3>
         </div>
         <!-- Action btn -->
-        <div class="row no-print">
           <div class="col-xs-12">
-            <span>action btns</span>
             <br>
             <a href="invoice-print.html" target="_blank" class="btn btn-default">
               <i class="fa fa-print"></i> Print
             </a>
-            <button type="button" class="btn btn-success pull-right">
-              <i class="fa fa-credit-card"></i> Submit Payment
-            </button>
             <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
               <i class="fa fa-download"></i> Generate PDF
             </button>
           </div>
-        </div>
       </div>
     </section>
-    <!-- /.content -->
-    <div class="clearfix"></div>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: "Tbody"
+  name: "Tbody",
+  data(){
+    return{
+      user: '',
+      subject:'',
+      details: '',
+    }
+  },
+  mounted(){
+    axios
+      .get('')
+      .then(response => {
+        this.subject = response.data.message;
+      })
+  }
 };
 </script>
-

@@ -78,9 +78,9 @@
             <router-link to="/new-ticket">
               <i class="fa fa-plus"></i>
               <span>New Ticket</span>
-              <span class="pull-right-container">
+              <!-- <span class="pull-right-container">
                 <small class="label pull-right bg-green">new</small>
-              </span>
+              </span> -->
             </router-link>
           </li>
           <!-- for Super admin -->
