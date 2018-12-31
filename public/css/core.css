@@ -11503,6 +11503,10 @@ body {
   border-top: 1px solid #d2d6de;
 }
 
+.main-footer a {
+  color: rgba(54, 123, 228, 0.795);
+}
+
 /* Fixed layout */
 
 .fixed .main-header,

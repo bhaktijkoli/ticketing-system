@@ -16610,6 +16610,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Dashboard",
@@ -16804,7 +16814,9 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("router-view")
+      _c("router-view"),
+      _vm._v(" "),
+      _vm._m(3)
     ],
     1
   )
@@ -16846,6 +16858,26 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("span", [_vm._v("Logout")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "main-footer" }, [
+      _c("div", { staticClass: "pull-right hidden-xs" }, [
+        _c("b", [_vm._v("Version")]),
+        _vm._v(" 2.4.0\n    ")
+      ]),
+      _vm._v(" "),
+      _c("strong", [
+        _vm._v("\n      Copyright © 2019\n      "),
+        _c("a", { attrs: { href: "http://www.kccemsr.edu.in/" } }, [
+          _vm._v("KCCEMSR")
+        ]),
+        _vm._v(".\n    ")
+      ]),
+      _vm._v(" All rights\n    reserved.\n  ")
     ])
   }
 ]

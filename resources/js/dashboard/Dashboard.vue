@@ -80,7 +80,7 @@
               <span>New Ticket</span>
               <!-- <span class="pull-right-container">
                 <small class="label pull-right bg-green">new</small>
-              </span> -->
+              </span>-->
             </router-link>
           </li>
           <!-- for Super admin -->
@@ -110,6 +110,16 @@
       <!-- /.sidebar -->
     </aside>
     <router-view></router-view>
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+      </div>
+      <strong>
+        Copyright &copy; 2019
+        <a href="http://www.kccemsr.edu.in/">KCCEMSR</a>.
+      </strong> All rights
+      reserved.
+    </footer>
   </div>
 </template>
 
