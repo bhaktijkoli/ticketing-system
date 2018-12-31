@@ -82,7 +82,6 @@ export default {
   },
   mounted() {
     axios.get("api/ticket/get/unassigned").then(res => {
-      console.log(res.data);
       this.tickets = res.data;
     });
   }
