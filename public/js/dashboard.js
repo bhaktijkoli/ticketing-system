@@ -18487,6 +18487,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewTicket",
@@ -18504,7 +18507,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       axios.post("api/ticket/add", { subject: subject, message: message }).then(function (res) {
         if (fh.is_success(res.data)) {
-          // alert("Your Ticket has been created successfully!");
           _this.success = true;
           window.location.href = "/home";
         } else {
@@ -18525,6 +18527,38 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
     _c("section", { staticClass: "content" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.success,
+              expression: "success"
+            }
+          ],
+          staticClass: "alert alert-success alert-dismissible"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "close",
+              attrs: {
+                type: "button",
+                "data-dismiss": "alert",
+                "aria-hidden": "true"
+              }
+            },
+            [_vm._v("×")]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v("Your Ticket has been created successfully!\n    ")
+        ]
+      ),
+      _vm._v(" "),
       _c("h3", [_vm._v("New Ticket")]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
@@ -18542,7 +18576,7 @@ var render = function() {
                 }
               },
               [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group" }, [
@@ -18598,7 +18632,7 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _vm._m(1)
+                _vm._m(2)
               ]
             )
           ])
@@ -18608,6 +18642,15 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h4", [
+      _c("i", { staticClass: "icon fa fa-check" }),
+      _vm._v(" Success!\n      ")
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

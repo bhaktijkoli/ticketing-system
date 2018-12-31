@@ -1,6 +1,12 @@
 <template>
   <div class="content-wrapper">
     <section class="content">
+      <div v-show="success" class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4>
+          <i class="icon fa fa-check"></i> Success!
+        </h4>Your Ticket has been created successfully!
+      </div>
       <h3>New Ticket</h3>
       <!--/.add user -->
       <div class="row">
@@ -27,7 +33,6 @@
                   ></textarea>
                 </div>
               </div>
-              <!-- /.box-body -->
               <div class="box-footer">
                 <button type="submit" class="btn btn-primary">
                   <i class="fa fa-paper-plane-o"></i> Send
@@ -41,8 +46,6 @@
           </div>
           <!-- /. box -->
         </div>
-        <!-- /.box -->
-        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
@@ -62,7 +65,6 @@ export default {
     newticket: function(subject, message) {
       axios.post("api/ticket/add", { subject, message }).then(res => {
         if (fh.is_success(res.data)) {
-          // alert("Your Ticket has been created successfully!");
           this.success = true;
           window.location.href = "/home";
         } else {
