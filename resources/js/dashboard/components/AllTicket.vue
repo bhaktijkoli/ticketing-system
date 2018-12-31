@@ -2,8 +2,15 @@
   <div class="content-wrapper">
     <section class="content">
       <h3>All Ticket</h3>
+      <div v-if="tickets==0" class="alert alert-info alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4>
+          <i class="icon fa fa-info"></i> Alert!
+        </h4>Sorry their is no ticket to show, create your ticket
+        <a href="/new-ticket">here</a>!
+      </div>
       <!--/.add user -->
-      <div class="row">
+      <div v-if="tickets != 0" class="row">
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-primary">
@@ -23,7 +30,7 @@
                       <th>Time</th>
                     </tr>
                   </thead>
-                  <tbody v-if="tickets">
+                  <tbody>
                     <tr v-for="ticket in tickets">
                       <td class="mailbox-name">
                         <a href="/ticket">{{ticket.created_by_name}}</a>

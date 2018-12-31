@@ -54,14 +54,16 @@ export default {
   data() {
     return {
       subject: "",
-      message: ""
+      message: "",
+      success: false
     };
   },
   methods: {
     newticket: function(subject, message) {
       axios.post("api/ticket/add", { subject, message }).then(res => {
         if (fh.is_success(res.data)) {
-          alert("Your Ticket has been created successfully!");
+          // alert("Your Ticket has been created successfully!");
+          this.success = true;
           window.location.href = "/home";
         } else {
           fh.set_multierrors(res.data);
