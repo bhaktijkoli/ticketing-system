@@ -43,4 +43,11 @@ class TicketController extends Controller
     }
     return $ticketsArray;
   }
+
+  public function getDetails($id)
+  {
+    $ticket = Ticket::find($id);
+    if(!$ticket) abort(404);
+    return $ticket->format(true);
+  }
 }

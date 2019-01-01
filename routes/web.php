@@ -30,4 +30,5 @@ Route::prefix('api')->group(function () {
   // Ticket
   Route::post('/ticket/add', 'Api\TicketController@postAddTicket');
   Route::get('/ticket/get/unassigned', 'Api\TicketController@getUnassigned');
+  Route::get('/ticket/get/details/{id}', 'Api\TicketController@getDetails');
 });
