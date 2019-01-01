@@ -102,8 +102,8 @@
               <h3 class="box-title">Data Table With Full Features</h3>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-              <table class="table no-margin">
+            <div class="box-body table-responsive borderless">
+              <table class="table">
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -117,14 +117,18 @@
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ getRoleName(user.role) }}</td>
-                    <td>
-                      <button type="button" class="btn btn-warning">
+                    <td v-if="getRoleName(user.role) != 'Admin'">
+                      <button type="button" class="btn btn-warning"
+                      data-toggle="modal"
+                      data-target="#myModal"
+                      @submit.prevent="getUsers()">
                         <i class="fa fa-pencil"></i>
                       </button>
                       <button type="button" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                       </button>
                     </td>
+                    <td v-else></td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -163,11 +167,7 @@ export default {
   },
   mounted() {
     //do something after mounting vue instance
-      axios
-        .get("api/user/all")
-        .then(response => {
-          this.users = response.data;
-        })
+    this.getUsers()
     },
   methods: {
     addUser: function(name, email, password, role) {
@@ -185,6 +185,13 @@ export default {
           fh.show_button()
         })
     },
+    getUsers: function(){
+      axios
+        .get("api/user/all")
+        .then(response => {
+          this.users = response.data;
+        })
+    },
     getRoleName: function(role){
       const roles = ['Admin', 'Support', 'Staff']
       return roles[role];
@@ -192,3 +199,18 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.table {
+  border-bottom:0px !important;
+}
+.table th, .table td {
+  border: 1px !important;
+}
+.fixed-table-container {
+  border:0px !important;
+}
+.table tr{
+  height: 50px;
+}
+</style>
