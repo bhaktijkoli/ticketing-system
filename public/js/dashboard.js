@@ -17026,6 +17026,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTicket",
@@ -17038,6 +17039,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get("api/ticket/get/unassigned").then(function (res) {
+      console.log(res.data);
       _this.tickets = res.data;
     });
   }
@@ -17102,7 +17104,7 @@ var render = function() {
                               return _c("tr", [
                                 _c("td", { staticClass: "mailbox-name" }, [
                                   _c("a", { attrs: { href: "/ticket" } }, [
-                                    _vm._v(_vm._s(ticket.created_by_name))
+                                    _vm._v(_vm._s(ticket.created_by.name))
                                   ])
                                 ]),
                                 _vm._v(" "),
@@ -17583,21 +17585,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tbody",
   data: function data() {
-    return {
-      user: '',
-      subject: '',
-      details: ''
-    };
+    return {};
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios.get('').then(function (response) {
-      _this.subject = response.data.message;
+    axios.get("api/get/detail/").then(function (res) {
+      console.log(res.data);
     });
   }
 });
@@ -17610,70 +17607,67 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("section", { staticClass: "invoice" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("h2", { staticClass: "page-header" }, [
-            _c("i", { staticClass: "fa fa-hand-o-right" }),
-            _vm._v(" " + _vm._s(_vm.subject) + "\n          "),
-            _c("small", { staticClass: "pull-right" }, [
-              _vm._v("Date: 2/10/2014")
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("h3", [_vm._v(_vm._s(_vm.details))])
-        ]),
-        _vm._v(" "),
-        _vm._m(1)
-      ])
-    ])
-  ])
+  return _vm._m(0)
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "content-header" }, [
-      _c("h1", [
-        _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("#number")])
+    return _c("div", { staticClass: "content-wrapper" }, [
+      _c("section", { staticClass: "content-header" }, [
+        _c("h1", [
+          _vm._v("\n      Ticket\n      "),
+          _c("small", [_vm._v("#number")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { staticClass: "invoice" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("h2", { staticClass: "page-header" }, [
+              _c("i", { staticClass: "fa fa-hand-o-right" }),
+              _vm._v("\n          Subject\n          "),
+              _c("small", { staticClass: "pull-right" }, [
+                _vm._v("Date: 2/10/2014")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("h3", [_vm._v("Details")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("br"),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-default",
+                attrs: { href: "invoice-print.html", target: "_blank" }
+              },
+              [
+                _c("i", { staticClass: "fa fa-print" }),
+                _vm._v(" Print\n        ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary pull-right",
+                staticStyle: { "margin-right": "5px" },
+                attrs: { type: "button" }
+              },
+              [
+                _c("i", { staticClass: "fa fa-download" }),
+                _vm._v(" Generate PDF\n        ")
+              ]
+            )
+          ])
+        ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-12" }, [
-      _c("br"),
-      _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-default",
-          attrs: { href: "invoice-print.html", target: "_blank" }
-        },
-        [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n          ")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary pull-right",
-          staticStyle: { "margin-right": "5px" },
-          attrs: { type: "button" }
-        },
-        [
-          _c("i", { staticClass: "fa fa-download" }),
-          _vm._v(" Generate PDF\n          ")
-        ]
-      )
     ])
   }
 ]
