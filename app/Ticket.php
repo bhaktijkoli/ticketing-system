@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ticket extends Model
 {
-  public function format($all==false) {
+  public function format($all=false) {
     $data['id'] = $this->id;
     $data['subject'] = $this->subject;
     if($all) {
-      $messages = Message::where('ticket', $this->id)->latest();
+      $messages = Message::where('ticket', $this->id)->latest()->get();
       $messagesArr = [];
       foreach ($messages as $m) {
-        array_push($messagesArr, $m->format);
+        array_push($messagesArr, $m->format());
       }
       $data['messages'] = $messagesArr;
     } else {
