@@ -27,4 +27,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function format() {
+      $data['name'] = $this->name;
+      $data['email'] = $this->email;
+      $data['role'] = $this->role;
+      $data['created_at'] = $this->created_at;
+      $data['created_at_format'] = $this->created_at->diffForHumans();
+      return $data;
+    }
 }
