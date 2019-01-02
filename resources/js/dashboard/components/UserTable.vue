@@ -117,18 +117,16 @@
                     <td>{{ user.name }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ getRoleName(user.role) }}</td>
-                    <td v-if="getRoleName(user.role) != 'Admin'">
-                      <button type="button" class="btn btn-warning"
-                      data-toggle="modal"
-                      data-target="#myModal"
-                      @submit.prevent="getUsers()">
-                        <i class="fa fa-pencil"></i>
-                      </button>
-                      <button type="button" class="btn btn-danger">
+                    <td>
+                        <router-link :to="{ name: 'EditUser', params: {id: user.id} }">
+                          <button type="button" class="btn btn-warning">
+                            <i class="fa fa-pencil"></i>
+                            </button>
+                        </router-link>
+                      <button v-if="getRoleName(user.role) != 'Admin'" type="button" class="btn btn-danger">
                         <i class="fa fa-trash"></i>
                       </button>
                     </td>
-                    <td v-else></td>
                   </tr>
                 </tbody>
                 <tfoot>
@@ -162,7 +160,7 @@ export default {
       password: "",
       role: 2,
       error: false,
-      users: []
+      users: [],
     };
   },
   mounted() {

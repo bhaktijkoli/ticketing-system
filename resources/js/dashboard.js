@@ -8,6 +8,7 @@ import Tbody from './dashboard/components/Tbody.vue'
 import UserTable from './dashboard/components/UserTable'
 import Help from './dashboard/components/Help'
 import NewTicket from './dashboard/components/NewTicket.vue'
+import EditUser from './dashboard/components/EditUser.vue'
 import store from './store.js' //vuex store
 import axios from 'axios'
 Vue.use(VueRouter);
@@ -43,6 +44,11 @@ const router = new VueRouter({
             path: '/help',
             name: 'Help',
             component: Help
+        },
+        {
+            path: '/user/:id/edit',
+            name: 'EditUser',
+            component: EditUser
         }
     ],
     mode: 'history'
