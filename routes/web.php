@@ -18,6 +18,7 @@ Route::get('/ticket', 'DashboardController@getHome');
 Route::get('/ticket/{id}', 'DashboardController@getHome');
 Route::get('/mytickets', 'DashboardController@getHome');
 Route::get('/users', 'DashboardController@getHome');
+Route::get('/user/{id}/edit', 'DashboardController@getHome');
 Route::get('/help', 'DashboardController@getHome');
 Route::get('/logout', 'Auth\LoginController@logout');
 
@@ -27,7 +28,9 @@ Route::prefix('api')->group(function () {
   Route::get('/auth/user', 'Auth\UserController@getUser');
   // User
   Route::post('/user/add', 'Api\UserController@postAddUser');
+  Route::post('/user/edit', 'Api\UserController@postEditUser');
   Route::get('/user/all', 'Api\UserController@getAllUsers');
+  Route::get('/user/get/details/{id}', 'Api\UserController@getDetails');
   // Ticket
   Route::post('/ticket/add', 'Api\TicketController@postAddTicket');
   Route::get('/ticket/get/unassigned', 'Api\TicketController@getUnassigned');
