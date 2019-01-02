@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests\AddUserRequest;
+use App\Http\Requests\EditUserRequest;
 
 use App\User;
 use App\ResponseBuilder;
@@ -25,8 +26,26 @@ class UserController extends Controller
     $user->save();
     return ResponseBuilder::send(true, "User created.", "");
   }
+  public function postEditUser(EditUserRequest $request) {
+    $user = User::find($request->input('user', '-1'));
+    if(!$user) return abort(404, "User Not Found");
+    $user->name = $request->input('name', '');
+    $user->email = $request->input('email', '');
+    $user->role = $request->input('role', '2');
+    if(strlen($password) > 1) {
+      $user->password = Hash::make($request->input('password', ''));
+    }
+    $user->save();
+    return ResponseBuilder::send(true, "User edited.", "");
+  }
 
   public function getAllUsers() {
     return User::all();
+  }
+
+  public function getDetails($id) {
+    $user = User::find($id);
+    if(!$user) abort(404, "User Not Found");
+    return $user->format();
   }
 }
