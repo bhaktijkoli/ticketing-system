@@ -481,33 +481,6 @@ module.exports = defaults;
 /* 2 */
 /***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file.
@@ -611,6 +584,33 @@ module.exports = function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
 
 
 /***/ }),
@@ -1961,6 +1961,88 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
+}
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13054,89 +13136,7 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(32).setImmediate))
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(32).setImmediate))
 
 /***/ }),
 /* 31 */
@@ -13434,7 +13434,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
                          (typeof global !== "undefined" && global.clearImmediate) ||
                          (this && this.clearImmediate);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 33 */
@@ -13627,7 +13627,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)))
 
 /***/ }),
 /* 34 */
@@ -13692,7 +13692,7 @@ module.exports = __webpack_require__(53);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_Dashboard_vue__ = __webpack_require__(55);
@@ -13709,13 +13709,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__dashboard_components_Help__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__dashboard_components_NewTicket_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_components_EditUser_vue__ = __webpack_require__(98);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_components_EditUser_vue__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_components_EditUser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__dashboard_components_EditUser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_js__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_js__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_axios__);
 
-window.Vue = __webpack_require__(29);
+window.Vue = __webpack_require__(30);
 
 
 
@@ -13743,7 +13743,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         name: 'MyTickets',
         component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue___default.a
     }, {
-        path: '/ticket/:id',
+        path: '/:id',
         name: 'Tbody',
         component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue___default.a
     }, {
@@ -16414,7 +16414,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(56)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(58)
 /* template */
@@ -16486,7 +16486,7 @@ if(false) {
 /* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)(false);
+exports = module.exports = __webpack_require__(29)(false);
 // imports
 
 
@@ -16902,7 +16902,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(61)
 /* template */
@@ -17246,7 +17246,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(64)
 /* template */
@@ -17518,7 +17518,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(67)
 /* template */
@@ -17703,14 +17703,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tbody",
   data: function data() {
     return {
       ticket: null,
-      id: null
+      message: []
     };
   },
 
@@ -17721,12 +17720,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   mounted: function mounted() {
+    var _this = this;
+
     axios.get("api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      // console.log(response.data);
-      // this.ticket = res.data;
-      // // this.messages = res.data.messages;
-      // console.log(res.data.messages);
-      // this.message = res.data.messages;
+      console.log(response.data);
+      _this.ticket = response.data;
+      _this.message = response.data.messages;
+      console.log(_this.message);
     });
   }
 });
@@ -17743,7 +17743,7 @@ var render = function() {
     _c("section", { staticClass: "content-header" }, [
       _c("h1", [
         _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
+        _c("small", [_vm._v("# " + _vm._s(_vm.ticket.id))])
       ])
     ]),
     _vm._v(" "),
@@ -17773,58 +17773,10 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "direct-chat-messages" }, [
-                    _c("div", { staticClass: "direct-chat-msg" }, [
-                      _c("div", { staticClass: "direct-chat-info clearfix" }, [
-                        _c(
-                          "span",
-                          { staticClass: "direct-chat-name pull-left" },
-                          [_vm._v(_vm._s(_vm.username))]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "direct-chat-timestamp pull-right" },
-                          [_vm._v("23 Jan 2:00 pm")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticClass: "direct-chat-img",
-                        attrs: {
-                          src:
-                            "https://ui-avatars.com/api/?name=" + _vm.username,
-                          alt: "message user image"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "direct-chat-text" }, [
-                        _vm._v("Message from admin:)")
-                      ])
-                    ]),
+                    _vm._m(1),
                     _vm._v(" "),
                     _c("div", { staticClass: "direct-chat-msg right" }, [
-                      _c("div", { staticClass: "direct-chat-info clearfix" }, [
-                        _c(
-                          "span",
-                          { staticClass: "direct-chat-name pull-right" },
-                          [_vm._v(_vm._s(_vm.username))]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "direct-chat-timestamp pull-left" },
-                          [_vm._v("23 Jan 2:05 pm")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("img", {
-                        staticClass: "direct-chat-img",
-                        attrs: {
-                          src:
-                            "https://ui-avatars.com/api/?name=" + _vm.username,
-                          alt: "message user image"
-                        }
-                      }),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -17837,34 +17789,16 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "direct-chat-contacts" }, [
-                    _c("ul", { staticClass: "contacts-list" }, [
-                      _c("li", [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _c("img", {
-                            staticClass: "contacts-list-img",
-                            attrs: {
-                              src:
-                                "https://ui-avatars.com/api/?name=" +
-                                _vm.username,
-                              alt: "User Image"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(1)
-                        ])
-                      ])
-                    ])
-                  ])
+                  _vm._m(3)
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(4)
               ]
             )
           ])
         ]),
         _vm._v(" "),
-        _vm._m(3)
+        _vm._m(5)
       ])
     ])
   ])
@@ -17882,18 +17816,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "contacts-list-info" }, [
-      _c("span", { staticClass: "contacts-list-name" }, [
-        _vm._v(
-          "\n                          Count Dracula\n                          "
-        ),
-        _c("small", { staticClass: "contacts-list-date pull-right" }, [
-          _vm._v("2/28/2015")
+    return _c("div", { staticClass: "direct-chat-msg" }, [
+      _c("div", { staticClass: "direct-chat-info clearfix" }, [
+        _c("span", { staticClass: "direct-chat-name pull-left" }),
+        _vm._v(" "),
+        _c("span", { staticClass: "direct-chat-timestamp pull-right" }, [
+          _vm._v("23 Jan 2:00 pm")
         ])
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "contacts-list-msg" }, [
-        _vm._v("How have you been? I was...")
+      _c("div", { staticClass: "direct-chat-text" }, [
+        _vm._v("Message from admin:)")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "direct-chat-info clearfix" }, [
+      _c("span", { staticClass: "direct-chat-timestamp pull-left" }, [
+        _vm._v("23 Jan 2:05 pm")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "direct-chat-contacts" }, [
+      _c("ul", { staticClass: "contacts-list" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("div", { staticClass: "contacts-list-info" }, [
+              _c("span", { staticClass: "contacts-list-name" }, [
+                _vm._v(
+                  "\n                          Count Dracula\n                          "
+                ),
+                _c("small", { staticClass: "contacts-list-date pull-right" }, [
+                  _vm._v("2/28/2015")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "contacts-list-msg" }, [
+                _vm._v("How have you been? I was...")
+              ])
+            ])
+          ])
+        ])
       ])
     ])
   },
@@ -17976,7 +17946,7 @@ function injectStyle (ssrContext) {
   if (disposed) return
   __webpack_require__(70)
 }
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(72)
 /* template */
@@ -18048,7 +18018,7 @@ if(false) {
 /* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(30)(false);
+exports = module.exports = __webpack_require__(29)(false);
 // imports
 
 
@@ -18705,7 +18675,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(75)
 /* template */
@@ -18786,7 +18756,7 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(3)
+var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(78)
 /* template */
@@ -19095,12 +19065,449 @@ if (false) {
 
 /***/ }),
 /* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(81)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-9f906636"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/dashboard/components/EditUser.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9f906636", Component.options)
+  } else {
+    hotAPI.reload("data-v-9f906636", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(82);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(31)("29681d3c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f906636\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditUser.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f906636\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditUser.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(29)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(29);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'EditUser',
+  data: function data() {
+    return {
+      name: '',
+      email: '',
+      password: '',
+      role: 2
+    };
+  },
+  mounted: function mounted() {
+    this.getUserData();
+  },
+
+  methods: {
+    getUserData: function getUserData() {
+      var _this = this;
+
+      axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
+        _this.name = response.data.name;
+        _this.email = response.data.email;
+        _this.password = response.data.password;
+        _this.role = response.data.role;
+      });
+    },
+    updateUserData: function updateUserData(name, email, password, role) {
+      axios.post('/user/edit/', { user: user.id, name: name, email: email, password: password, role: role }).then(function (response) {});
+    }
+  }
+});
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("div", { staticClass: "box box-info" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "form-horizontal",
+            attrs: { method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.updateUserData(_vm.name, _vm.email, _vm.password, _vm.role)
+              }
+            }
+          },
+          [
+            _c("div", { staticClass: "box-body" }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 control-label",
+                    attrs: { for: "name" }
+                  },
+                  [_vm._v("Name")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name,
+                        expression: "name"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", id: "name", placeholder: "Name" },
+                    domProps: { value: _vm.name },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "help-block" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 control-label",
+                    attrs: { for: "email" }
+                  },
+                  [_vm._v("Email")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "email", id: "email", placeholder: "Email" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "help-block" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 control-label",
+                    attrs: { for: "password" }
+                  },
+                  [_vm._v("Change Password")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.password,
+                        expression: "password"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: {
+                      type: "password",
+                      id: "password",
+                      placeholder: "Password"
+                    },
+                    domProps: { value: _vm.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.password = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "help-block" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-sm-2 control-label",
+                    attrs: { for: "role" }
+                  },
+                  [_vm._v("Role")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-sm-10" }, [
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.role,
+                          expression: "role"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "role" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.role = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        }
+                      }
+                    },
+                    [
+                      _c("option", { attrs: { value: "0" } }, [
+                        _vm._v("Admin")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "1" } }, [
+                        _vm._v("Support")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("Staff")])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "help-block" })
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Edit User")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-info btn-flat", attrs: { type: "submit" } },
+        [_vm._v("Edit User")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9f906636", module.exports)
+  }
+}
+
+/***/ }),
+/* 85 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
@@ -19131,7 +19538,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 }));
 
 /***/ }),
-/* 81 */
+/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20074,459 +20481,6 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
-
-/***/ }),
-/* 82 */,
-/* 83 */,
-/* 84 */,
-/* 85 */,
-/* 86 */,
-/* 87 */,
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(99)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(101)
-/* template */
-var __vue_template__ = __webpack_require__(102)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-9f906636"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/dashboard/components/EditUser.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-9f906636", Component.options)
-  } else {
-    hotAPI.reload("data-v-9f906636", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 99 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(100);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(31)("29681d3c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f906636\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditUser.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9f906636\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditUser.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 100 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(30)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 101 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'EditUser',
-  data: function data() {
-    return {
-      name: '',
-      email: '',
-      password: '',
-      role: 2
-    };
-  },
-  mounted: function mounted() {
-    this.getUserData();
-  },
-
-  methods: {
-    getUserData: function getUserData() {
-      var _this = this;
-
-      axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
-        _this.name = response.data.name;
-        _this.email = response.data.email;
-        _this.password = response.data.password;
-        _this.role = response.data.role;
-      });
-    },
-    updateUserData: function updateUserData(name, email, password, role) {
-      axios.post('/user/edit/', { user: user.id, name: name, email: email, password: password, role: role }).then(function (response) {});
-    }
-  }
-});
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content" }, [
-      _c("div", { staticClass: "box box-info" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            staticClass: "form-horizontal",
-            attrs: { method: "post" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                _vm.updateUserData(_vm.name, _vm.email, _vm.password, _vm.role)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "box-body" }, [
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-sm-2 control-label",
-                    attrs: { for: "name" }
-                  },
-                  [_vm._v("Name")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", id: "name", placeholder: "Name" },
-                    domProps: { value: _vm.name },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.name = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-sm-2 control-label",
-                    attrs: { for: "email" }
-                  },
-                  [_vm._v("Email")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "email", id: "email", placeholder: "Email" },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.email = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-sm-2 control-label",
-                    attrs: { for: "password" }
-                  },
-                  [_vm._v("Change Password")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.password,
-                        expression: "password"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "password",
-                      id: "password",
-                      placeholder: "Password"
-                    },
-                    domProps: { value: _vm.password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.password = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-group" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "col-sm-2 control-label",
-                    attrs: { for: "role" }
-                  },
-                  [_vm._v("Role")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-sm-10" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.role,
-                          expression: "role"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "role" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.role = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "0" } }, [
-                        _vm._v("Admin")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "1" } }, [
-                        _vm._v("Support")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [_vm._v("Staff")])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "help-block" })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _vm._m(1)
-          ]
-        )
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Edit User")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-info btn-flat", attrs: { type: "submit" } },
-        [_vm._v("Edit User")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-9f906636", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

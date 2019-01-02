@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>#{{ticket.id}}</small>
+        <small># {{ticket.id}}</small>
       </h1>
     </section>
     <!-- Main content -->
@@ -16,9 +16,7 @@
           <h2 class="page-header">
             <i class="fa fa-hand-o-right"></i>
             {{ticket.subject}}
-            <small
-              class="pull-right"
-            >Date: {{ticket.created_at.date}}</small>
+            <small class="pull-right">Date: {{ticket.created_at.date}}</small>
           </h2>
         </div>
         <!-- Ticket details -->
@@ -36,15 +34,17 @@
                   <!-- Message. Default to the left -->
                   <div class="direct-chat-msg">
                     <div class="direct-chat-info clearfix">
-                      <span class="direct-chat-name pull-left">{{username}}</span>
+                      <span class="direct-chat-name pull-left">
+                        <!-- {{username}} -->
+                      </span>
                       <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img
+                    <!-- <img
                       class="direct-chat-img"
                       v-bind:src="'https://ui-avatars.com/api/?name='+username"
                       alt="message user image"
-                    >
+                    >-->
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">Message from admin:)</div>
                     <!-- /.direct-chat-text -->
@@ -53,15 +53,15 @@
                   <!-- Message to the right -->
                   <div class="direct-chat-msg right">
                     <div class="direct-chat-info clearfix">
-                      <span class="direct-chat-name pull-right">{{username}}</span>
+                      <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
                       <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <img
+                    <!-- <img
                       class="direct-chat-img"
                       v-bind:src="'https://ui-avatars.com/api/?name='+username"
                       alt="message user image"
-                    >
+                    >-->
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
                       <p v-for="msg in message">{{msg.message}}</p>
@@ -76,12 +76,11 @@
                   <ul class="contacts-list">
                     <li>
                       <a href="#">
-                        <img
+                        <!-- <img
                           class="contacts-list-img"
                           v-bind:src="'https://ui-avatars.com/api/?name='+username"
                           alt="User Image"
-                        >
-
+                        >-->
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
                             Count Dracula
@@ -142,7 +141,7 @@ export default {
   data() {
     return {
       ticket: null,
-      id: null
+      message: []
     };
   },
   computed: {
@@ -153,14 +152,13 @@ export default {
   },
   mounted() {
     axios
-      .get("api/ticket/get/details/"+this.$route.params.id)
+      .get("api/ticket/get/details/" + this.$route.params.id)
       .then(response => {
-      // console.log(response.data);
-      // this.ticket = res.data;
-      // // this.messages = res.data.messages;
-      // console.log(res.data.messages);
-      // this.message = res.data.messages;
-    });
+        console.log(response.data);
+        this.ticket = response.data;
+        this.message = response.data.messages;
+        console.log(this.message);
+      });
   }
 };
 </script>

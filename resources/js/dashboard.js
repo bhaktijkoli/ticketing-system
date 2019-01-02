@@ -31,7 +31,7 @@ const router = new VueRouter({
             component: MyTickets
         },
         {
-            path: '/ticket/:id',
+            path: '/:id',
             name: 'Tbody',
             component: Tbody
         },
