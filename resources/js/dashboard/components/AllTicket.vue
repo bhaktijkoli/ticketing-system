@@ -33,11 +33,11 @@
                   <tbody>
                     <tr v-for="ticket in tickets">
                       <td class="mailbox-name">
-                        <a v-bind:href="'/ticket/'+id">{{ticket.created_by.name}}</a>
+                        <a>{{ticket.created_by.name}}</a>
                       </td>
                       <td class="mailbox-subject">
                         <!-- <a v-bind:href="'/api/get/details/'+ticket.id">{{ticket.subject}}</a> -->
-                        <a href="/ticket">{{ticket.subject}}</a>
+                        <a v-bind:href="'/ticket/'+id">{{ticket.subject}}</a>
                       </td>
                       <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
 
@@ -87,13 +87,19 @@ export default {
   name: "AllTicket",
   data() {
     return {
-      tickets: []
+      tickets: [],
+      id: ""
     };
   },
   mounted() {
     axios.get("api/ticket/get/unassigned").then(res => {
       console.log(res.data);
       this.tickets = res.data;
+    });
+
+    axios.get("api/ticket/get/details/20").then(res => {
+      console.log(res.data);
+      this.id = res.data.id;
     });
   }
 };

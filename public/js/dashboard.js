@@ -17032,7 +17032,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: "AllTicket",
   data: function data() {
     return {
-      tickets: []
+      tickets: [],
+      id: ""
     };
   },
   mounted: function mounted() {
@@ -17041,6 +17042,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     axios.get("api/ticket/get/unassigned").then(function (res) {
       console.log(res.data);
       _this.tickets = res.data;
+    });
+
+    axios.get("api/ticket/get/details/20").then(function (res) {
+      console.log(res.data);
+      _this.id = res.data.id;
     });
   }
 });
@@ -17103,17 +17109,17 @@ var render = function() {
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
                                 _c("td", { staticClass: "mailbox-name" }, [
-                                  _c(
-                                    "a",
-                                    { attrs: { href: "/ticket/" + _vm.id } },
-                                    [_vm._v(_vm._s(ticket.created_by.name))]
-                                  )
+                                  _c("a", [
+                                    _vm._v(_vm._s(ticket.created_by.name))
+                                  ])
                                 ]),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
-                                  _c("a", { attrs: { href: "/ticket" } }, [
-                                    _vm._v(_vm._s(ticket.subject))
-                                  ])
+                                  _c(
+                                    "a",
+                                    { attrs: { href: "/ticket/" + _vm.id } },
+                                    [_vm._v(_vm._s(ticket.subject))]
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
