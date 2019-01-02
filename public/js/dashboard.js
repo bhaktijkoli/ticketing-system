@@ -13743,7 +13743,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         name: 'MyTickets',
         component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue___default.a
     }, {
-        path: '/ticket',
+        path: '/ticket/:id',
         name: 'Tbody',
         component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue___default.a
     }, {
@@ -17039,8 +17039,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: "AllTicket",
   data: function data() {
     return {
-      tickets: [],
-      id: ""
+      tickets: []
     };
   },
   mounted: function mounted() {
@@ -17049,11 +17048,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     axios.get("api/ticket/get/unassigned").then(function (res) {
       console.log(res.data);
       _this.tickets = res.data;
-    });
-
-    axios.get("api/ticket/get/details/20").then(function (res) {
-      console.log(res.data);
-      _this.id = res.data.id;
     });
   }
 });
@@ -17121,13 +17115,25 @@ var render = function() {
                                   ])
                                 ]),
                                 _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-subject" }, [
-                                  _c(
-                                    "a",
-                                    { attrs: { href: "/ticket/" + _vm.id } },
-                                    [_vm._v(_vm._s(ticket.subject))]
-                                  )
-                                ]),
+                                _c(
+                                  "td",
+                                  { staticClass: "mailbox-subject" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to: {
+                                            name: "Tbody",
+                                            params: { id: ticket.id }
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(ticket.subject))]
+                                    )
+                                  ],
+                                  1
+                                ),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
                                   _vm._v(
@@ -17703,26 +17709,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: "Tbody",
   data: function data() {
     return {
-      TicketBody: "",
-      message: []
+      ticket: null,
+      id: null
     };
   },
 
   computed: {
-    username: function username() {
-      if (this.$store.state.user == null) return "";
-      return this.$store.state.user.name;
+    date: function date() {
+      if (this.ticket == null) return null;
+      return this.ticket;
     }
   },
   mounted: function mounted() {
-    var _this = this;
-
-    axios.get("api/ticket/get/details/20").then(function (res) {
-      console.log(res.data);
-      _this.TicketBody = res.data;
-      // this.messages = res.data.messages;
-      console.log(res.data.messages);
-      _this.message = res.data.messages;
+    axios.get("api/ticket/get/details/" + this.$route.params.id).then(function (response) {
+      // console.log(response.data);
+      // this.ticket = res.data;
+      // // this.messages = res.data.messages;
+      // console.log(res.data.messages);
+      // this.message = res.data.messages;
     });
   }
 });
@@ -17739,7 +17743,7 @@ var render = function() {
     _c("section", { staticClass: "content-header" }, [
       _c("h1", [
         _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("#" + _vm._s(_vm.TicketBody.id))])
+        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
       ])
     ]),
     _vm._v(" "),
@@ -17749,10 +17753,10 @@ var render = function() {
           _c("h2", { staticClass: "page-header" }, [
             _c("i", { staticClass: "fa fa-hand-o-right" }),
             _vm._v(
-              "\n          " + _vm._s(_vm.TicketBody.subject) + "\n          "
+              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
             ),
             _c("small", { staticClass: "pull-right" }, [
-              _vm._v("Date: " + _vm._s(_vm.TicketBody.created_at.date))
+              _vm._v("Date: " + _vm._s(_vm.ticket.created_at.date))
             ])
           ])
         ]),
@@ -17898,7 +17902,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-footer" }, [
-      _c("form", { attrs: { action: "#", method: "post" } }, [
+      _c("form", { attrs: { method: "post" } }, [
         _c("div", { staticClass: "input-group" }, [
           _c("input", {
             staticClass: "form-control",
@@ -20273,7 +20277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getUserData: function getUserData() {
       var _this = this;
 
-      axios.get('/api/user/get/details/' + this.$route.params.id, { name: name, email: email, password: password, role: role }).then(function (response) {
+      axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
         _this.name = response.data.name;
         _this.email = response.data.email;
         _this.password = response.data.password;

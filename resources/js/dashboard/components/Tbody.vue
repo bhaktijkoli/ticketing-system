@@ -5,7 +5,7 @@
     <section class="content-header">
       <h1>
         Ticket
-        <small>#{{TicketBody.id}}</small>
+        <small>#{{ticket.id}}</small>
       </h1>
     </section>
     <!-- Main content -->
@@ -15,10 +15,10 @@
         <div class="col-xs-12">
           <h2 class="page-header">
             <i class="fa fa-hand-o-right"></i>
-            {{TicketBody.subject}}
+            {{ticket.subject}}
             <small
               class="pull-right"
-            >Date: {{TicketBody.created_at.date}}</small>
+            >Date: {{ticket.created_at.date}}</small>
           </h2>
         </div>
         <!-- Ticket details -->
@@ -99,7 +99,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <form action="#" method="post">
+                <form method="post">
                   <div class="input-group">
                     <input
                       type="text"
@@ -141,23 +141,25 @@ export default {
   name: "Tbody",
   data() {
     return {
-      TicketBody: "",
-      message: []
+      ticket: null,
+      id: null
     };
   },
   computed: {
-    username() {
-      if (this.$store.state.user == null) return "";
-      return this.$store.state.user.name;
+    date() {
+      if (this.ticket == null) return null;
+      return this.ticket;
     }
   },
   mounted() {
-    axios.get("api/ticket/get/details/20").then(res => {
-      console.log(res.data);
-      this.TicketBody = res.data;
-      // this.messages = res.data.messages;
-      console.log(res.data.messages);
-      this.message = res.data.messages;
+    axios
+      .get("api/ticket/get/details/"+this.$route.params.id)
+      .then(response => {
+      // console.log(response.data);
+      // this.ticket = res.data;
+      // // this.messages = res.data.messages;
+      // console.log(res.data.messages);
+      // this.message = res.data.messages;
     });
   }
 };

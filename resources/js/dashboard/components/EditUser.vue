@@ -85,7 +85,7 @@ export default {
   methods:{
     getUserData: function(){
       axios
-        .get('/api/user/get/details/'+this.$route.params.id, {name, email, password, role})
+        .get('/api/user/get/details/'+this.$route.params.id)
         .then(response => {
           this.name = response.data.name;
           this.email = response.data.email;
@@ -97,7 +97,7 @@ export default {
       axios
         .post('/user/edit/', {user: user.id, name, email, password, role})
         .then(response => {
-          
+
         })
     }
   }
