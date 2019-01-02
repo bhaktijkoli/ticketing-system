@@ -33,7 +33,7 @@
                   <tbody>
                     <tr v-for="ticket in tickets">
                       <td class="mailbox-name">
-                        <a href="/ticket">{{ticket.created_by.name}}</a>
+                        <a v-bind:href="'/ticket/'+id">{{ticket.created_by.name}}</a>
                       </td>
                       <td class="mailbox-subject">
                         <!-- <a v-bind:href="'/api/get/details/'+ticket.id">{{ticket.subject}}</a> -->
