@@ -17017,7 +17017,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get("api/ticket/get/unassigned").then(function (res) {
-      // console.log(res.data);
       _this.tickets = res.data;
     });
   }
@@ -17081,7 +17080,11 @@ var render = function() {
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
                                 _c("td", [
-                                  _vm._v(_vm._s(ticket.created_by.name))
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(ticket.created_by.name) +
+                                      "\n                    "
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -17667,47 +17670,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Tbody",
-  data: function data() {
-    return {
-      ticket: "",
-      message: "",
-      id: "",
-      date: ""
-    };
-  },
+    name: "Tbody",
+    data: function data() {
+        return {
+            ticket: '',
+            message: ''
+        };
+    },
 
-  computed: {
-    checkticket: function checkticket() {
-      if (this.ticket == null) return null;
-      return this.ticket;
-    },
-    massagess: function massagess() {
-      if (this.message == null) return null;
-      return this.massage;
-    },
-    checkdate: function checkdate() {
-      if (this.date == null) return null;
-      return this.date;
+    // computed: {
+    //   date() {
+    //     if (this.ticket == null) return null;
+    //     return this.ticket;
+    //   }
+    // },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('/api/ticket/get/details/' + this.$route.params.id).then(function (response) {
+            // console.log(response.data);
+            _this.ticket = response.data;
+            // this.message = response.data.messages;
+            // console.log(this.message);
+        });
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      // console.log(response.data);
-      _this.ticket = response.data;
-      _this.date = response.data.created_at_format_long;
-      _this.message = response.data.messages;
-    });
-  }
 });
 
 /***/ }),
@@ -17719,12 +17707,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content-header" }, [
-      _c("h1", [
-        _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
-      ])
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("section", { staticClass: "invoice" }, [
       _c("div", { staticClass: "row" }, [
@@ -17732,11 +17715,10 @@ var render = function() {
           _c("h2", { staticClass: "page-header" }, [
             _c("i", { staticClass: "fa fa-hand-o-right" }),
             _vm._v(
-              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
-            ),
-            _c("small", { staticClass: "pull-right" }, [
-              _vm._v("Date: " + _vm._s(this.date))
-            ])
+              "\n                    " +
+                _vm._s(_vm.ticket.subject) +
+                "\n                    "
+            )
           ])
         ]),
         _vm._v(" "),
@@ -17748,60 +17730,49 @@ var render = function() {
                 staticClass: "box box-warning direct-chat direct-chat-warning"
               },
               [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-body" }, [
-                  _c(
-                    "div",
-                    { staticClass: "direct-chat-messages" },
-                    [
-                      _vm._m(1),
+                  _c("div", { staticClass: "direct-chat-messages" }, [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "direct-chat-msg right" }, [
+                      _vm._m(3),
                       _vm._v(" "),
-                      _vm._l(_vm.message, function(msg) {
-                        return _c(
-                          "div",
-                          { staticClass: "direct-chat-msg right" },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "direct-chat-info clearfix" },
-                              [
-                                _c(
-                                  "span",
-                                  {
-                                    staticClass:
-                                      "direct-chat-timestamp pull-left"
-                                  },
-                                  [_vm._v(_vm._s(msg.created_at_format))]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "direct-chat-text" }, [
-                              _c("p", [_vm._v(_vm._s(msg.message))])
-                            ])
-                          ]
-                        )
-                      })
-                    ],
-                    2
-                  ),
+                      _c(
+                        "div",
+                        { staticClass: "direct-chat-text" },
+                        _vm._l(_vm.message, function(msg) {
+                          return _c("p", [_vm._v(_vm._s(msg.message))])
+                        }),
+                        0
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2)
+                  _vm._m(4)
                 ]),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(5)
               ]
             )
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(6)
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [_vm._v("\n            Ticket\n            ")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -17832,6 +17803,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "direct-chat-info clearfix" }, [
+      _c("span", { staticClass: "direct-chat-timestamp pull-left" }, [
+        _vm._v("23 Jan 2:05 pm")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "direct-chat-contacts" }, [
       _c("ul", { staticClass: "contacts-list" }, [
         _c("li", [
@@ -17839,7 +17820,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "contacts-list-info" }, [
               _c("span", { staticClass: "contacts-list-name" }, [
                 _vm._v(
-                  "\n                          Count Dracula\n                          "
+                  "\n                                                    Count Dracula\n                                                    "
                 ),
                 _c("small", { staticClass: "contacts-list-date pull-right" }, [
                   _vm._v("2/28/2015")
@@ -17898,7 +17879,10 @@ var staticRenderFns = [
           staticClass: "btn btn-default",
           attrs: { href: "invoice-print.html", target: "_blank" }
         },
-        [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
+        [
+          _c("i", { staticClass: "fa fa-print" }),
+          _vm._v(" Print\n                ")
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -17910,7 +17894,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "fa fa-download" }),
-          _vm._v(" Generate PDF\n        ")
+          _vm._v(" Generate PDF\n                ")
         ]
       )
     ])
@@ -18192,7 +18176,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         getRoleName: function getRoleName(role) {
-            var roles = ['Admin', 'Support', 'Staff'];
+            var roles = ['Admin', 'Support', 'User'];
             return roles[role];
         }
     }
@@ -18426,7 +18410,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("option", { attrs: { value: "2" } }, [
-                                    _vm._v("Staff")
+                                    _vm._v("User")
                                   ])
                                 ]
                               ),
@@ -19116,7 +19100,7 @@ exports = module.exports = __webpack_require__(29)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -19193,7 +19177,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             name: '',
             email: '',
             password: '',
-            role: 2
+            role: ''
         };
     },
     mounted: function mounted() {
@@ -19212,15 +19196,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateUserData: function updateUserData(name, email, password, role) {
-            axios.post('/user/edit/', {
-                user: user.id,
-                name: name,
-                email: email,
-                password: password,
-                role: role
-            }).then(function (response) {
+            var _this2 = this;
+
+            axios.post('/api/user/edit/', { user: this.$route.params.id, name: name, email: email, password: password, role: role }).then(function (response) {
+                console.log(response.data);
                 if (fh.is_success(response.data)) {
-                    window.location.reload();
+                    _this2.$router.push({ path: '/users' });
                 } else {
                     fh.set_multierrors(response.data);
                 }
@@ -19420,7 +19401,7 @@ var render = function() {
                         _vm._v("Support")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "2" } }, [_vm._v("Staff")])
+                      _c("option", { attrs: { value: "2" } }, [_vm._v("User")])
                     ]
                   ),
                   _vm._v(" "),

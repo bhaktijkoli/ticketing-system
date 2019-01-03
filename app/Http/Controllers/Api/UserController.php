@@ -32,8 +32,9 @@ class UserController extends Controller
     $user->name = $request->input('name', '');
     $user->email = $request->input('email', '');
     $user->role = $request->input('role', '2');
+    $password = $request->input('password', '');
     if(strlen($password) > 1) {
-      $user->password = Hash::make($request->input('password', ''));
+      $user->password = Hash::make($password);
     }
     $user->save();
     return ResponseBuilder::send(true, "User edited.", "");

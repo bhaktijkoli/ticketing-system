@@ -9,7 +9,7 @@ use App\ResponseBuilder;
 
 use Auth;
 
-class AddUserRequest extends FormRequest
+class EditUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -33,8 +33,7 @@ class AddUserRequest extends FormRequest
     {
       return [
         'name' => 'required',
-        'email' => 'required|unique:users,email,'.request()->input('user','-1'),
-        'password' => 'required',
+        'email' => 'required',
         'role' => 'required',
       ];
     }

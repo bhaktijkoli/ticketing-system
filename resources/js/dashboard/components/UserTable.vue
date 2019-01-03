@@ -53,7 +53,7 @@
                                             <select v-model="role" id="role" class="form-control">
                                                 <option value="0">Admin</option>
                                                 <option value="1">Support</option>
-                                                <option value="2">Staff</option>
+                                                <option value="2">User</option>
                                             </select>
                                             <p class="help-block"></p>
                                         </div>
@@ -169,7 +169,7 @@ export default {
                 })
         },
         getRoleName: function(role) {
-            const roles = ['Admin', 'Support', 'Staff']
+            const roles = ['Admin', 'Support', 'User']
             return roles[role];
         }
     }

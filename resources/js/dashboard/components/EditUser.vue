@@ -39,7 +39,7 @@
                             <select v-model="role" id="role" class="form-control">
                                 <option value="0">Admin</option>
                                 <option value="1">Support</option>
-                                <option value="2">Staff</option>
+                                <option value="2">User</option>
                             </select>
                             <p class="help-block"></p>
                         </div>
@@ -64,7 +64,7 @@ export default {
             name: '',
             email: '',
             password: '',
-            role: 2
+            role: ''
         }
     },
     mounted() {
@@ -83,16 +83,11 @@ export default {
         },
         updateUserData: function(name, email, password, role) {
             axios
-                .post('/user/edit/', {
-                    user: user.id,
-                    name,
-                    email,
-                    password,
-                    role
-                })
+                .post('/api/user/edit/', {user: this.$route.params.id, name, email, password, role})
                 .then(response => {
+                    console.log(response.data);
                     if (fh.is_success(response.data)) {
-                        window.location.reload();
+                        this.$router.push({ path: '/users'})
                     } else {
                         fh.set_multierrors(response.data)
                     }
