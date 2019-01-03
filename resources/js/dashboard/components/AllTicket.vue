@@ -32,11 +32,10 @@
                   </thead>
                   <tbody>
                     <tr v-for="ticket in tickets">
-                      <td class="mailbox-name">
-                        <a>{{ticket.created_by.name}}</a>
+                      <td>
+                        {{ticket.created_by.name}}
                       </td>
                       <td class="mailbox-subject">
-                        <!-- <a v-bind:href="'/api/get/details/'+ticket.id">{{ticket.subject}}</a> -->
                         <router-link :to="{ name: 'Tbody', params: {id: ticket.id} }">{{ticket.subject}}</router-link>
                       </td>
                       <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>

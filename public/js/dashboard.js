@@ -13743,7 +13743,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         name: 'MyTickets',
         component: __WEBPACK_IMPORTED_MODULE_4__dashboard_components_MyTickets_vue___default.a
     }, {
-        path: '/:id',
+        path: '/ticket/:id',
         name: 'Tbody',
         component: __WEBPACK_IMPORTED_MODULE_5__dashboard_components_Tbody_vue___default.a
     }, {
@@ -16491,7 +16491,7 @@ exports = module.exports = __webpack_require__(29)(false);
 
 
 // module
-exports.push([module.i, "\n.options[data-v-439b6b2b] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\n", ""]);
+exports.push([module.i, "\n.options[data-v-439b6b2b] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 0px;\n            flex: 1 0 0;\n    -ms-flex-positive: 1;\n        flex-grow: 1;\n}\n", ""]);
 
 // exports
 
@@ -16625,34 +16625,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Dashboard",
-  data: function data() {
-    return {
-      ticket_length: ""
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("api/ticket/get/unassigned").then(function (res) {
-      _this.ticket_length = res.data.length;
-    });
-  },
-
-  computed: {
-    username: function username() {
-      if (this.$store.state.user == null) return "";
-      return this.$store.state.user.name;
+    name: "Dashboard",
+    data: function data() {
+        return {
+            ticket_length: ""
+        };
     },
-    role: function role() {
-      if (this.$store.state.user == null) return -1;
-      return this.$store.state.user.role;
+
+    // mounted() {
+    //     axios.get("api/ticket/get/unassigned").then(res => {
+    //         this.ticket_length = res.data.length;
+    //     });
+    // },
+    computed: {
+        username: function username() {
+            if (this.$store.state.user == null) return "";
+            return this.$store.state.user.name;
+        },
+        role: function role() {
+            if (this.$store.state.user == null) return -1;
+            return this.$store.state.user.role;
+        }
     }
-  }
 });
 
 /***/ }),
@@ -16739,11 +16735,9 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "pull-right-container" }, [
-                      _c(
-                        "span",
-                        { staticClass: "label label-primary pull-right" },
-                        [_vm._v(_vm._s(_vm.ticket_length))]
-                      )
+                      _c("span", {
+                        staticClass: "label label-primary pull-right"
+                      })
                     ])
                   ])
                 ],
@@ -16821,9 +16815,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("router-view"),
-      _vm._v(" "),
-      _vm._m(3)
+      _c("router-view")
     ],
     1
   )
@@ -16838,7 +16830,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "logo-lg" }, [
         _c("b", [_vm._v("KC")]),
-        _vm._v("COE\n        ")
+        _vm._v("COE\n                ")
       ])
     ])
   },
@@ -16865,26 +16857,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("span", [_vm._v("Logout")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "main-footer" }, [
-      _c("div", { staticClass: "pull-right hidden-xs" }, [
-        _c("b", [_vm._v("Version")]),
-        _vm._v(" 2.4.0\n    ")
-      ]),
-      _vm._v(" "),
-      _c("strong", [
-        _vm._v("\n      Copyright © 2019\n      "),
-        _c("a", { attrs: { href: "http://www.kccemsr.edu.in/" } }, [
-          _vm._v("KCCEMSR")
-        ]),
-        _vm._v(".\n    ")
-      ]),
-      _vm._v(" All rights\n    reserved.\n  ")
     ])
   }
 ]
@@ -16950,7 +16922,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -17109,10 +17080,12 @@ var render = function() {
                             "tbody",
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
-                                _c("td", { staticClass: "mailbox-name" }, [
-                                  _c("a", [
-                                    _vm._v(_vm._s(ticket.created_by.name))
-                                  ])
+                                _c("td", [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(ticket.created_by.name) +
+                                      "\n                    "
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -17698,37 +17671,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Tbody",
-  data: function data() {
-    return {
-      ticket: null,
-      message: []
-    };
-  },
+    name: "Tbody",
+    data: function data() {
+        return {
+            ticket: '',
+            message: ''
+        };
+    },
 
-  computed: {
-    date: function date() {
-      if (this.ticket == null) return null;
-      return this.ticket;
+    // computed: {
+    //   date() {
+    //     if (this.ticket == null) return null;
+    //     return this.ticket;
+    //   }
+    // },
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get('api/ticket/get/details/' + this.$route.params.id).then(function (response) {
+            // console.log(response.data);
+            _this.ticket = response.data;
+            // this.message = response.data.messages;
+            // console.log(this.message);
+        });
     }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get("api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      console.log(response.data);
-      _this.ticket = response.data;
-      _this.message = response.data.messages;
-      console.log(_this.message);
-    });
-  }
 });
 
 /***/ }),
@@ -17740,12 +17708,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content-header" }, [
-      _c("h1", [
-        _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("# " + _vm._s(_vm.ticket.id))])
-      ])
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("section", { staticClass: "invoice" }, [
       _c("div", { staticClass: "row" }, [
@@ -17753,11 +17716,10 @@ var render = function() {
           _c("h2", { staticClass: "page-header" }, [
             _c("i", { staticClass: "fa fa-hand-o-right" }),
             _vm._v(
-              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
-            ),
-            _c("small", { staticClass: "pull-right" }, [
-              _vm._v("Date: " + _vm._s(_vm.ticket.created_at.date))
-            ])
+              "\n                    " +
+                _vm._s(_vm.ticket.subject) +
+                "\n                    "
+            )
           ])
         ]),
         _vm._v(" "),
@@ -17769,14 +17731,14 @@ var render = function() {
                 staticClass: "box box-warning direct-chat direct-chat-warning"
               },
               [
-                _vm._m(0),
+                _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "direct-chat-messages" }, [
-                    _vm._m(1),
+                    _vm._m(2),
                     _vm._v(" "),
                     _c("div", { staticClass: "direct-chat-msg right" }, [
-                      _vm._m(2),
+                      _vm._m(3),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -17789,21 +17751,29 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _vm._m(4)
                 ]),
                 _vm._v(" "),
-                _vm._m(4)
+                _vm._m(5)
               ]
             )
           ])
         ]),
         _vm._v(" "),
-        _vm._m(5)
+        _vm._m(6)
       ])
     ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [_vm._v("\n            Ticket\n            ")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -17851,7 +17821,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "contacts-list-info" }, [
               _c("span", { staticClass: "contacts-list-name" }, [
                 _vm._v(
-                  "\n                          Count Dracula\n                          "
+                  "\n                                                    Count Dracula\n                                                    "
                 ),
                 _c("small", { staticClass: "contacts-list-date pull-right" }, [
                   _vm._v("2/28/2015")
@@ -17910,7 +17880,10 @@ var staticRenderFns = [
           staticClass: "btn btn-default",
           attrs: { href: "invoice-print.html", target: "_blank" }
         },
-        [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
+        [
+          _c("i", { staticClass: "fa fa-print" }),
+          _vm._v(" Print\n                ")
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -17922,7 +17895,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "fa fa-download" }),
-          _vm._v(" Generate PDF\n        ")
+          _vm._v(" Generate PDF\n                ")
         ]
       )
     ])
@@ -18023,7 +17996,7 @@ exports = module.exports = __webpack_require__(29)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-23db91fa] {\n  border-bottom:0px !important;\n}\n.table th[data-v-23db91fa], .table td[data-v-23db91fa] {\n  border: 1px !important;\n}\n.fixed-table-container[data-v-23db91fa] {\n  border:0px !important;\n}\n.table tr[data-v-23db91fa]{\n  height: 50px;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-23db91fa] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-23db91fa],\n.table td[data-v-23db91fa] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-23db91fa] {\n    border: 0px !important;\n}\n.table tr[data-v-23db91fa] {\n    height: 50px;\n}\n", ""]);
 
 // exports
 
@@ -18163,72 +18136,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "UserTable",
-  data: function data() {
-    return {
-      name: "",
-      email: "",
-      password: "",
-      role: 2,
-      error: false,
-      users: []
-    };
-  },
-  mounted: function mounted() {
-    //do something after mounting vue instance
-    this.getUsers();
-  },
+    name: "UserTable",
+    data: function data() {
+        return {
+            name: "",
+            email: "",
+            password: "",
+            role: '',
+            error: false,
+            users: []
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
 
-  methods: {
-    addUser: function addUser(name, email, password, role) {
-      fh.hide_button();
-      axios.post("api/user/add", { name: name, email: email, password: password, role: role }).then(function (response) {
-        if (fh.is_success(response.data)) {
-          window.location.reload();
-        } else {
-          fh.set_multierrors(response.data);
+        //do something after mounting vue instance
+        axios.get("api/user/all").then(function (response) {
+            _this.users = response.data;
+        });
+    },
+
+    methods: {
+        addUser: function addUser(name, email, password, role) {
+            fh.hide_button();
+            axios.post("api/user/add", {
+                name: name,
+                email: email,
+                password: password,
+                role: role
+            }).then(function (response) {
+                if (fh.is_success(response.data)) {
+                    window.location.reload();
+                } else {
+                    fh.set_multierrors(response.data);
+                }
+            }).finally(function () {
+                fh.show_button();
+            });
+        },
+        getRoleName: function getRoleName(role) {
+            var roles = ['Admin', 'Support', 'Staff'];
+            return roles[role];
         }
-      }).finally(function () {
-        fh.show_button();
-      });
-    },
-    getUsers: function getUsers() {
-      var _this = this;
-
-      axios.get("api/user/all").then(function (response) {
-        _this.users = response.data;
-      });
-    },
-    getRoleName: function getRoleName(role) {
-      var roles = ['Admin', 'Support', 'Staff'];
-      return roles[role];
     }
-  }
 });
 
 /***/ }),
@@ -18561,7 +18513,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("h3", [
-      _vm._v("\n      All Users\n      "),
+      _vm._v("\n            All Users\n            "),
       _c("small", [_vm._v("Manage users")]),
       _vm._v(" "),
       _c(
@@ -19149,7 +19101,7 @@ exports = module.exports = __webpack_require__(29)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -19218,48 +19170,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'EditUser',
-  data: function data() {
-    return {
-      name: '',
-      email: '',
-      password: '',
-      role: 2
-    };
-  },
-  mounted: function mounted() {
-    this.getUserData();
-  },
-
-  methods: {
-    getUserData: function getUserData() {
-      var _this = this;
-
-      axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
-        _this.name = response.data.name;
-        _this.email = response.data.email;
-        _this.password = response.data.password;
-        _this.role = response.data.role;
-      });
+    name: 'EditUser',
+    data: function data() {
+        return {
+            name: '',
+            email: '',
+            password: '',
+            role: 2
+        };
     },
-    updateUserData: function updateUserData(name, email, password, role) {
-      axios.post('/user/edit/', { user: user.id, name: name, email: email, password: password, role: role }).then(function (response) {});
+    mounted: function mounted() {
+        this.getUserData();
+    },
+
+    methods: {
+        getUserData: function getUserData() {
+            var _this = this;
+
+            axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
+                _this.name = response.data.name;
+                _this.email = response.data.email;
+                _this.password = response.data.password;
+                _this.role = response.data.role;
+            });
+        },
+        updateUserData: function updateUserData(name, email, password, role) {
+            axios.post('/user/edit/', {
+                user: user.id,
+                name: name,
+                email: email,
+                password: password,
+                role: role
+            }).then(function (response) {
+                if (fh.is_success(response.data)) {
+                    window.location.reload();
+                } else {
+                    fh.set_multierrors(response.data);
+                }
+            });
+        }
     }
-  }
 });
 
 /***/ }),

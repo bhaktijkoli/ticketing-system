@@ -31,7 +31,7 @@ const router = new VueRouter({
             component: MyTickets
         },
         {
-            path: '/:id',
+            path: '/ticket/:id',
             name: 'Tbody',
             component: Tbody
         },
@@ -54,7 +54,7 @@ const router = new VueRouter({
     mode: 'history'
 });
 
-window.api = function (url) {
+window.api = function(url) {
     return '/api' + url;
 }
 
