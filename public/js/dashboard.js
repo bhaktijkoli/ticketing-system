@@ -17670,32 +17670,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "Tbody",
-    data: function data() {
-        return {
-            ticket: '',
-            message: ''
-        };
+  name: "Tbody",
+  data: function data() {
+    return {
+      ticket: "",
+      message: "",
+      id: "",
+      date: "",
+      messages: []
+    };
+  },
+
+  computed: {
+    checkticket: function checkticket() {
+      if (this.ticket == null) return null;
+      return this.ticket;
     },
-
-    // computed: {
-    //   date() {
-    //     if (this.ticket == null) return null;
-    //     return this.ticket;
-    //   }
-    // },
-    mounted: function mounted() {
-        var _this = this;
-
-        axios.get('/api/ticket/get/details/' + this.$route.params.id).then(function (response) {
-            // console.log(response.data);
-            _this.ticket = response.data;
-            // this.message = response.data.messages;
-            // console.log(this.message);
-        });
+    checkdate: function checkdate() {
+      if (this.date == null) return null;
+      return this.date;
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
+      // console.log(response.data);
+      _this.ticket = response.data;
+      _this.date = response.data.created_at_format_long;
+      _this.messages = response.data.messages;
+    });
+  },
+
+  methods: {
+    addMessage: function addMessage() {
+      var data = {
+        ticket: this.$route.params.id,
+        message: this.message
+      };
+      axios.post("/api/message/add", data).then(function (response) {
+        if (fh.is_success(response.data)) {} else {
+          fh.set_multierrors(response.data);
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -17707,7 +17734,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
-    _vm._m(0),
+    _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      Ticket\n      "),
+        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
+      ])
+    ]),
     _vm._v(" "),
     _c("section", { staticClass: "invoice" }, [
       _c("div", { staticClass: "row" }, [
@@ -17715,10 +17747,11 @@ var render = function() {
           _c("h2", { staticClass: "page-header" }, [
             _c("i", { staticClass: "fa fa-hand-o-right" }),
             _vm._v(
-              "\n                    " +
-                _vm._s(_vm.ticket.subject) +
-                "\n                    "
-            )
+              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
+            ),
+            _c("small", { staticClass: "pull-right" }, [
+              _vm._v("Date: " + _vm._s(this.date))
+            ])
           ])
         ]),
         _vm._v(" "),
@@ -17730,49 +17763,105 @@ var render = function() {
                 staticClass: "box box-warning direct-chat direct-chat-warning"
               },
               [
-                _vm._m(1),
+                _vm._m(0),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-body" }, [
-                  _c("div", { staticClass: "direct-chat-messages" }, [
-                    _vm._m(2),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "direct-chat-msg right" }, [
-                      _vm._m(3),
+                  _c(
+                    "div",
+                    { staticClass: "direct-chat-messages" },
+                    [
+                      _vm._m(1),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "direct-chat-text" },
-                        _vm._l(_vm.message, function(msg) {
-                          return _c("p", [_vm._v(_vm._s(msg.message))])
-                        }),
-                        0
-                      )
-                    ])
-                  ]),
+                      _vm._l(_vm.messages, function(msg) {
+                        return _c(
+                          "div",
+                          { staticClass: "direct-chat-msg right" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "direct-chat-info clearfix" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "direct-chat-timestamp pull-left"
+                                  },
+                                  [_vm._v(_vm._s(msg.created_at_format))]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "direct-chat-text" }, [
+                              _c("p", [_vm._v(_vm._s(msg.message))])
+                            ])
+                          ]
+                        )
+                      })
+                    ],
+                    2
+                  ),
                   _vm._v(" "),
-                  _vm._m(4)
+                  _vm._m(2)
                 ]),
                 _vm._v(" "),
-                _vm._m(5)
+                _c("div", { staticClass: "box-footer" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: { method: "post" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          _vm.addMessage()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.message,
+                              expression: "message"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "message",
+                            id: "newMessage",
+                            placeholder: "Type Message ..."
+                          },
+                          domProps: { value: _vm.message },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.message = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ])
+                    ]
+                  )
+                ])
               ]
             )
           ])
         ]),
         _vm._v(" "),
-        _vm._m(6)
+        _vm._m(4)
       ])
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "content-header" }, [
-      _c("h1", [_vm._v("\n            Ticket\n            ")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -17787,25 +17876,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "direct-chat-msg" }, [
       _c("div", { staticClass: "direct-chat-info clearfix" }, [
-        _c("span", { staticClass: "direct-chat-name pull-left" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "direct-chat-timestamp pull-right" }, [
-          _vm._v("23 Jan 2:00 pm")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "direct-chat-text" }, [
-        _vm._v("Message from admin:)")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "direct-chat-info clearfix" }, [
-      _c("span", { staticClass: "direct-chat-timestamp pull-left" }, [
-        _vm._v("23 Jan 2:05 pm")
+        _c("span", { staticClass: "direct-chat-name pull-left" })
       ])
     ])
   },
@@ -17820,7 +17891,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "contacts-list-info" }, [
               _c("span", { staticClass: "contacts-list-name" }, [
                 _vm._v(
-                  "\n                                                    Count Dracula\n                                                    "
+                  "\n                          Count Dracula\n                          "
                 ),
                 _c("small", { staticClass: "contacts-list-date pull-right" }, [
                   _vm._v("2/28/2015")
@@ -17840,30 +17911,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer" }, [
-      _c("form", { attrs: { method: "post" } }, [
-        _c("div", { staticClass: "input-group" }, [
-          _c("input", {
-            staticClass: "form-control",
-            attrs: {
-              type: "text",
-              name: "message",
-              placeholder: "Type Message ..."
-            }
-          }),
-          _vm._v(" "),
-          _c("span", { staticClass: "input-group-btn" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-warning btn-flat",
-                attrs: { type: "button" }
-              },
-              [_vm._v("Send")]
-            )
-          ])
-        ])
-      ])
+    return _c("span", { staticClass: "input-group-btn" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-warning btn-flat", attrs: { type: "submit" } },
+        [_vm._v("Send")]
+      )
     ])
   },
   function() {
@@ -17879,10 +17932,7 @@ var staticRenderFns = [
           staticClass: "btn btn-default",
           attrs: { href: "invoice-print.html", target: "_blank" }
         },
-        [
-          _c("i", { staticClass: "fa fa-print" }),
-          _vm._v(" Print\n                ")
-        ]
+        [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
       ),
       _vm._v(" "),
       _c(
@@ -17894,7 +17944,7 @@ var staticRenderFns = [
         },
         [
           _c("i", { staticClass: "fa fa-download" }),
-          _vm._v(" Generate PDF\n                ")
+          _vm._v(" Generate PDF\n        ")
         ]
       )
     ])
