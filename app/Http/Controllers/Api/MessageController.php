@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\AddMessageRequest;
 
+use App\Events\NewMessage;
+
 use App\User;
 use App\Ticket;
 use App\Message;
@@ -23,10 +25,12 @@ class MessageController extends Controller
   public function postAddMessage(AddMessageRequest $request)
   {
     $message = new Message();
-    $message->ticket = $request->input('ticket', '-1');
+    $ticket = Ticket::find($request->input('ticket', '-1'));
+    $message->ticket = $ticket->id;
     $message->created_by = Auth::user()->id;
     $message->message = $request->input('message', '');
     $message->save();
+    event(new NewMessage($ticket, $message));
     return ResponseBuilder::send(true, "Message created.", "");
   }
 }

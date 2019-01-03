@@ -41,9 +41,9 @@
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
-                      class="direct-chat-img"
-                      v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                      alt="message user image"
+                    class="direct-chat-img"
+                    v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                    alt="message user image"
                     >-->
                     <!-- /.direct-chat-img -->
                     <!-- /.direct-chat-text -->
@@ -57,9 +57,9 @@
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
-                      class="direct-chat-img"
-                      v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                      alt="message user image"
+                    class="direct-chat-img"
+                    v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                    alt="message user image"
                     >-->
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text">
@@ -76,9 +76,9 @@
                     <li>
                       <a href="#">
                         <!-- <img
-                          class="contacts-list-img"
-                          v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                          alt="User Image"
+                        class="contacts-list-img"
+                        v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                        alt="User Image"
                         >-->
                         <div class="contacts-list-info">
                           <span class="contacts-list-name">
@@ -100,12 +100,12 @@
                 <form @submit.prevent="addMessage()" method="post">
                   <div class="input-group">
                     <input
-                      type="text"
-                      name="message"
-                      v-model="message"
-                      id="newMessage"
-                      placeholder="Type Message ..."
-                      class="form-control"
+                    type="text"
+                    name="message"
+                    v-model="message"
+                    id="newMessage"
+                    placeholder="Type Message ..."
+                    class="form-control"
                     >
                     <span class="input-group-btn">
                       <button type="submit" class="btn btn-warning btn-flat">Send</button>
@@ -161,12 +161,18 @@ export default {
   },
   mounted() {
     axios
-      .get("/api/ticket/get/details/" + this.$route.params.id)
-      .then(response => {
-        this.ticket = response.data;
-        this.date = response.data.created_at_format_long;
-        this.messages = response.data.messages;
-      });
+    .get("/api/ticket/get/details/" + this.$route.params.id)
+    .then(response => {
+      this.ticket = response.data;
+      this.date = response.data.created_at_format_long;
+      this.messages = response.data.messages;
+    });
+
+    window.Echo.channel(`channel-name`)
+    .listen('NewMessage', (e) => {
+      this.messages.push(e.message);
+    });
+
   },
   methods: {
     addMessage: function() {
