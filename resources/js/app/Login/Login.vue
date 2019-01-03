@@ -46,7 +46,7 @@ export default {
   methods: {
     authUser: function(email, password) {
       axios
-        .post("api/auth/login", { email, password })
+        .post("/api/auth/login", { email, password })
         .then(response => {
           console.log(response);
           if (response.status == 200) {
@@ -65,5 +65,3 @@ export default {
   text-align: center;
 }
 </style>
-
-

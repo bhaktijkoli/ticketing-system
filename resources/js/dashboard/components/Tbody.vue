@@ -147,7 +147,7 @@ export default {
     // },
     mounted() {
         axios
-            .get('api/ticket/get/details/' + this.$route.params.id)
+            .get('/api/ticket/get/details/' + this.$route.params.id)
             .then(response => {
                 // console.log(response.data);
                 this.ticket = response.data;

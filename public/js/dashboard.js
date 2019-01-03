@@ -17690,7 +17690,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         var _this = this;
 
-        axios.get('api/ticket/get/details/' + this.$route.params.id).then(function (response) {
+        axios.get('/api/ticket/get/details/' + this.$route.params.id).then(function (response) {
             // console.log(response.data);
             _this.ticket = response.data;
             // this.message = response.data.messages;

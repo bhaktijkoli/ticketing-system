@@ -13846,7 +13846,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     authUser: function authUser(email, password) {
       var _this = this;
 
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("api/auth/login", { email: email, password: password }).then(function (response) {
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post("/api/auth/login", { email: email, password: password }).then(function (response) {
         console.log(response);
         if (response.status == 200) {
           window.location.href = "/home";
