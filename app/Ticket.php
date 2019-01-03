@@ -23,6 +23,7 @@ class Ticket extends Model
     $data['created_by'] = User::find($this->created_by)->format();
     $data['created_at'] = $this->created_at;
     $data['created_at_format'] = $this->created_at->diffForHumans();
+    $data['created_at_format_long'] = $this->created_at->format('F j, Y');
     return $data;
   }
 }
