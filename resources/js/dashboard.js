@@ -1,4 +1,4 @@
-import pusher from './echo.js'  //Pusher and Laravel-Echo
+import pusher from './pusher.js'  //Pusher and Laravel-Echo
 import Vue from 'vue';
 window.Vue = require('vue');
 import VueRouter from 'vue-router'

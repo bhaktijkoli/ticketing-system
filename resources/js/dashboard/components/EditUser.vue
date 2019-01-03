@@ -47,11 +47,31 @@
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer">
-                      <button type="submit" class="btn btn-info btn-flat">Edit User</button>
+                      <button type="submit" class="btn btn-info btn-flat">Save Changes</button>
                   </div>
                   <!-- /.box-footer -->
               </form>
           </div>
+          <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--End of Modal content-->
       </section>
   </div>
   </template>
@@ -85,7 +105,6 @@
               axios
                   .post('/api/user/edit/', {user: this.$route.params.id, name, email, password, role})
                   .then(response => {
-                      console.log(response.data);
                       if (fh.is_success(response.data)) {
                           this.$router.push({ path: '/users'})
                       } else {
