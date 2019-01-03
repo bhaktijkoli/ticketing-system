@@ -17695,16 +17695,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     checkdate: function checkdate() {
       if (this.date == null) return null;
-      return this.date.format("DD/MM/YYYY");
+      return this.date;
     }
   },
   mounted: function mounted() {
     var _this = this;
 
     axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      // console.log(response.data.messages);
+      // console.log(response.data);
       _this.ticket = response.data;
-      _this.date = response.data.created_at.date;
+      _this.date = response.data.created_at_format_long;
       _this.message = response.data.messages;
     });
   }
@@ -17772,7 +17772,7 @@ var render = function() {
                                     staticClass:
                                       "direct-chat-timestamp pull-left"
                                   },
-                                  [_vm._v(_vm._s(msg.created_at.date))]
+                                  [_vm._v(_vm._s(msg.created_at_format))]
                                 )
                               ]
                             ),

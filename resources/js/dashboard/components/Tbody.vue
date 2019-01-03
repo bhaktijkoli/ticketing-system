@@ -54,7 +54,7 @@
                   <div v-for="msg in message" class="direct-chat-msg right">
                     <div class="direct-chat-info clearfix">
                       <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
-                      <span class="direct-chat-timestamp pull-left">{{msg.created_at.date}}</span>
+                      <span class="direct-chat-timestamp pull-left">{{msg.created_at_format}}</span>
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
@@ -157,16 +157,16 @@ export default {
     },
     checkdate() {
       if (this.date == null) return null;
-      return this.date.format("DD/MM/YYYY");
+      return this.date;
     }
   },
   mounted() {
     axios
       .get("/api/ticket/get/details/" + this.$route.params.id)
       .then(response => {
-        // console.log(response.data.messages);
+        // console.log(response.data);
         this.ticket = response.data;
-        this.date = response.data.created_at.date;
+        this.date = response.data.created_at_format_long;
         this.message = response.data.messages;
       });
   }
