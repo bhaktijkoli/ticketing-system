@@ -1889,6 +1889,11 @@ if (token) {
 __webpack_require__(41);
 __webpack_require__(42);
 
+window.api = function (url) {
+    if (url.startsWith('/')) return "/api" + url;
+    return "/api/" + url;
+};
+
 /***/ }),
 /* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {

@@ -14,3 +14,8 @@ if (token) {
 
 require('./core/adminlte')
 require('./core/formhandler')
+
+window.api = (url) => {
+  if(url.startsWith('/')) return "/api"+url
+  return "/api/"+url;
+}
