@@ -138,7 +138,7 @@
 
 <script>
 export default {
-  name: "Tbody",
+  name: "TicketDetails",
   data() {
     return {
       ticket: "",

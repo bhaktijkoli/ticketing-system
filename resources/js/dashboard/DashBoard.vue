@@ -123,7 +123,7 @@
 
 <script>
 export default {
-    name: "Dashboard",
+    name: "DashBoard",
     data() {
         return {
             ticket_length: ""

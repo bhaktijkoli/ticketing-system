@@ -24,6 +24,8 @@
     "babel-runtime": "^6.26.0",
     "bootstrap-sass": "^3.4.0",
     "font-awesome": "^4.7.0",
+    "material-design-icons": "^3.0.1",
+    "material-icons": "^0.3.0",
     "vue-router": "^3.0.2",
     "vuex": "^3.0.1"
   }

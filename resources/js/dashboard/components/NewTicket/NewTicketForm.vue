@@ -53,7 +53,7 @@
 </template>
 <script>
 export default {
-  name: "NewTicket",
+  name: "NewTicketForm",
   data() {
     return {
       subject: "",

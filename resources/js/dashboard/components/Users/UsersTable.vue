@@ -95,7 +95,7 @@
                                     <td>{{ user.email }}</td>
                                     <td>{{ getRoleName(user.role) }}</td>
                                     <td>
-                                        <router-link :to="{ name: 'EditUser', params: {id: user.id} }">
+                                        <router-link :to="{ name: 'EditUserForm', params: {id: user.id} }">
                                             <button type="button" class="btn btn-warning">
                                                 <i class="fa fa-pencil"></i>
                                             </button>
@@ -129,7 +129,7 @@
 
 <script>
 export default {
-    name: "UserTable",
+    name: "UsersTable",
     data() {
         return {
             name: "",
