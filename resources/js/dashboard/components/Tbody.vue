@@ -163,7 +163,6 @@ export default {
     axios
       .get("/api/ticket/get/details/" + this.$route.params.id)
       .then(response => {
-        // console.log(response.data);
         this.ticket = response.data;
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
@@ -177,6 +176,7 @@ export default {
       };
       axios.post("/api/message/add", data).then(response => {
         if (fh.is_success(response.data)) {
+          this.message = "";
         } else {
           fh.set_multierrors(response.data);
         }

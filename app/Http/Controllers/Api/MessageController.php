@@ -23,7 +23,7 @@ class MessageController extends Controller
   public function postAddMessage(AddMessageRequest $request)
   {
     $message = new Message();
-    $message->ticket = $ticket;
+    $message->ticket = $request->input('ticket', '-1');
     $message->created_by = Auth::user()->id;
     $message->message = $request->input('message', '');
     $message->save();

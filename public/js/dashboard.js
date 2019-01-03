@@ -17703,7 +17703,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      // console.log(response.data);
       _this.ticket = response.data;
       _this.date = response.data.created_at_format_long;
       _this.messages = response.data.messages;
@@ -17712,12 +17711,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     addMessage: function addMessage() {
+      var _this2 = this;
+
       var data = {
         ticket: this.$route.params.id,
         message: this.message
       };
       axios.post("/api/message/add", data).then(function (response) {
-        if (fh.is_success(response.data)) {} else {
+        if (fh.is_success(response.data)) {
+          _this2.message = "";
+        } else {
           fh.set_multierrors(response.data);
         }
       });

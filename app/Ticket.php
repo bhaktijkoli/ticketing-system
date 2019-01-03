@@ -10,7 +10,7 @@ class Ticket extends Model
     $data['id'] = $this->id;
     $data['subject'] = $this->subject;
     if($all) {
-      $messages = Message::where('ticket', $this->id)->latest()->get();
+      $messages = Message::where('ticket', $this->id)->get();
       $messagesArr = [];
       foreach ($messages as $m) {
         array_push($messagesArr, $m->format());
