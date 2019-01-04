@@ -51,9 +51,9 @@
                   <!-- /.direct-chat-msg -->
                   <!-- Message to the right -->
                   <div v-for="msg in messages" class="direct-chat-msg right">
-                    <div class="direct-chat-info clearfix">
+                    <div class="direct-chat-info clearfix pull-right">
                       <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
-                      <span class="direct-chat-timestamp pull-left">{{msg.created_at_format}}</span>
+                      <span class="direct-chat-timestamp">{{msg.created_at_format}}</span>
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
@@ -62,7 +62,7 @@
                     alt="message user image"
                     >-->
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
+                    <div class="direct-chat-text pull-right">
                       <p>{{msg.message}}</p>
                     </div>
                     <!-- /.direct-chat-text -->
@@ -71,28 +71,6 @@
                 </div>
                 <!--/.direct-chat-messages-->
                 <!-- Contacts are loaded here -->
-                <div class="direct-chat-contacts">
-                  <ul class="contacts-list">
-                    <li>
-                      <a href="#">
-                        <!-- <img
-                        class="contacts-list-img"
-                        v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                        alt="User Image"
-                        >-->
-                        <div class="contacts-list-info">
-                          <span class="contacts-list-name">
-                            Count Dracula
-                            <small class="contacts-list-date pull-right">2/28/2015</small>
-                          </span>
-                          <span class="contacts-list-msg">How have you been? I was...</span>
-                        </div>
-                        <!-- /.contacts-list-info -->
-                      </a>
-                    </li>
-                  </ul>
-                  <!-- /.contatcts-list -->
-                </div>
                 <!-- /.direct-chat-pane -->
               </div>
               <!-- /.box-body -->
@@ -100,12 +78,12 @@
                 <form @submit.prevent="addMessage()" method="post">
                   <div class="input-group">
                     <input
-                    type="text"
-                    name="message"
-                    v-model="message"
-                    id="newMessage"
-                    placeholder="Type Message ..."
-                    class="form-control"
+                      type="text"
+                      name="message"
+                      v-model="message"
+                      id="newMessage"
+                      placeholder="Type Message ..."
+                      class="form-control"
                     >
                     <span class="input-group-btn">
                       <button type="submit" class="btn btn-warning btn-flat">Send</button>
@@ -161,18 +139,16 @@ export default {
   },
   mounted() {
     axios
-    .get("/api/ticket/get/details/" + this.$route.params.id)
-    .then(response => {
-      this.ticket = response.data;
-      this.date = response.data.created_at_format_long;
-      this.messages = response.data.messages;
-    });
+      .get("/api/ticket/get/details/" + this.$route.params.id)
+      .then(response => {
+        this.ticket = response.data;
+        this.date = response.data.created_at_format_long;
+        this.messages = response.data.messages;
+      });
 
-    window.Echo.channel(`channel-name`)
-    .listen('NewMessage', (e) => {
+    window.Echo.channel(`channel-name`).listen("NewMessage", e => {
       this.messages.push(e.message);
     });
-
   },
   methods: {
     addMessage: function() {

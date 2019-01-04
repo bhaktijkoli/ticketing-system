@@ -27499,28 +27499,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -27553,7 +27531,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.messages = response.data.messages;
     });
 
-    window.Echo.channel("channel-name").listen('NewMessage', function (e) {
+    window.Echo.channel("channel-name").listen("NewMessage", function (e) {
       _this.messages.push(e.message);
     });
   },
@@ -27631,30 +27609,30 @@ var render = function() {
                           [
                             _c(
                               "div",
-                              { staticClass: "direct-chat-info clearfix" },
+                              {
+                                staticClass:
+                                  "direct-chat-info clearfix pull-right"
+                              },
                               [
                                 _c(
                                   "span",
-                                  {
-                                    staticClass:
-                                      "direct-chat-timestamp pull-left"
-                                  },
+                                  { staticClass: "direct-chat-timestamp" },
                                   [_vm._v(_vm._s(msg.created_at_format))]
                                 )
                               ]
                             ),
                             _vm._v(" "),
-                            _c("div", { staticClass: "direct-chat-text" }, [
-                              _c("p", [_vm._v(_vm._s(msg.message))])
-                            ])
+                            _c(
+                              "div",
+                              { staticClass: "direct-chat-text pull-right" },
+                              [_c("p", [_vm._v(_vm._s(msg.message))])]
+                            )
                           ]
                         )
                       })
                     ],
                     2
-                  ),
-                  _vm._v(" "),
-                  _vm._m(2)
+                  )
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "box-footer" }, [
@@ -27698,7 +27676,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _vm._m(3)
+                        _vm._m(2)
                       ])
                     ]
                   )
@@ -27708,7 +27686,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(4)
+        _vm._m(3)
       ])
     ])
   ])
@@ -27729,33 +27707,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "direct-chat-msg" }, [
       _c("div", { staticClass: "direct-chat-info clearfix" }, [
         _c("span", { staticClass: "direct-chat-name pull-left" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "direct-chat-contacts" }, [
-      _c("ul", { staticClass: "contacts-list" }, [
-        _c("li", [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("div", { staticClass: "contacts-list-info" }, [
-              _c("span", { staticClass: "contacts-list-name" }, [
-                _vm._v(
-                  "\n                          Count Dracula\n                          "
-                ),
-                _c("small", { staticClass: "contacts-list-date pull-right" }, [
-                  _vm._v("2/28/2015")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "contacts-list-msg" }, [
-                _vm._v("How have you been? I was...")
-              ])
-            ])
-          ])
-        ])
       ])
     ])
   },
