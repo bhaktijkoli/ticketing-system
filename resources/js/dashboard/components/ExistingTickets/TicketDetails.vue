@@ -41,9 +41,9 @@
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
-                    class="direct-chat-img"
-                    v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                    alt="message user image"
+                      class="direct-chat-img"
+                      v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                      alt="message user image"
                     >-->
                     <!-- /.direct-chat-img -->
                     <!-- /.direct-chat-text -->
@@ -57,9 +57,9 @@
                     </div>
                     <!-- /.direct-chat-info -->
                     <!-- <img
-                    class="direct-chat-img"
-                    v-bind:src="'https://ui-avatars.com/api/?name='+username"
-                    alt="message user image"
+                      class="direct-chat-img pull-right"
+                      v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                      alt="message user image"
                     >-->
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-right">

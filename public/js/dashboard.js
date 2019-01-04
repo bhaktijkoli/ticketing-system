@@ -26608,7 +26608,7 @@ exports = module.exports = __webpack_require__(30)(false);
 
 
 // module
-exports.push([module.i, "\n.options[data-v-89e4e9ea] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1 0 0px;\n            flex: 1 0 0;\n    -ms-flex-positive: 1;\n        flex-grow: 1;\n}\n", ""]);
+exports.push([module.i, "\n.options[data-v-89e4e9ea] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\n", ""]);
 
 // exports
 
@@ -26742,30 +26742,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: "DashBoard",
-    data: function data() {
-        return {
-            ticket_length: ""
-        };
-    },
+  name: "DashBoard",
+  data: function data() {
+    return {
+      ticket_length: ""
+    };
+  },
 
-    // mounted() {
-    //     axios.get("api/ticket/get/unassigned").then(res => {
-    //         this.ticket_length = res.data.length;
-    //     });
-    // },
-    computed: {
-        username: function username() {
-            if (this.$store.state.user == null) return "";
-            return this.$store.state.user.name;
-        },
-        role: function role() {
-            if (this.$store.state.user == null) return -1;
-            return this.$store.state.user.role;
-        }
+  //to get no. of tickets
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/ticket/get/unassigned").then(function (res) {
+      _this.ticket_length = res.data.length;
+    });
+  },
+
+  computed: {
+    username: function username() {
+      if (this.$store.state.user == null) return "";
+      return this.$store.state.user.name;
+    },
+    role: function role() {
+      if (this.$store.state.user == null) return -1;
+      return this.$store.state.user.role;
     }
+  }
 });
 
 /***/ }),
@@ -26852,9 +26858,11 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "pull-right-container" }, [
-                      _c("span", {
-                        staticClass: "label label-primary pull-right"
-                      })
+                      _c(
+                        "span",
+                        { staticClass: "label label-primary pull-right" },
+                        [_vm._v(_vm._s(_vm.ticket_length))]
+                      )
                     ])
                   ])
                 ],
@@ -26947,7 +26955,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("span", { staticClass: "logo-lg" }, [
         _c("b", [_vm._v("KC")]),
-        _vm._v("COE\n                ")
+        _vm._v("COE\n        ")
       ])
     ])
   },
