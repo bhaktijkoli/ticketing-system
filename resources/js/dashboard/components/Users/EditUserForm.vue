@@ -7,7 +7,7 @@
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form @submit.prevent="updateUserData(name, email, password, role)" method="post" class="form-horizontal">
+              <form @click="updateUserData(name, email, password, role)" method="post" class="form-horizontal">
                   <div class="box-body">
                       <div class="form-group">
                           <label for="name" class="col-sm-2 control-label">Name</label>
@@ -56,7 +56,7 @@
                   <!-- /.box-footer -->
 
     <!-- Modal HTML -->
-    <div v-show="success"  id="myModal" class="modal fade">
+    <div v-if="success"  id="myModal" class="modal fade">
     	<div class="modal-dialog modal-confirm">
     		<div class="modal-content">
     			<div class="modal-header">
@@ -67,6 +67,27 @@
     			</div>
     			<div class="modal-body">
     				<p class="text-center">Changes have been saved!</p>
+    			</div>
+    			<div class="modal-footer">
+            <router-link to="/users">
+              <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </router-link>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+    <div v-else id="myModal" class="modal fade">
+    	<div class="modal-dialog modal-confirm">
+    		<div class="modal-content">
+    			<div class="modal-header">
+    				<div class="icon-box">
+    					<i class="material-icons">&times;</i>
+    				</div>
+    				<h4 class="modal-title">Updation Failed!</h4>
+    			</div>
+    			<div class="modal-body">
+    				<p class="text-center">Changes haven't been saved!</p>
     			</div>
     			<div class="modal-footer">
             <router-link to="/users">
@@ -111,8 +132,13 @@
               axios
                   .post('/api/user/edit/', {user: this.$route.params.id, name, email, password, role})
                   .then(response => {
+                    this.name = response.data.name;
+                    this.email = response.data.email;
+                    this.password = response.data.password;
+                    this.role = response.data.role;
+                    // console.log(response.data);
                     if (fh.is_success(response.data)) {
-                      // this.success = true;
+                      this.success = true;
                       window.location.href = "/users";
                     } else {
                       fh.set_multierrors(response.data);

@@ -28319,6 +28319,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: 'EditUserForm',
@@ -28347,9 +28368,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         },
         updateUserData: function updateUserData(name, email, password, role) {
+            var _this2 = this;
+
             axios.post('/api/user/edit/', { user: this.$route.params.id, name: name, email: email, password: password, role: role }).then(function (response) {
+                _this2.name = response.data.name;
+                _this2.email = response.data.email;
+                _this2.password = response.data.password;
+                _this2.role = response.data.role;
+                // console.log(response.data);
                 if (fh.is_success(response.data)) {
-                    // this.success = true;
+                    _this2.success = true;
                     window.location.href = "/users";
                 } else {
                     fh.set_multierrors(response.data);
@@ -28378,8 +28406,7 @@ var render = function() {
             staticClass: "form-horizontal",
             attrs: { method: "post" },
             on: {
-              submit: function($event) {
-                $event.preventDefault()
+              click: function($event) {
                 _vm.updateUserData(_vm.name, _vm.email, _vm.password, _vm.role)
               }
             }
@@ -28563,48 +28590,61 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.success,
-                expression: "success"
-              }
-            ],
-            staticClass: "modal fade",
-            attrs: { id: "myModal" }
-          },
-          [
-            _c("div", { staticClass: "modal-dialog modal-confirm" }, [
-              _c("div", { staticClass: "modal-content" }, [
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "modal-footer" },
-                  [
-                    _c("router-link", { attrs: { to: "/users" } }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-success btn-block",
-                          attrs: { "data-dismiss": "modal" }
-                        },
-                        [_vm._v("OK")]
-                      )
-                    ])
-                  ],
-                  1
-                )
+        _vm.success
+          ? _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
+              _c("div", { staticClass: "modal-dialog modal-confirm" }, [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c("router-link", { attrs: { to: "/users" } }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success btn-block",
+                            attrs: { "data-dismiss": "modal" }
+                          },
+                          [_vm._v("OK")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ])
               ])
             ])
-          ]
-        )
+          : _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
+              _c("div", { staticClass: "modal-dialog modal-confirm" }, [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "modal-footer" },
+                    [
+                      _c("router-link", { attrs: { to: "/users" } }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-success btn-block",
+                            attrs: { "data-dismiss": "modal" }
+                          },
+                          [_vm._v("OK")]
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ])
+              ])
+            ])
       ])
     ])
   ])
@@ -28654,6 +28694,28 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-body" }, [
       _c("p", { staticClass: "text-center" }, [
         _vm._v("Changes have been saved!")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "icon-box" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("×")])
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Updation Failed!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", { staticClass: "text-center" }, [
+        _vm._v("Changes haven't been saved!")
       ])
     ])
   }
