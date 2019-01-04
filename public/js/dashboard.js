@@ -28579,7 +28579,33 @@ var render = function() {
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _vm._m(2)
+        _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
+          _c("div", { staticClass: "modal-dialog modal-confirm" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _vm._m(3),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "modal-footer" },
+                [
+                  _c("router-link", { attrs: { to: "/users" } }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success btn-block",
+                        attrs: { "data-dismiss": "modal" }
+                      },
+                      [_vm._v("OK")]
+                    )
+                  ])
+                ],
+                1
+              )
+            ])
+          ])
+        ])
       ])
     ])
   ])
@@ -28597,49 +28623,38 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c(
-        "a",
-        {
-          staticClass: "btn btn-primary",
-          attrs: { href: "#myModal", "data-toggle": "modal" }
-        },
-        [_vm._v("Save Changes")]
-      )
+    return _c("div", { staticClass: "box-footer" }, [
+      _c("div", { staticClass: "text-center" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { href: "#myModal", "data-toggle": "modal" }
+          },
+          [_vm._v("Save Changes")]
+        )
+      ])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
-      _c("div", { staticClass: "modal-dialog modal-confirm" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c("div", { staticClass: "icon-box" }, [
-              _c("i", { staticClass: "material-icons" }, [_vm._v("")])
-            ]),
-            _vm._v(" "),
-            _c("h4", { staticClass: "modal-title" }, [_vm._v("Awesome!")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("p", { staticClass: "text-center" }, [
-              _vm._v("Changes have been saved!")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-footer" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success btn-block",
-                attrs: { "data-dismiss": "modal" }
-              },
-              [_vm._v("OK")]
-            )
-          ])
-        ])
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "icon-box" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("")])
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Awesome!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", { staticClass: "text-center" }, [
+        _vm._v("Changes have been saved!")
       ])
     ])
   }

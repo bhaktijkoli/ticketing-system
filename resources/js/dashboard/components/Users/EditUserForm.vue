@@ -47,15 +47,13 @@
                   </div>
                   </form>
                   <!-- /.box-body -->
-                  <!-- <div class="box-footer">
-                      <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#myModal">Save Changes</button>
-                  </div> -->
+                  <div class="box-footer">
+                    <div class="text-center">
+                        <a href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</a>
+                      </div>
+                  </div>
 
                   <!-- /.box-footer -->
-                  <div class="text-center">
-    	<!-- Button HTML (to Trigger Modal) -->
-    	<a href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</a>
-    </div>
 
     <!-- Modal HTML -->
     <div id="myModal" class="modal fade">
@@ -71,7 +69,9 @@
     				<p class="text-center">Changes have been saved!</p>
     			</div>
     			<div class="modal-footer">
-    				<button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            <router-link to="/users">
+              <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+            </router-link>
     			</div>
     		</div>
     	</div>
