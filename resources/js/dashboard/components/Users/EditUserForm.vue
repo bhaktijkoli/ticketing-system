@@ -7,7 +7,7 @@
               </div>
               <!-- /.box-header -->
               <!-- form start -->
-              <form @click="updateUserData(name, email, password, role)" method="post" class="form-horizontal">
+              <form method="post" class="form-horizontal">
                   <div class="box-body">
                       <div class="form-group">
                           <label for="name" class="col-sm-2 control-label">Name</label>
@@ -49,7 +49,7 @@
                   <!-- /.box-body -->
                   <div class="box-footer">
                     <div class="text-center">
-                        <a href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</a>
+                        <button @click="updateUserData(name, email, password, role)" href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</button>
                       </div>
                   </div>
 
@@ -136,9 +136,8 @@
                     this.email = response.data.email;
                     this.password = response.data.password;
                     this.role = response.data.role;
-                    // console.log(response.data);
                     if (fh.is_success(response.data)) {
-                      this.success = true;
+                      // this.success = true;
                       window.location.href = "/users";
                     } else {
                       fh.set_multierrors(response.data);

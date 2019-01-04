@@ -28375,9 +28375,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.email = response.data.email;
                 _this2.password = response.data.password;
                 _this2.role = response.data.role;
-                // console.log(response.data);
                 if (fh.is_success(response.data)) {
-                    _this2.success = true;
+                    // this.success = true;
                     window.location.href = "/users";
                 } else {
                     fh.set_multierrors(response.data);
@@ -28402,15 +28401,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "form",
-          {
-            staticClass: "form-horizontal",
-            attrs: { method: "post" },
-            on: {
-              click: function($event) {
-                _vm.updateUserData(_vm.name, _vm.email, _vm.password, _vm.role)
-              }
-            }
-          },
+          { staticClass: "form-horizontal", attrs: { method: "post" } },
           [
             _c("div", { staticClass: "box-body" }, [
               _c("div", { staticClass: "form-group" }, [
@@ -28588,15 +28579,36 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(1),
+        _c("div", { staticClass: "box-footer" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                attrs: { href: "#myModal", "data-toggle": "modal" },
+                on: {
+                  click: function($event) {
+                    _vm.updateUserData(
+                      _vm.name,
+                      _vm.email,
+                      _vm.password,
+                      _vm.role
+                    )
+                  }
+                }
+              },
+              [_vm._v("Save Changes")]
+            )
+          ])
+        ]),
         _vm._v(" "),
         _vm.success
           ? _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
               _c("div", { staticClass: "modal-dialog modal-confirm" }, [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(2),
+                  _vm._m(1),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _vm._m(2),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -28621,9 +28633,9 @@ var render = function() {
           : _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
               _c("div", { staticClass: "modal-dialog modal-confirm" }, [
                 _c("div", { staticClass: "modal-content" }, [
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
-                  _vm._m(5),
+                  _vm._m(4),
                   _vm._v(" "),
                   _c(
                     "div",
@@ -28656,23 +28668,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Edit User")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer" }, [
-      _c("div", { staticClass: "text-center" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-primary",
-            attrs: { href: "#myModal", "data-toggle": "modal" }
-          },
-          [_vm._v("Save Changes")]
-        )
-      ])
     ])
   },
   function() {
