@@ -49,13 +49,13 @@
                   <!-- /.box-body -->
                   <div class="box-footer">
                     <div class="text-center">
-                        <button @click="updateUserData(name, email, password, role)" href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</button>
+                        <a @click="updateUserData(name, email, password, role)" href="#myModal" class="btn btn-primary" data-toggle="modal">Save Changes</a>
                       </div>
                   </div>
 
                   <!-- /.box-footer -->
 
-    <!-- Modal HTML -->
+    <!-- Modal HTML for Successful Updation of User -->
     <div v-if="success"  id="myModal" class="modal fade">
     	<div class="modal-dialog modal-confirm">
     		<div class="modal-content">
@@ -76,13 +76,13 @@
     		</div>
     	</div>
     </div>
-
+    <!-- Modal HTML for Unsuccessful Updation of User -->
     <div v-else id="myModal" class="modal fade">
-    	<div class="modal-dialog modal-confirm">
+    	<div class="modal-dialog modal-fail">
     		<div class="modal-content">
     			<div class="modal-header">
     				<div class="icon-box">
-    					<i class="material-icons">&times;</i>
+    					<i class="material-icons">clear</i>
     				</div>
     				<h4 class="modal-title">Updation Failed!</h4>
     			</div>
@@ -111,7 +111,7 @@
               email: '',
               password: '',
               role: '',
-              success: true
+              success: false
           }
       },
       mounted() {
@@ -137,8 +137,7 @@
                     this.password = response.data.password;
                     this.role = response.data.role;
                     if (fh.is_success(response.data)) {
-                      // this.success = true;
-                      window.location.href = "/users";
+                      this.success = true;
                     } else {
                       fh.set_multierrors(response.data);
                     }
