@@ -56,7 +56,7 @@
                   <!-- /.box-footer -->
 
     <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
+    <div v-show="success"  id="myModal" class="modal fade">
     	<div class="modal-dialog modal-confirm">
     		<div class="modal-content">
     			<div class="modal-header">
@@ -89,7 +89,8 @@
               name: '',
               email: '',
               password: '',
-              role: ''
+              role: '',
+              success: true
           }
       },
       mounted() {
@@ -110,11 +111,12 @@
               axios
                   .post('/api/user/edit/', {user: this.$route.params.id, name, email, password, role})
                   .then(response => {
-                      if (fh.is_success(response.data)) {
-                          this.$router.push({ path: '/users'})
-                      } else {
-                          fh.set_multierrors(response.data)
-                      }
+                    if (fh.is_success(response.data)) {
+                      // this.success = true;
+                      window.location.href = "/users";
+                    } else {
+                      fh.set_multierrors(response.data);
+                    }
                   })
           }
       }
