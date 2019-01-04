@@ -7,6 +7,26 @@
           <i class="icon fa fa-check"></i> Success!
         </h4>Your Ticket has been created successfully!
       </div>
+      <!-- <div v-show="success" id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="icon-box">
+                <i class="material-icons">&#xE876;</i>
+              </div>
+              <h4 class="modal-title">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">Changes have been saved!</p>
+            </div>
+            <div class="modal-footer">
+              <router-link to="/home">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>-->
       <h3>New Ticket</h3>
       <!--/.add user -->
       <div class="row">
