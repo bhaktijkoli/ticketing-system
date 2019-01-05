@@ -56,11 +56,11 @@
                       <span class="direct-chat-timestamp">{{msg.created_at_format}}</span>
                     </div>
                     <!-- /.direct-chat-info -->
-                    <!-- <img
+                    <img
                       class="direct-chat-img pull-right"
-                      v-bind:src="'https://ui-avatars.com/api/?name='+username"
+                      :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
                       alt="message user image"
-                    >-->
+                    >
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-right">
                       <p>{{msg.message}}</p>

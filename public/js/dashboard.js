@@ -13692,7 +13692,7 @@ module.exports = __webpack_require__(53);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dashboard_pusher_js__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dashboard_pusher_js__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_router__ = __webpack_require__(57);
@@ -13712,7 +13712,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_components_Users_UsersTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__dashboard_components_Users_UsersTable_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dashboard_store_js__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dashboard_store_js__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_axios__);
  //Pusher and Laravel-Echo
@@ -13790,7 +13790,23 @@ var dashboard = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
 });
 
 /***/ }),
-/* 54 */,
+/* 54 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(55);
+
+
+window.Pusher = __webpack_require__(56);
+
+window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
+    broadcaster: 'pusher',
+    key: 'fe3a2253e56fd44acfa8',
+    cluster: "ap2",
+    encrypted: true
+});
+
+/***/ }),
 /* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27615,6 +27631,16 @@ var render = function() {
                               ]
                             ),
                             _vm._v(" "),
+                            _c("img", {
+                              staticClass: "direct-chat-img pull-right",
+                              attrs: {
+                                src:
+                                  "https://ui-avatars.com/api/?name=" +
+                                  msg.created_by.name,
+                                alt: "message user image"
+                              }
+                            }),
+                            _vm._v(" "),
                             _c(
                               "div",
                               { staticClass: "direct-chat-text pull-right" },
@@ -29699,7 +29725,43 @@ if (false) {
 }
 
 /***/ }),
-/* 86 */,
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(87);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
+/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
+    state: {
+        user: null,
+        users: []
+    },
+    getters: {},
+    mutations: {
+        user: function user(state, _user) {
+            state.user = _user;
+        },
+        users: function users(state, _users) {
+            state.users = _users;
+        }
+    },
+    actions: {
+        getusers: function getusers(context) {
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/auth/user').then(function (res) {
+                context.commit('users', res.data);
+            });
+        }
+    }
+}));
+
+/***/ }),
 /* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -30643,81 +30705,6 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
-
-/***/ }),
-/* 88 */,
-/* 89 */,
-/* 90 */,
-/* 91 */,
-/* 92 */,
-/* 93 */,
-/* 94 */,
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_laravel_echo__ = __webpack_require__(55);
-
-
-window.Pusher = __webpack_require__(56);
-
-window.Echo = new __WEBPACK_IMPORTED_MODULE_0_laravel_echo__["a" /* default */]({
-    broadcaster: 'pusher',
-    key: 'fe3a2253e56fd44acfa8',
-    cluster: "ap2",
-    encrypted: true
-});
-
-/***/ }),
-/* 110 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
-
-
-
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */]);
-/* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
-    state: {
-        user: null,
-        users: []
-    },
-    getters: {},
-    mutations: {
-        user: function user(state, _user) {
-            state.user = _user;
-        },
-        users: function users(state, _users) {
-            state.users = _users;
-        }
-    },
-    actions: {
-        getusers: function getusers(context) {
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get('/api/auth/user').then(function (res) {
-                context.commit('users', res.data);
-            });
-        }
-    }
-}));
 
 /***/ })
 /******/ ]);
