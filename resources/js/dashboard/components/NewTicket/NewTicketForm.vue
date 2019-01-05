@@ -1,32 +1,12 @@
 <template>
   <div class="content-wrapper">
     <section class="content">
-      <div v-show="success" class="alert alert-success alert-dismissible">
+      <!-- <div v-show="success" class="alert alert-success alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4>
           <i class="icon fa fa-check"></i> Success!
         </h4>Your Ticket has been created successfully!
-      </div>
-      <!-- <div v-show="success" id="myModal" class="modal fade">
-        <div class="modal-dialog modal-confirm">
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="icon-box">
-                <i class="material-icons">&#xE876;</i>
-              </div>
-              <h4 class="modal-title">Awesome!</h4>
-            </div>
-            <div class="modal-body">
-              <p class="text-center">Changes have been saved!</p>
-            </div>
-            <div class="modal-footer">
-              <router-link to="/home">
-                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
-              </router-link>
-            </div>
-          </div>
-        </div>
-      </div>-->
+      </div> -->
       <h3>New Ticket</h3>
       <!--/.add user -->
       <div class="row">
@@ -34,7 +14,7 @@
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-primary">
-            <form @submit.prevent="newTicket(subject,message)" method="post">
+            <form method="post">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>
               </div>
@@ -54,9 +34,9 @@
                 </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">
+                <a @click="newTicket(subject,message)" href="#myModal" class="btn btn-primary">
                   <i class="fa fa-paper-plane-o"></i> Send
-                </button>
+                </a>
                 <button type="reset" class="btn btn-danger text-justify">
                   <i class="fa fa-times"></i> Discard
                 </button>
@@ -68,6 +48,28 @@
         </div>
       </div>
       <!-- /.row -->
+
+      <div v-if="success" id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="icon-box">
+                <i class="material-icons">&#xE876;</i>
+              </div>
+              <h4 class="modal-title">Awesome!</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">Changes have been saved!</p>
+            </div>
+            <div class="modal-footer">
+              <router-link to="/home">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
   </div>
 </template>

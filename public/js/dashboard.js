@@ -27962,6 +27962,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewTicketForm",
@@ -27999,130 +28001,126 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
     _c("section", { staticClass: "content" }, [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.success,
-              expression: "success"
-            }
-          ],
-          staticClass: "alert alert-success alert-dismissible"
-        },
-        [
-          _c(
-            "button",
-            {
-              staticClass: "close",
-              attrs: {
-                type: "button",
-                "data-dismiss": "alert",
-                "aria-hidden": "true"
-              }
-            },
-            [_vm._v("×")]
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v("Your Ticket has been created successfully!\n    ")
-        ]
-      ),
-      _vm._v(" "),
       _c("h3", [_vm._v("New Ticket")]),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xs-12" }, [
           _c("div", { staticClass: "box box-primary" }, [
-            _c(
-              "form",
-              {
-                attrs: { method: "post" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    _vm.newTicket(_vm.subject, _vm.message)
-                  }
-                }
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "box-body" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.subject,
-                          expression: "subject"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "subject", placeholder: "Subject" },
-                      domProps: { value: _vm.subject },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.subject = $event.target.value
-                        }
+            _c("form", { attrs: { method: "post" } }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body" }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.subject,
+                        expression: "subject"
                       }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.message,
-                          expression: "message"
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "subject", placeholder: "Subject" },
+                    domProps: { value: _vm.subject },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
                         }
-                      ],
-                      staticClass: "form-control",
-                      staticStyle: { height: "300px" },
-                      attrs: {
-                        id: "message",
-                        placeholder: "Write Details Here..."
-                      },
-                      domProps: { value: _vm.message },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.message = $event.target.value
-                        }
+                        _vm.subject = $event.target.value
                       }
-                    })
-                  ])
+                    }
+                  })
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
-              ]
-            )
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.message,
+                        expression: "message"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    staticStyle: { height: "300px" },
+                    attrs: {
+                      id: "message",
+                      placeholder: "Write Details Here..."
+                    },
+                    domProps: { value: _vm.message },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.message = $event.target.value
+                      }
+                    }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-footer" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { href: "#myModal" },
+                    on: {
+                      click: function($event) {
+                        _vm.newTicket(_vm.subject, _vm.message)
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-paper-plane-o" }),
+                    _vm._v(" Send\n              ")
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(1)
+              ])
+            ])
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm.success
+        ? _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
+            _c("div", { staticClass: "modal-dialog modal-confirm" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "modal-footer" },
+                  [
+                    _c("router-link", { attrs: { to: "/home" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-block",
+                          attrs: { "data-dismiss": "modal" }
+                        },
+                        [_vm._v("OK")]
+                      )
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h4", [
-      _c("i", { staticClass: "icon fa fa-check" }),
-      _vm._v(" Success!\n      ")
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -28135,27 +28133,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [
-          _c("i", { staticClass: "fa fa-paper-plane-o" }),
-          _vm._v(" Send\n              ")
-        ]
-      ),
+    return _c(
+      "button",
+      { staticClass: "btn btn-danger text-justify", attrs: { type: "reset" } },
+      [
+        _c("i", { staticClass: "fa fa-times" }),
+        _vm._v(" Discard\n              ")
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "icon-box" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("")])
+      ]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-danger text-justify",
-          attrs: { type: "reset" }
-        },
-        [
-          _c("i", { staticClass: "fa fa-times" }),
-          _vm._v(" Discard\n              ")
-        ]
-      )
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Awesome!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", { staticClass: "text-center" }, [
+        _vm._v("Changes have been saved!")
+      ])
     ])
   }
 ]
@@ -28334,7 +28340,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             email: '',
             password: '',
             role: '',
-            success: true
+            success: false
         };
     },
     mounted: function mounted() {
@@ -28361,8 +28367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this2.password = response.data.password;
                 _this2.role = response.data.role;
                 if (fh.is_success(response.data)) {
-                    // this.success = true;
-                    window.location.href = "/users";
+                    _this2.success = true;
                 } else {
                     fh.set_multierrors(response.data);
                 }
@@ -28567,7 +28572,7 @@ var render = function() {
         _c("div", { staticClass: "box-footer" }, [
           _c("div", { staticClass: "text-center" }, [
             _c(
-              "button",
+              "a",
               {
                 staticClass: "btn btn-primary",
                 attrs: { href: "#myModal", "data-toggle": "modal" },
@@ -28616,7 +28621,7 @@ var render = function() {
               ])
             ])
           : _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
-              _c("div", { staticClass: "modal-dialog modal-confirm" }, [
+              _c("div", { staticClass: "modal-dialog modal-fail" }, [
                 _c("div", { staticClass: "modal-content" }, [
                   _vm._m(3),
                   _vm._v(" "),
@@ -28683,7 +28688,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-header" }, [
       _c("div", { staticClass: "icon-box" }, [
-        _c("i", { staticClass: "material-icons" }, [_vm._v("×")])
+        _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
       ]),
       _vm._v(" "),
       _c("h4", { staticClass: "modal-title" }, [_vm._v("Updation Failed!")])
