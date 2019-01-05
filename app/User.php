@@ -29,6 +29,7 @@ class User extends Authenticatable
     ];
 
     public function format() {
+      $data['id'] = $this->id;
       $data['name'] = $this->name;
       $data['email'] = $this->email;
       $data['role'] = $this->role;
