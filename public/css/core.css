@@ -14847,6 +14847,8 @@ table.text-center th {
 
 .direct-chat-timestamp {
   color: #f5f2f2;
+  font-size: 11px;
+  padding-left: 15px;
 }
 
 .direct-chat-contacts-open .direct-chat-contacts {

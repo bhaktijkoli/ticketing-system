@@ -90,6 +90,13 @@
               <span>Users</span>
             </router-link>
           </li>
+          <!-- setting -->
+          <li class="treeview">
+            <router-link to="/settings">
+              <i class="fa fa-cog"></i>
+              <span>Setting</span>
+            </router-link>
+          </li>
           <!-- Help section -->
           <li class="treeview">
             <router-link to="/help">
@@ -97,7 +104,6 @@
               <span>Help</span>
             </router-link>
           </li>
-
           <!--Logout section -->
           <li>
             <a href="/logout">

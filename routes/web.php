@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', 'IndexController@getLogin')->name('login');
 Route::get('/home', 'DashboardController@getHome');
@@ -17,6 +17,7 @@ Route::get('/new-ticket', 'DashboardController@getHome');
 Route::get('/ticket', 'DashboardController@getHome');
 Route::get('ticket/{id}', 'DashboardController@getHome');
 Route::get('/mytickets', 'DashboardController@getHome');
+Route::get('/settings', 'DashboardController@getHome');
 Route::get('/users', 'DashboardController@getHome');
 Route::get('/user/{id}/edit', 'DashboardController@getHome');
 Route::get('/help', 'DashboardController@getHome');
