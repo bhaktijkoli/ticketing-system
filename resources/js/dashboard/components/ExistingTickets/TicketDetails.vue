@@ -145,11 +145,16 @@ export default {
         this.ticket = response.data;
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
+        setTimeout(function () {
+          $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+        }, 100);
+        window.Echo.channel(response.data.token).listen("NewMessage", e => {
+          this.messages.push(e.message);
+          setTimeout(function () {
+            $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+          }, 100);
+        });
       });
-
-    window.Echo.channel(`channel-name`).listen("NewMessage", e => {
-      this.messages.push(e.message);
-    });
   },
   methods: {
     addMessage: function() {

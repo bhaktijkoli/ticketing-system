@@ -25,6 +25,7 @@ class TicketController extends Controller
     $ticket = new Ticket();
     $ticket->subject = $request->input('subject', '');
     $ticket->created_by = Auth::user()->id;
+    $ticket->generateToken();
     $ticket->save();
     $message = new Message();
     $message->ticket = $ticket->id;

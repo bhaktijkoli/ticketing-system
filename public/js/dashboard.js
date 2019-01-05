@@ -27538,10 +27538,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.ticket = response.data;
       _this.date = response.data.created_at_format_long;
       _this.messages = response.data.messages;
-    });
-
-    window.Echo.channel("channel-name").listen("NewMessage", function (e) {
-      _this.messages.push(e.message);
+      setTimeout(function () {
+        $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+      }, 100);
+      window.Echo.channel(response.data.token).listen("NewMessage", function (e) {
+        _this.messages.push(e.message);
+        setTimeout(function () {
+          $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+        }, 100);
+      });
     });
   },
 

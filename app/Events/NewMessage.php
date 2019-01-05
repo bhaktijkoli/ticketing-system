@@ -38,13 +38,13 @@ class NewMessage implements ShouldBroadcast
   */
   public function broadcastOn()
   {
-    return new Channel('channel-name');
+    return new Channel($this->ticket->token);
   }
 
   public function broadcastWith()
-{
+  {
     return ['message' => $this->message->format()];
-}
+  }
 
 
 }

@@ -9,6 +9,7 @@ class Ticket extends Model
   public function format($all=false) {
     $data['id'] = $this->id;
     $data['subject'] = $this->subject;
+    $data['token'] = $this->token;
     if($all) {
       $messages = Message::where('ticket', $this->id)->get();
       $messagesArr = [];
@@ -25,5 +26,13 @@ class Ticket extends Model
     $data['created_at_format'] = $this->created_at->diffForHumans();
     $data['created_at_format_long'] = $this->created_at->format('F j, Y');
     return $data;
+  }
+
+  public function generateToken() {
+    do {
+      $token = str_random(60);
+      $ticket = Ticket::where('token', $token)->first();
+    } while($ticket);
+    $this->token = $token;
   }
 }
