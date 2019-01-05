@@ -54,7 +54,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
           <!-- Ticket for admin -->
-          <li class="treeview">
+          <li class="treeview" v-if="role == 0 ||role==1 ">
             <router-link to="/home">
               <i class="fa fa-ticket"></i>
               <span title="for admin">All Tickets</span>
@@ -64,7 +64,7 @@
             </router-link>
           </li>
           <!-- my ticket for users -->
-          <li class="treeview" v-if="role == 2 || role==3">
+          <li class="treeview" v-if="role == 2">
             <router-link to="/mytickets">
               <i class="fa fa-ticket"></i>
               <span title="for admin">My Tickets</span>

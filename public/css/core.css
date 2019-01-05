@@ -14747,7 +14747,6 @@ table.text-center th {
   -webkit-transform: translate(0, 0);
   transform: translate(0, 0);
   padding: 10px;
-  height: 250px;
   overflow: auto;
 }
 
@@ -14784,7 +14783,7 @@ table.text-center th {
   padding: 5px 10px;
   background: #d2d6de;
   border: 1px solid #d2d6de;
-  margin: 5px 0 0 50px;
+  margin: 5px 0 0 15px;
   color: #444444;
 }
 

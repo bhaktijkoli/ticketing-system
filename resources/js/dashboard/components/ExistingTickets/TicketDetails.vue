@@ -30,31 +30,42 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <!-- Conversations are loaded here -->
-                <div class="direct-chat-messages">
+                <div v-for="msg in messages" class="direct-chat-messages">
                   <!-- Message. Default to the left -->
-                <div>
-                    <!-- /.direct-chat-text -->
-                  </div>
-                  <!-- /.direct-chat-msg -->
-                  <!-- Message to the right -->
-                  <div  v-for="msg in messages" class="direct-chat-msg right">
-                    <div v-if="msg.created_by.id==msg.created_by.id">
+                  <div v-if="msg.created_by.id==2" class="direct-chat-msg left">
+                    <!-- /.direct-chat-info -->
                     <img
-                      class="direct-chat-img pull-right"
+                      class="direct-chat-img pull-left"
+                      :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
+                      alt="message user image"
+                    >
+                    <!-- /.direct-chat-img -->
+                    <div class="direct-chat-text pull-left">
+                      <p>
+                        {{msg.message}}
+                        <br>
+                        <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Message to the right -->
+                  <div v-if="msg.created_by.id==1" class="direct-chat-msg right">
+                    <img
+                      class="direct-chat-img"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
                       alt="message user image"
                     >
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-right">
-                      <p>{{msg.message}} 
+                      <p>
+                        {{msg.message}}
+                        <!-- <p> {{msg.created_by.id}}  </p> -->
                         <br>
-                      <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
+                        <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
-                    </div>
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
-
                   <!-- /.direct-chat-msg -->
                 </div>
               </div>
@@ -76,11 +87,8 @@
                   </div>
                 </form>
               </div>
-              <!-- /.box-footer-->
             </div>
-            <!--/.direct-chat -->
           </div>
-          <!-- /.col -->
           <!-- /.col -->
         </div>
         <!-- Action btn -->
