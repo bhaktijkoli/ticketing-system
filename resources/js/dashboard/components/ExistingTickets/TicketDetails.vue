@@ -67,6 +67,7 @@
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
+
                   <!-- /.direct-chat-msg -->
                 </div>
                 <!--/.direct-chat-messages-->

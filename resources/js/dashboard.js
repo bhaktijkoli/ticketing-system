@@ -1,4 +1,4 @@
-import pusher from './pusher.js'  //Pusher and Laravel-Echo
+import pusher from './dashboard/pusher.js' //Pusher and Laravel-Echo
 
 import Vue from 'vue';
 window.Vue = require('vue');
@@ -15,7 +15,7 @@ import EditUserForm from './dashboard/components/Users/EditUserForm.vue'
 import UsersTable from './dashboard/components/Users/UsersTable.vue'
 import UserTickets from './dashboard/components/UserTickets/UserTickets.vue'
 
-import store from './store.js'  //vuex store
+import store from './dashboard/store.js' //vuex store
 
 import axios from 'axios'
 
@@ -61,7 +61,7 @@ const router = new VueRouter({
     mode: 'history'
 });
 
-window.api = function(url) {
+window.api = function (url) {
     return '/api' + url;
 }
 
