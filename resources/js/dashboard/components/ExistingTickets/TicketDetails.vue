@@ -51,10 +51,9 @@
                   <!-- /.direct-chat-msg -->
                   <!-- Message to the right -->
                   <div v-for="msg in messages" class="direct-chat-msg right">
-                    <div class="direct-chat-info clearfix pull-right">
-                      <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
-                      <span class="direct-chat-timestamp">{{msg.created_at_format}}</span>
-                    </div>
+                    <!-- <div class="direct-chat-info clearfix pull-right"> -->
+                    <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
+                    <!-- </div> -->
                     <!-- /.direct-chat-info -->
                     <img
                       class="direct-chat-img pull-right"
@@ -64,6 +63,7 @@
                     <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-right">
                       <p>{{msg.message}}</p>
+                      <small class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</small>
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
@@ -145,13 +145,17 @@ export default {
         this.ticket = response.data;
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
-        setTimeout(function () {
-          $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+        setTimeout(function() {
+          $(".direct-chat-messages").scrollTop(
+            $(".direct-chat-messages")[0].scrollHeight
+          );
         }, 100);
         window.Echo.channel(response.data.token).listen("NewMessage", e => {
           this.messages.push(e.message);
-          setTimeout(function () {
-            $(".direct-chat-messages").scrollTop($(".direct-chat-messages")[0].scrollHeight);
+          setTimeout(function() {
+            $(".direct-chat-messages").scrollTop(
+              $(".direct-chat-messages")[0].scrollHeight
+            );
           }, 100);
         });
       });

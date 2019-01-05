@@ -27621,21 +27621,6 @@ var render = function() {
                           "div",
                           { staticClass: "direct-chat-msg right" },
                           [
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "direct-chat-info clearfix pull-right"
-                              },
-                              [
-                                _c(
-                                  "span",
-                                  { staticClass: "direct-chat-timestamp" },
-                                  [_vm._v(_vm._s(msg.created_at_format))]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
                             _c("img", {
                               staticClass: "direct-chat-img pull-right",
                               attrs: {
@@ -27649,7 +27634,18 @@ var render = function() {
                             _c(
                               "div",
                               { staticClass: "direct-chat-text pull-right" },
-                              [_c("p", [_vm._v(_vm._s(msg.message))])]
+                              [
+                                _c("p", [_vm._v(_vm._s(msg.message))]),
+                                _vm._v(" "),
+                                _c(
+                                  "small",
+                                  {
+                                    staticClass:
+                                      "direct-chat-timestamp pull-right"
+                                  },
+                                  [_vm._v(_vm._s(msg.created_at_format))]
+                                )
+                              ]
                             )
                           ]
                         )
