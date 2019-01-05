@@ -27617,79 +27617,67 @@ var render = function() {
                     [
                       _vm._l(_vm.messages, function(msg) {
                         return msg.created_by.id != msg.created_by.id
-                          ? _c(
-                              "div",
-                              { staticClass: "direct-chat-msg right" },
-                              [
-                                _c("img", {
-                                  staticClass: "direct-chat-img pull-right",
-                                  attrs: {
-                                    src:
-                                      "https://ui-avatars.com/api/?name=" +
-                                      msg.created_by.name,
-                                    alt: "message user image"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "direct-chat-text pull-right"
-                                  },
-                                  [
-                                    _c("p", [_vm._v(_vm._s(msg.message))]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "small",
-                                      {
-                                        staticClass:
-                                          "direct-chat-timestamp pull-right"
-                                      },
-                                      [_vm._v(_vm._s(msg.created_at_format))]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                          ? _c("div", { staticClass: "direct-chat-msg left" }, [
+                              _c("img", {
+                                staticClass: "direct-chat-img pull-left",
+                                attrs: {
+                                  src:
+                                    "https://ui-avatars.com/api/?name=" +
+                                    msg.created_by.name,
+                                  alt: "message user image"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "direct-chat-text pull-left" },
+                                [
+                                  _c("p", [_vm._v(_vm._s(msg.message))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "small",
+                                    {
+                                      staticClass:
+                                        "direct-chat-timestamp pull-left"
+                                    },
+                                    [_vm._v(_vm._s(msg.created_at_format))]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e()
                       }),
                       _vm._v(" "),
                       _vm._l(_vm.messages, function(msg) {
                         return msg.created_by.id == msg.created_by.id
-                          ? _c(
-                              "div",
-                              { staticClass: "direct-chat-msg right" },
-                              [
-                                _c("img", {
-                                  staticClass: "direct-chat-img pull-right",
-                                  attrs: {
-                                    src:
-                                      "https://ui-avatars.com/api/?name=" +
-                                      msg.created_by.name,
-                                    alt: "message user image"
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "direct-chat-text pull-right"
-                                  },
-                                  [
-                                    _c("p", [_vm._v(_vm._s(msg.message))]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "small",
-                                      {
-                                        staticClass:
-                                          "direct-chat-timestamp pull-right"
-                                      },
-                                      [_vm._v(_vm._s(msg.created_at_format))]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
+                          ? _c("div", { staticClass: "direct-chat-msg left" }, [
+                              _c("img", {
+                                staticClass: "direct-chat-img pull-right",
+                                attrs: {
+                                  src:
+                                    "https://ui-avatars.com/api/?name=" +
+                                    msg.created_by.name,
+                                  alt: "message user image"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "direct-chat-text pull-right" },
+                                [
+                                  _c("p", [_vm._v(_vm._s(msg.message))]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "small",
+                                    {
+                                      staticClass:
+                                        "direct-chat-timestamp pull-right"
+                                    },
+                                    [_vm._v(_vm._s(msg.created_at_format))]
+                                  )
+                                ]
+                              )
+                            ])
                           : _vm._e()
                       })
                     ],

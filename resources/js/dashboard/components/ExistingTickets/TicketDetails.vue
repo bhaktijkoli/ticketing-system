@@ -32,26 +32,26 @@
                 <!-- Conversations are loaded here -->
                 <div class="direct-chat-messages">
                   <!-- Message. Default to the left -->
-                <div v-if="msg.created_by.id!=msg.created_by.id" v-for="msg in messages" class="direct-chat-msg right">
+                <div v-if="msg.created_by.id!=msg.created_by.id" v-for="msg in messages" class="direct-chat-msg left">
                     <!-- <div class="direct-chat-info clearfix pull-right"> -->
                     <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
                     <!-- </div> -->
                     <!-- /.direct-chat-info -->
                     <img
-                      class="direct-chat-img pull-right"
+                      class="direct-chat-img pull-left"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
                       alt="message user image"
                     >
                     <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text pull-right">
+                    <div class="direct-chat-text pull-left">
                       <p>{{msg.message}}</p>
-                      <small class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</small>
+                      <small class="direct-chat-timestamp pull-left">{{msg.created_at_format}}</small>
                     </div>
                     <!-- /.direct-chat-text -->
                   </div>
                   <!-- /.direct-chat-msg -->
                   <!-- Message to the right -->
-                  <div v-if="msg.created_by.id==msg.created_by.id" v-for="msg in messages" class="direct-chat-msg right">
+                  <div v-if="msg.created_by.id==msg.created_by.id" v-for="msg in messages" class="direct-chat-msg left">
                     <!-- <div class="direct-chat-info clearfix pull-right"> -->
                     <!-- <span class="direct-chat-name pull-right">{{username}}</span> -->
                     <!-- </div> -->
