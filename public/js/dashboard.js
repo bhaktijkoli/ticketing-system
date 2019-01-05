@@ -27508,6 +27508,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -27614,41 +27615,82 @@ var render = function() {
                     "div",
                     { staticClass: "direct-chat-messages" },
                     [
-                      _vm._m(1),
-                      _vm._v(" "),
                       _vm._l(_vm.messages, function(msg) {
-                        return _c(
-                          "div",
-                          { staticClass: "direct-chat-msg right" },
-                          [
-                            _c("img", {
-                              staticClass: "direct-chat-img pull-right",
-                              attrs: {
-                                src:
-                                  "https://ui-avatars.com/api/?name=" +
-                                  msg.created_by.name,
-                                alt: "message user image"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
+                        return msg.created_by.id != msg.created_by.id
+                          ? _c(
                               "div",
-                              { staticClass: "direct-chat-text pull-right" },
+                              { staticClass: "direct-chat-msg right" },
                               [
-                                _c("p", [_vm._v(_vm._s(msg.message))]),
+                                _c("img", {
+                                  staticClass: "direct-chat-img pull-right",
+                                  attrs: {
+                                    src:
+                                      "https://ui-avatars.com/api/?name=" +
+                                      msg.created_by.name,
+                                    alt: "message user image"
+                                  }
+                                }),
                                 _vm._v(" "),
                                 _c(
-                                  "small",
+                                  "div",
                                   {
-                                    staticClass:
-                                      "direct-chat-timestamp pull-right"
+                                    staticClass: "direct-chat-text pull-right"
                                   },
-                                  [_vm._v(_vm._s(msg.created_at_format))]
+                                  [
+                                    _c("p", [_vm._v(_vm._s(msg.message))]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "small",
+                                      {
+                                        staticClass:
+                                          "direct-chat-timestamp pull-right"
+                                      },
+                                      [_vm._v(_vm._s(msg.created_at_format))]
+                                    )
+                                  ]
                                 )
                               ]
                             )
-                          ]
-                        )
+                          : _vm._e()
+                      }),
+                      _vm._v(" "),
+                      _vm._l(_vm.messages, function(msg) {
+                        return msg.created_by.id == msg.created_by.id
+                          ? _c(
+                              "div",
+                              { staticClass: "direct-chat-msg right" },
+                              [
+                                _c("img", {
+                                  staticClass: "direct-chat-img pull-right",
+                                  attrs: {
+                                    src:
+                                      "https://ui-avatars.com/api/?name=" +
+                                      msg.created_by.name,
+                                    alt: "message user image"
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "direct-chat-text pull-right"
+                                  },
+                                  [
+                                    _c("p", [_vm._v(_vm._s(msg.message))]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "small",
+                                      {
+                                        staticClass:
+                                          "direct-chat-timestamp pull-right"
+                                      },
+                                      [_vm._v(_vm._s(msg.created_at_format))]
+                                    )
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e()
                       })
                     ],
                     2
@@ -27696,7 +27738,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _vm._m(2)
+                        _vm._m(1)
                       ])
                     ]
                   )
@@ -27706,7 +27748,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(3)
+        _vm._m(2)
       ])
     ])
   ])
@@ -27718,16 +27760,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Direct Chat")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "direct-chat-msg" }, [
-      _c("div", { staticClass: "direct-chat-info clearfix" }, [
-        _c("span", { staticClass: "direct-chat-name pull-left" })
-      ])
     ])
   },
   function() {
