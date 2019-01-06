@@ -144,6 +144,10 @@ export default {
         }, 100);
         window.Echo.channel(response.data.token).listen("NewMessage", e => {
           this.messages.push(e.message);
+          var audio = new Audio(
+            "http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3"
+          ); // path to file
+          audio.play();
           setTimeout(function() {
             $(".direct-chat-messages").scrollTop(
               $(".direct-chat-messages")[0].scrollHeight
