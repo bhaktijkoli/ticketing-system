@@ -27521,6 +27521,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -27630,7 +27635,7 @@ var render = function() {
                   { staticClass: "box-body" },
                   _vm._l(_vm.messages, function(msg) {
                     return _c("div", { staticClass: "direct-chat-messages" }, [
-                      msg.created_by.id == 2
+                      msg.created_by.name != _vm.ticket.created_by.name
                         ? _c("div", { staticClass: "direct-chat-msg left" }, [
                             _c("img", {
                               staticClass: "direct-chat-img pull-left",
@@ -27668,7 +27673,7 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      msg.created_by.id == 1
+                      msg.created_by.name == _vm.ticket.created_by.name
                         ? _c("div", { staticClass: "direct-chat-msg right" }, [
                             _c("img", {
                               staticClass: "direct-chat-img",
@@ -27690,7 +27695,6 @@ var render = function() {
                                       _vm._s(msg.message) +
                                       "\n                      "
                                   ),
-                                  _vm._v(" "),
                                   _c("br"),
                                   _vm._v(" "),
                                   _c(

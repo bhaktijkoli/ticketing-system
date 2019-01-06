@@ -32,7 +32,10 @@
                 <!-- Conversations are loaded here -->
                 <div v-for="msg in messages" class="direct-chat-messages">
                   <!-- Message. Default to the left -->
-                  <div v-if="msg.created_by.id==2" class="direct-chat-msg left">
+                  <div
+                    v-if="msg.created_by.name != ticket.created_by.name"
+                    class="direct-chat-msg left"
+                  >
                     <!-- /.direct-chat-info -->
                     <img
                       class="direct-chat-img pull-left"
@@ -49,7 +52,10 @@
                     </div>
                   </div>
                   <!-- Message to the right -->
-                  <div v-if="msg.created_by.id==1" class="direct-chat-msg right">
+                  <div
+                    v-if="msg.created_by.name==ticket.created_by.name"
+                    class="direct-chat-msg right"
+                  >
                     <img
                       class="direct-chat-img"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
@@ -59,7 +65,6 @@
                     <div class="direct-chat-text pull-right">
                       <p>
                         {{msg.message}}
-                        <!-- <p> {{msg.created_by.id}}  </p> -->
                         <br>
                         <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
