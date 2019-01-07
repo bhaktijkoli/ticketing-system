@@ -13748,7 +13748,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         name: 'NewTicketForm',
         component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_NewTicketForm_vue___default.a
     }, {
-        path: '/my-tickets',
+        path: '/mytickets',
         name: 'UserTickets',
         component: __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue___default.a
     }, {
@@ -26755,7 +26755,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: "DashBoard",
   data: function data() {
     return {
-      ticket_length: ""
+      ticket_length: "",
+      mytickets_length: ""
     };
   },
 
@@ -26765,6 +26766,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     axios.get("/api/ticket/get/unassigned").then(function (res) {
       _this.ticket_length = res.data.length;
+    });
+    axios.get("/api/ticket/user/get").then(function (res) {
+      _this.mytickets_length = res.data.length;
     });
   },
 
@@ -26893,7 +26897,7 @@ var render = function() {
                           _c(
                             "span",
                             { staticClass: "label label-primary pull-right" },
-                            [_vm._v(_vm._s(_vm.ticket_length))]
+                            [_vm._v(_vm._s(_vm.mytickets_length))]
                           )
                         ])
                       ])
@@ -27162,7 +27166,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mounted: function mounted() {
     var _this = this;
 
-    axios.get("api/ticket/get/unassigned").then(function (res) {
+    axios.get("/api/ticket/get/unassigned").then(function (res) {
       _this.tickets = res.data;
     });
   }
@@ -27226,11 +27230,7 @@ var render = function() {
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
                                 _c("td", [
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(ticket.created_by.name) +
-                                      "\n                    "
-                                  )
+                                  _vm._v(_vm._s(ticket.created_by.name))
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -27312,7 +27312,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Subject")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Details")]),
+        _c("th", [_vm._v("Last Message")]),
         _vm._v(" "),
         _c("th", [_vm._v("Time")])
       ])
@@ -29630,24 +29630,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "UserTickets"
-  // data: {
-  //   tickets: {}
-  // },
-  // methods: {
-  //   gettickets() {
-  //     axiox
-  //       .get("")
-  //       .then(res => {
-  //         this.tickets = res.data;
-  //       })
-  //       .catch(error => {
-  //         alert(error);
-  //       });
-  //   }
-  // }
+  name: "UserTickets",
+  data: function data() {
+    return {
+      tickets: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get("/api/ticket/user/get").then(function (res) {
+      _this.tickets = res.data;
+    });
+  }
 });
 
 /***/ }),
@@ -29658,110 +29663,173 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("h3", [_vm._v("All Ticket")]),
+      _vm._v(" "),
+      _vm.tickets == 0
+        ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "alert",
+                  "aria-hidden": "true"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(
+              "Sorry their is no ticket to show, create your ticket\n      "
+            ),
+            _c("a", { attrs: { href: "/new-ticket" } }, [_vm._v("here")]),
+            _vm._v("!\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.tickets != 0
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xs-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", { staticClass: "box-body no-padding" }, [
+                  _c(
+                    "div",
+                    { staticClass: "table-responsive mailbox-messages" },
+                    [
+                      _c(
+                        "table",
+                        { staticClass: "table table-hover table-striped" },
+                        [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.tickets, function(ticket) {
+                              return _c("tr", [
+                                _c("td", [
+                                  _vm._v(_vm._s(ticket.created_by.name))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticClass: "mailbox-subject" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to: {
+                                            name: "TicketDetails",
+                                            params: { id: ticket.id }
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(ticket.subject))]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "mailbox-subject" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      ticket.last_message.message.slice(0, 20)
+                                    ) + " ..."
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "mailbox-date" }, [
+                                  _vm._v(_vm._s(ticket.created_at_format))
+                                ])
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._m(3)
+              ])
+            ])
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "clearfix" })
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "content-wrapper" }, [
-      _c("section", { staticClass: "content" }, [
-        _c("h3", [_vm._v("My Tickets")]),
+    return _c("h4", [
+      _c("i", { staticClass: "icon fa fa-info" }),
+      _vm._v(" Alert!\n      ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Create By")]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-12" }, [
-            _c("div", { staticClass: "box box-primary" }, [
-              _c("div", { staticClass: "box-header with-border" }, [
-                _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "box-body no-padding" }, [
-                _c(
-                  "div",
-                  { staticClass: "table-responsive mailbox-messages" },
-                  [
-                    _c(
-                      "table",
-                      { staticClass: "table table-hover table-striped" },
-                      [
-                        _c("tbody", [
-                          _c("tr", [
-                            _c("td", { staticClass: "mailbox-name" }, [
-                              _c("a", { attrs: { href: "/ticket" } }, [
-                                _vm._v("Alexander Pierce")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-subject" }, [
-                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
-                              _vm._v(
-                                " - Trying to find a solution to this problem...\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-date" }, [
-                              _vm._v("5 mins ago")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("tr", [
-                            _c("td", { staticClass: "mailbox-name" }, [
-                              _c("a", { attrs: { href: "/ticket" } }, [
-                                _vm._v("Alexander Pierce")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-subject" }, [
-                              _c("b", [_vm._v("AdminLTE 2.0 Issue")]),
-                              _vm._v(
-                                " - Trying to find a solution to this problem...\n                    "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-date" }, [
-                              _vm._v("5 mins ago")
-                            ])
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "box-footer no-padding" }, [
-                _c("div", { staticClass: "mailbox-controls" }, [
-                  _c("div", { staticClass: "pull-right" }, [
-                    _vm._v("1-50/200\n                "),
-                    _c("div", { staticClass: "btn-group" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-default btn-sm",
-                          attrs: { type: "button" }
-                        },
-                        [_c("i", { staticClass: "fa fa-chevron-left" })]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-default btn-sm",
-                          attrs: { type: "button" }
-                        },
-                        [_c("i", { staticClass: "fa fa-chevron-right" })]
-                      )
-                    ])
-                  ])
-                ])
-              ])
-            ])
+        _c("th", [_vm._v("Subject")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Last Message")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Time")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-footer no-padding" }, [
+      _c("div", { staticClass: "mailbox-controls" }, [
+        _c("div", { staticClass: "pull-right" }, [
+          _vm._v("50/200\n                "),
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-left" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-right" })]
+            )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "clearfix" })
+      ])
     ])
   }
 ]

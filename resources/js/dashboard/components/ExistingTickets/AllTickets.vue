@@ -26,17 +26,17 @@
                     <tr>
                       <th>Create By</th>
                       <th>Subject</th>
-                      <th>Details</th>
+                      <th>Last Message</th>
                       <th>Time</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-for="ticket in tickets">
-                      <td>
-                        {{ticket.created_by.name}}
-                      </td>
+                      <td>{{ticket.created_by.name}}</td>
                       <td class="mailbox-subject">
-                        <router-link :to="{ name: 'TicketDetails', params: {id: ticket.id} }">{{ticket.subject}}</router-link>
+                        <router-link
+                          :to="{ name: 'TicketDetails', params: {id: ticket.id} }"
+                        >{{ticket.subject}}</router-link>
                       </td>
                       <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
 
@@ -86,11 +86,11 @@ export default {
   name: "AllTickets",
   data() {
     return {
-      tickets: [],
+      tickets: []
     };
   },
   mounted() {
-    axios.get("api/ticket/get/unassigned").then(res => {
+    axios.get("/api/ticket/get/unassigned").then(res => {
       this.tickets = res.data;
     });
   }

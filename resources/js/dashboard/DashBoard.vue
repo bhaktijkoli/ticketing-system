@@ -69,7 +69,7 @@
               <i class="fa fa-ticket"></i>
               <span title="for admin">My Tickets</span>
               <span class="pull-right-container">
-                <span class="label label-primary pull-right">{{ticket_length}}</span>
+                <span class="label label-primary pull-right">{{mytickets_length}}</span>
               </span>
             </router-link>
           </li>
@@ -134,13 +134,17 @@ export default {
   name: "DashBoard",
   data() {
     return {
-      ticket_length: ""
+      ticket_length: "",
+      mytickets_length: ""
     };
   },
   //to get no. of tickets
   mounted() {
     axios.get("/api/ticket/get/unassigned").then(res => {
       this.ticket_length = res.data.length;
+    });
+    axios.get("/api/ticket/user/get").then(res => {
+      this.mytickets_length = res.data.length;
     });
   },
   computed: {
