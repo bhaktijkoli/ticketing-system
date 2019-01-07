@@ -14,7 +14,7 @@ import NewTicketForm from './dashboard/components/NewTicket/NewTicketForm.vue'
 import EditUserForm from './dashboard/components/Users/EditUserForm.vue'
 import UsersTable from './dashboard/components/Users/UsersTable.vue'
 import UserTickets from './dashboard/components/UserTickets/UserTickets.vue'
-
+import Settings from './dashboard/components/Users/Settings.vue'
 import store from './dashboard/store.js' //vuex store
 
 import axios from 'axios'
@@ -46,6 +46,11 @@ const router = new VueRouter({
             path: '/users',
             name: 'UsersTable',
             component: UsersTable
+        },
+        {
+            path: '/settings',
+            name: 'Settings',
+            component: Settings
         },
         {
             path: '/help',
