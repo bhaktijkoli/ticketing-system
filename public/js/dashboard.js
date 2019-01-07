@@ -27523,9 +27523,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -27547,6 +27544,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     checkdate: function checkdate() {
       if (this.date == null) return null;
       return this.date;
+    },
+    userid: function userid() {
+      if (this.$store.state.user == null) return "";
+      return this.$store.state.user.id;
     }
   },
   mounted: function mounted() {
@@ -27635,7 +27636,7 @@ var render = function() {
                   { staticClass: "box-body" },
                   _vm._l(_vm.messages, function(msg) {
                     return _c("div", { staticClass: "direct-chat-messages" }, [
-                      msg.created_by.name != _vm.ticket.created_by.name
+                      msg.created_by.id != _vm.userid
                         ? _c("div", { staticClass: "direct-chat-msg left" }, [
                             _c("img", {
                               staticClass: "direct-chat-img pull-left",
@@ -27673,7 +27674,7 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      msg.created_by.name == _vm.ticket.created_by.name
+                      msg.created_by.id == _vm.userid
                         ? _c("div", { staticClass: "direct-chat-msg right" }, [
                             _c("img", {
                               staticClass: "direct-chat-img",
@@ -27800,10 +27801,11 @@ var staticRenderFns = [
       _c("br"),
       _vm._v(" "),
       _c(
-        "a",
+        "button",
         {
-          staticClass: "btn btn-default",
-          attrs: { href: "/", target: "_blank" }
+          staticClass: "btn btn-default pull-left",
+          staticStyle: { "margin-right": "5px" },
+          attrs: { type: "button", onclick: "window.print()" }
         },
         [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
       ),

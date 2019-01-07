@@ -32,17 +32,13 @@
                 <!-- Conversations are loaded here -->
                 <div v-for="msg in messages" class="direct-chat-messages">
                   <!-- Message. Default to the left -->
-                  <div
-                    v-if="msg.created_by.name != ticket.created_by.name"
-                    class="direct-chat-msg left"
-                  >
+                  <div v-if="msg.created_by.id != userid" class="direct-chat-msg left">
                     <!-- /.direct-chat-info -->
                     <img
                       class="direct-chat-img pull-left"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
                       alt="message user image"
                     >
-                    <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-left">
                       <p>
                         {{msg.message}}
@@ -52,16 +48,12 @@
                     </div>
                   </div>
                   <!-- Message to the right -->
-                  <div
-                    v-if="msg.created_by.name==ticket.created_by.name"
-                    class="direct-chat-msg right"
-                  >
+                  <div v-if="msg.created_by.id == userid" class="direct-chat-msg right">
                     <img
                       class="direct-chat-img"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
                       alt="message user image"
                     >
-                    <!-- /.direct-chat-img -->
                     <div class="direct-chat-text pull-right">
                       <p>
                         {{msg.message}}
@@ -99,9 +91,14 @@
         <!-- Action btn -->
         <div class="col-xs-12">
           <br>
-          <a href="/" target="_blank" class="btn btn-default">
+          <button
+            type="button"
+            onclick="window.print()"
+            class="btn btn-default pull-left"
+            style="margin-right: 5px;"
+          >
             <i class="fa fa-print"></i> Print
-          </a>
+          </button>
           <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
             <i class="fa fa-download"></i> Generate PDF
           </button>
@@ -129,10 +126,13 @@ export default {
       if (this.ticket == null) return null;
       return this.ticket;
     },
-
     checkdate() {
       if (this.date == null) return null;
       return this.date;
+    },
+    userid() {
+      if (this.$store.state.user == null) return "";
+      return this.$store.state.user.id;
     }
   },
   mounted() {
