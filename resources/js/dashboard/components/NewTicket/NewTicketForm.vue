@@ -13,7 +13,7 @@
         <!-- /.box -->
         <!-- Main content -->
         <div class="col-xs-12">
-          <div class="box box-primary">
+          <div class="box box-success">
             <form @submit.prevent="newTicket(subject,message)" method="post">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>

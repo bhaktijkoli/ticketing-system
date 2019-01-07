@@ -27896,9 +27896,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'Help'
+  name: "Help"
 });
 
 /***/ }),
@@ -27909,9 +27934,40 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content-wrapper" }, [
+      _c("section", { staticClass: "content" }, [
+        _c("h3", [_vm._v("Help")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c("div", { staticClass: "box box-info" }, [
+              _c("div", { staticClass: "box-header with-border" }, [
+                _c("h3", { staticClass: "box-title" }, [
+                  _vm._v("Change and save your settings here!")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body no-padding" }, [
+                _c(
+                  "div",
+                  { staticClass: "table-responsive mailbox-messages" },
+                  [_c("p", [_vm._v("Help Q here!")])]
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -28120,7 +28176,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xs-12" }, [
-          _c("div", { staticClass: "box box-primary" }, [
+          _c("div", { staticClass: "box box-success" }, [
             _c(
               "form",
               {
@@ -28413,49 +28469,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'EditUserForm',
-    data: function data() {
-        return {
-            name: '',
-            email: '',
-            password: '',
-            role: '',
-            success: false
-        };
+  name: "EditUserForm",
+  data: function data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      role: "",
+      success: false
+    };
+  },
+  mounted: function mounted() {
+    this.getUserData();
+  },
+
+  methods: {
+    getUserData: function getUserData() {
+      var _this = this;
+
+      axios.get("/api/user/get/details/" + this.$route.params.id).then(function (response) {
+        _this.name = response.data.name;
+        _this.email = response.data.email;
+        _this.password = response.data.password;
+        _this.role = response.data.role;
+      });
     },
-    mounted: function mounted() {
-        this.getUserData();
-    },
+    updateUserData: function updateUserData(name, email, password, role) {
+      var _this2 = this;
 
-    methods: {
-        getUserData: function getUserData() {
-            var _this = this;
-
-            axios.get('/api/user/get/details/' + this.$route.params.id).then(function (response) {
-                _this.name = response.data.name;
-                _this.email = response.data.email;
-                _this.password = response.data.password;
-                _this.role = response.data.role;
-            });
-        },
-        updateUserData: function updateUserData(name, email, password, role) {
-            var _this2 = this;
-
-            axios.post('/api/user/edit/', { user: this.$route.params.id, name: name, email: email, password: password, role: role }).then(function (response) {
-                _this2.name = response.data.name;
-                _this2.email = response.data.email;
-                _this2.password = response.data.password;
-                _this2.role = response.data.role;
-                if (fh.is_success(response.data)) {
-                    _this2.success = true;
-                } else {
-                    fh.set_multierrors(response.data);
-                }
-            });
+      axios.post("/api/user/edit/", {
+        user: this.$route.params.id,
+        name: name,
+        email: email,
+        password: password,
+        role: role
+      }).then(function (response) {
+        _this2.name = response.data.name;
+        _this2.email = response.data.email;
+        _this2.password = response.data.password;
+        _this2.role = response.data.role;
+        if (fh.is_success(response.data)) {
+          _this2.success = true;
+        } else {
+          fh.set_multierrors(response.data);
         }
+      });
     }
+  }
 });
 
 /***/ }),
@@ -30949,6 +31027,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Settings"
@@ -30966,9 +31086,148 @@ var render = function() {
     _c("section", { staticClass: "content" }, [
       _c("h3", [_vm._v("Settings")]),
       _vm._v(" "),
-      _vm.tickets != 0
-        ? _c("div", { staticClass: "row" }, [_vm._m(0)])
-        : _vm._e()
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("div", { staticClass: "box box-danger" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "box-body no-padding" }, [
+              _c(
+                "form",
+                { staticClass: "form-horizontal", attrs: { method: "post" } },
+                [
+                  _c("div", { staticClass: "box-body" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "name" }
+                        },
+                        [_vm._v("Name")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "name",
+                            placeholder: "Name"
+                          },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "help-block" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "email" }
+                        },
+                        [_vm._v("Email")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.email,
+                              expression: "email"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "email",
+                            id: "email",
+                            placeholder: "Email"
+                          },
+                          domProps: { value: _vm.email },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.email = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "help-block" })
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-2 control-label",
+                          attrs: { for: "password" }
+                        },
+                        [_vm._v("Change Password")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-10" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.password,
+                              expression: "password"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "password",
+                            id: "password",
+                            placeholder: "Password"
+                          },
+                          domProps: { value: _vm.password },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.password = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "help-block" })
+                      ])
+                    ])
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "clearfix" })
@@ -30979,29 +31238,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-xs-12" }, [
-      _c("div", { staticClass: "box box-primary" }, [
-        _c("div", { staticClass: "box-header with-border" }, [
-          _c("h3", { staticClass: "box-title" }, [
-            _vm._v("Change and save your settings here!")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-body no-padding" }, [
-          _c("div", { staticClass: "table-responsive mailbox-messages" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "box-footer no-padding" }, [
-          _c("div", { staticClass: "mailbox-controls" }, [
-            _c("div", { staticClass: "pull-right" }, [
-              _c("div", { staticClass: "btn-group" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_vm._v("Save")]
-                )
-              ])
-            ])
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [
+        _vm._v("Change and save your settings here!")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-footer no-padding" }, [
+      _c("div", { staticClass: "mailbox-controls" }, [
+        _c("div", { staticClass: "pull-right" }, [
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              { staticClass: "btn btn-primary", attrs: { type: "button" } },
+              [_vm._v("Save")]
+            )
           ])
         ])
       ])
