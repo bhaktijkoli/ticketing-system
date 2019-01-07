@@ -27921,6 +27921,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Help"
@@ -27958,7 +27974,33 @@ var staticRenderFns = [
                 _c(
                   "div",
                   { staticClass: "table-responsive mailbox-messages" },
-                  [_c("p", [_vm._v("Help Q here!")])]
+                  [
+                    _c("div", { staticClass: "container" }, [
+                      _c("input", { attrs: { type: "checkbox", id: "faq0" } }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "faq0" } }, [
+                        _c("h4", [_vm._v("Question")]),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "fa fa-angle-up" })
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Answer")]),
+                      _vm._v(" "),
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "checkbox", id: "faq1" } }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "faq1" } }, [
+                        _c("h4", [_vm._v("How old is Donald Tusk?")]),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "fa fa-angle-up" })
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Donald Tusk is 61 years old")]),
+                      _vm._v(" "),
+                      _c("hr")
+                    ])
+                  ]
                 )
               ])
             ])

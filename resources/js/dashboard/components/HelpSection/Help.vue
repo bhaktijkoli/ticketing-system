@@ -13,7 +13,23 @@
             <div class="box-body no-padding">
               <div class="table-responsive mailbox-messages">
                 <!-- temp  for now -->
-                <p>Help Q here!</p>
+                <div class="container">
+                  <input type="checkbox" id="faq0">
+                  <label for="faq0">
+                    <h4>Question</h4>
+                    <i class="fa fa-angle-up"></i>
+                  </label>
+                  <p>Answer</p>
+                  <hr>
+                  <input type="checkbox" id="faq1">
+                  <label for="faq1">
+                    <h4>How old is Donald Tusk?</h4>
+                    <i class="fa fa-angle-up"></i>
+                  </label>
+                  <p>Donald Tusk is 61 years old</p>
+
+                  <hr>
+                </div>
               </div>
               <!-- /.mail-box-messages -->
             </div>

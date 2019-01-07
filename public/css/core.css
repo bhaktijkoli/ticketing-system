@@ -17565,3 +17565,55 @@ table.text-center th {
   outline: none;
 }
 
+.container {
+  width: 80%;
+  margin: 2em auto;
+}
+
+hr {
+  color: coral;
+}
+
+input {
+  display: none;
+}
+
+h4 {
+  margin: auto;
+  color: dimgrey;
+  float: left;
+  margin-right: 0.3em;
+}
+
+p {
+  clear: both;
+}
+
+label > i {
+  float: right;
+  margin: 0.3em;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+input:checked + label > i {
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+label + p {
+  line-height: 0%;
+  color: darkslategray;
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+input:checked + label + p {
+  -webkit-transform: rotateX(0);
+          transform: rotateX(0);
+  line-height: 100%;
+  line-height: auto;
+}
+
