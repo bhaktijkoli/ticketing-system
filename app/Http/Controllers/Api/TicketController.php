@@ -35,6 +35,15 @@ class TicketController extends Controller
     return ResponseBuilder::send(true, "Ticket created.", "");
   }
 
+  public function postStatus(Request $request)
+  {
+    $ticket = Ticket::find($request->input('ticket', '-1'));
+    if(!$ticket) abort(404);
+    $ticket->status = $request->input('status', '1');
+    $ticket->save();
+    return ResponseBuilder::send(true, "", "");
+  }
+
   public function getUnassigned(Request $request)
   {
     $tickets = Ticket::where('enrolled_by', '-1')->latest()->get();
@@ -47,7 +56,7 @@ class TicketController extends Controller
 
   public function getUserTickets(Request $request)
   {
-    $tickets = Ticket::where('created_by', Auth::user()->id)->orWhere('enrolled_by', Auth::user()->id)->latest()->get();
+    $tickets = Ticket::where('status', '1')->where('created_by', Auth::user()->id)->orWhere('enrolled_by', Auth::user()->id)->latest()->get();
     $ticketsArray = [];
     foreach ($tickets as $t) {
       array_push($ticketsArray, $t->format());

@@ -10,6 +10,7 @@ class Ticket extends Model
     $data['id'] = $this->id;
     $data['subject'] = $this->subject;
     $data['token'] = $this->token;
+    $data['status'] = $this->status;
     if($all) {
       $messages = Message::where('ticket', $this->id)->get();
       $messagesArr = [];

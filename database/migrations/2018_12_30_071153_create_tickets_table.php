@@ -19,6 +19,7 @@ class CreateTicketsTable extends Migration
       $table->integer('enrolled_by')->default(-1);
       $table->string('subject');
       $table->string('token');
+      $table->enum('status', [0,1])->default(1);
       $table->timestamps();
     });
   }
