@@ -45,6 +45,16 @@ class TicketController extends Controller
     return $ticketsArray;
   }
 
+  public function getUserTickets(Request $request)
+  {
+    $tickets = Ticket::where('created_by', Auth::user()->id)->orWhere('enrolled_by', Auth::user()->id)->latest()->get();
+    $ticketsArray = [];
+    foreach ($tickets as $t) {
+      array_push($ticketsArray, $t->format());
+    }
+    return $ticketsArray;
+  }
+
   public function getDetails($id)
   {
     $ticket = Ticket::find($id);
