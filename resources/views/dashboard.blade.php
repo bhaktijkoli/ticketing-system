@@ -12,7 +12,6 @@
   </head>
   <body class="skin-blue sidebar-mini sidebar-collapse">
     <div id="dashboard">
-      <!-- <Dashboard/> -->
       <router-view></router-view>
     </div>
     <script type="text/javascript" src="{{ asset('js/core.js') }}"></script>

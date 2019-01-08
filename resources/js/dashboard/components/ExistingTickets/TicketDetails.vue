@@ -178,10 +178,11 @@ export default {
     closeTicket: function() {
       let data = {
         ticket: this.$route.params.id,
-        status: 1
+        status: "0"
       };
       axios.post("/api/ticket/status", data).then(res => {
         if (fh.is_success(res.data)) {
+          console.log(this.status);
           window.location.href = "/home";
         } else {
           fh.set_multierrors(res.data);

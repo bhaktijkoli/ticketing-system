@@ -32,9 +32,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="ticket in tickets">
+                    <tr v-for="ticket in tickets" v-show="ticket.status==1">
                       <td>{{ticket.created_by.name}}</td>
                       <td class="mailbox-subject">
+                        <!-- to make disable link on close :event="ticket.status==0 ? ticket.status==1 : 'click'" -->
                         <router-link
                           :to="{ name: 'TicketDetails', params: {id: ticket.id} }"
                         >{{ticket.subject}}</router-link>
