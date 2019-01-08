@@ -27,6 +27,7 @@
                       <th>Create By</th>
                       <th>Subject</th>
                       <th>Last Message</th>
+                      <th>Status</th>
                       <th>Time</th>
                     </tr>
                   </thead>
@@ -39,7 +40,8 @@
                         >{{ticket.subject}}</router-link>
                       </td>
                       <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
-
+                      <td v-if="ticket.status==1" class="mailbox-subject status-open">OPEN</td>
+                      <td v-if="ticket.status==0" class="mailbox-subject status-close">CLOSE</td>
                       <td class="mailbox-date">{{ticket.created_at_format}}</td>
                     </tr>
                   </tbody>

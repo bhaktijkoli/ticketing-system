@@ -99,9 +99,12 @@
           >
             <i class="fa fa-print"></i> Print
           </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <button
+            v-on:click.prevent="closeTicket()"
+            type="submit"
+            class="btn btn-primary pull-right"
+            style="margin-right: 5px;"
+          >Close Ticket</button>
         </div>
       </div>
     </section>
@@ -143,9 +146,7 @@ export default {
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
         setTimeout(function() {
-          $(".direct-chat-messages").scrollTop(
-            $(".direct-chat-messages")[0].scrollHeight
-          );
+          $("box-body").scrollTop($("box-body")[0].scrollHeight);
         }, 100);
         window.Echo.channel(response.data.token).listen("NewMessage", e => {
           this.messages.push(e.message);
@@ -155,9 +156,7 @@ export default {
           audio.play();
           audio.volume = 0.5;
           setTimeout(function() {
-            $(".direct-chat-messages").scrollTop(
-              $(".direct-chat-messages")[0].scrollHeight
-            );
+            $("box-body").scrollTop($("box-body")[0].scrollHeight);
           }, 100);
         });
       });
@@ -173,6 +172,19 @@ export default {
           this.message = "";
         } else {
           fh.set_multierrors(response.data);
+        }
+      });
+    },
+    closeTicket: function() {
+      let data = {
+        ticket: this.$route.params.id,
+        status: 1
+      };
+      axios.post("/api/ticket/status", data).then(res => {
+        if (fh.is_success(res.data)) {
+          window.location.href = "/home";
+        } else {
+          fh.set_multierrors(res.data);
         }
       });
     }
