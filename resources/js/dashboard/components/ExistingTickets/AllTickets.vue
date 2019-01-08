@@ -32,7 +32,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="ticket in tickets" v-show="ticket.status==1">
+                    <tr v-for="ticket in tickets">
                       <td>{{ticket.created_by.name}}</td>
                       <td class="mailbox-subject">
                         <!-- to make disable link on close :event="ticket.status==0 ? ticket.status==1 : 'click'" -->

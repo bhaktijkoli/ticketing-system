@@ -27237,78 +27237,65 @@ var render = function() {
                           _c(
                             "tbody",
                             _vm._l(_vm.tickets, function(ticket) {
-                              return _c(
-                                "tr",
-                                {
-                                  directives: [
-                                    {
-                                      name: "show",
-                                      rawName: "v-show",
-                                      value: ticket.status == 1,
-                                      expression: "ticket.status==1"
-                                    }
-                                  ]
-                                },
-                                [
-                                  _c("td", [
-                                    _vm._v(_vm._s(ticket.created_by.name))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    { staticClass: "mailbox-subject" },
-                                    [
-                                      _c(
-                                        "router-link",
-                                        {
-                                          attrs: {
-                                            to: {
-                                              name: "TicketDetails",
-                                              params: { id: ticket.id }
-                                            }
+                              return _c("tr", [
+                                _c("td", [
+                                  _vm._v(_vm._s(ticket.created_by.name))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticClass: "mailbox-subject" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to: {
+                                            name: "TicketDetails",
+                                            params: { id: ticket.id }
                                           }
-                                        },
-                                        [_vm._v(_vm._s(ticket.subject))]
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "mailbox-subject" }, [
-                                    _vm._v(
-                                      _vm._s(
-                                        ticket.last_message.message.slice(0, 20)
-                                      ) + " ..."
+                                        }
+                                      },
+                                      [_vm._v(_vm._s(ticket.subject))]
                                     )
-                                  ]),
-                                  _vm._v(" "),
-                                  ticket.status == 1
-                                    ? _c(
-                                        "td",
-                                        {
-                                          staticClass:
-                                            "mailbox-subject status-open"
-                                        },
-                                        [_vm._v("OPEN")]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  ticket.status == 0
-                                    ? _c(
-                                        "td",
-                                        {
-                                          staticClass:
-                                            "mailbox-subject status-close"
-                                        },
-                                        [_vm._v("CLOSE")]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "mailbox-date" }, [
-                                    _vm._v(_vm._s(ticket.created_at_format))
-                                  ])
-                                ]
-                              )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "mailbox-subject" }, [
+                                  _vm._v(
+                                    _vm._s(
+                                      ticket.last_message.message.slice(0, 20)
+                                    ) + " ..."
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                ticket.status == 1
+                                  ? _c(
+                                      "td",
+                                      {
+                                        staticClass:
+                                          "mailbox-subject status-open"
+                                      },
+                                      [_vm._v("OPEN")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                ticket.status == 0
+                                  ? _c(
+                                      "td",
+                                      {
+                                        staticClass:
+                                          "mailbox-subject status-close"
+                                      },
+                                      [_vm._v("CLOSE")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "mailbox-date" }, [
+                                  _vm._v(_vm._s(ticket.created_at_format))
+                                ])
+                              ])
                             }),
                             0
                           )
