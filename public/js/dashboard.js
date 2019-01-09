@@ -27164,12 +27164,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
   data: function data() {
     return {
-      tickets: []
+      tickets: [],
+      hover: false
     };
   },
   mounted: function mounted() {
@@ -27239,7 +27266,20 @@ var render = function() {
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
                                 _c("td", [
-                                  _vm._v(_vm._s(ticket.created_by.name))
+                                  _c("img", {
+                                    staticClass: "user-image hover-img",
+                                    attrs: {
+                                      src:
+                                        "https://ui-avatars.com/api/?name=" +
+                                        ticket.created_by.name,
+                                      alt: "User Image"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(ticket.created_by.name) +
+                                      "\n                    "
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -27292,9 +27332,11 @@ var render = function() {
                                     )
                                   : _vm._e(),
                                 _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-date" }, [
-                                  _vm._v(_vm._s(ticket.created_at_format))
-                                ])
+                                _vm.hover == false
+                                  ? _c("td", { staticClass: "mailbox-date" }, [
+                                      _vm._v(_vm._s(ticket.created_at_format))
+                                    ])
+                                  : _vm._e()
                               ])
                             }),
                             0

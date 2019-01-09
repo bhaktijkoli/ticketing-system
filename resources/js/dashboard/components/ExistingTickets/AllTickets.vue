@@ -33,7 +33,14 @@
                   </thead>
                   <tbody>
                     <tr v-for="ticket in tickets">
-                      <td>{{ticket.created_by.name}}</td>
+                      <td>
+                        <img
+                          v-bind:src="'https://ui-avatars.com/api/?name='+ticket.created_by.name"
+                          class="user-image hover-img"
+                          alt="User Image"
+                        >
+                        {{ticket.created_by.name}}
+                      </td>
                       <td class="mailbox-subject">
                         <!-- to make disable link on close :event="ticket.status==0 ? ticket.status==1 : 'click'" -->
                         <router-link
@@ -43,8 +50,27 @@
                       <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
                       <td v-if="ticket.status==1" class="mailbox-subject status-open">OPEN</td>
                       <td v-if="ticket.status==0" class="mailbox-subject status-close">CLOSE</td>
-                      <td class="mailbox-date">{{ticket.created_at_format}}</td>
+                      <td v-if="hover==false" class="mailbox-date">{{ticket.created_at_format}}</td>
                     </tr>
+                    <!-- for hover effect -->
+                    <!-- <tr v-for="ticket in tickets" v-if="hover==true">
+                      <td>
+                        <img
+                          v-bind:src="'https://ui-avatars.com/api/?name='+ticket.created_by.name"
+                          class="user-image"
+                          alt="User Image"
+                        >
+                      </td>
+                      <td class="mailbox-subject">
+                        <router-link
+                          :to="{ name: 'TicketDetails', params: {id: ticket.id} }"
+                        >{{ticket.subject}}</router-link>
+                      </td>
+                      <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
+                      <td v-if="ticket.status==1" class="mailbox-subject status-open">OPEN</td>
+                      <td v-if="ticket.status==0" class="mailbox-subject status-close">CLOSE</td>
+                      <td class="mailbox-date">{{ticket.created_at_format}}</td>
+                    </tr>-->
                   </tbody>
                 </table>
                 <!-- /.table -->
@@ -89,7 +115,8 @@ export default {
   name: "AllTickets",
   data() {
     return {
-      tickets: []
+      tickets: [],
+      hover: false
     };
   },
   mounted() {

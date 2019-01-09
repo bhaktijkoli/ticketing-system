@@ -17574,3 +17574,9 @@ table.text-center th {
   color: green;
 }
 
+.hover-img {
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+}
+

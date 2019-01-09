@@ -6302,10 +6302,19 @@ table.text-center th {
     background: #b20000;
     outline: none;
 }
+
 //status css 
-.status-open{
-    color:red;
+.status-open {
+    color: red;
 }
-.status-close{
-    color:green;
+
+.status-close {
+    color: green;
+}
+
+// hover effect for inbox
+.hover-img {
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
 }
