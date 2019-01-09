@@ -27171,25 +27171,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
@@ -27332,11 +27313,9 @@ var render = function() {
                                     )
                                   : _vm._e(),
                                 _vm._v(" "),
-                                _vm.hover == false
-                                  ? _c("td", { staticClass: "mailbox-date" }, [
-                                      _vm._v(_vm._s(ticket.created_at_format))
-                                    ])
-                                  : _vm._e()
+                                _c("td", { staticClass: "mailbox-date" }, [
+                                  _vm._v(_vm._s(ticket.created_at_format))
+                                ])
                               ])
                             }),
                             0
@@ -29899,6 +29878,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserTickets",
@@ -29912,6 +29901,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     axios.get("/api/ticket/user/get").then(function (res) {
       _this.tickets = res.data;
+      console.log(_this.tickets);
     });
   }
 });
@@ -29974,7 +29964,20 @@ var render = function() {
                             _vm._l(_vm.tickets, function(ticket) {
                               return _c("tr", [
                                 _c("td", [
-                                  _vm._v(_vm._s(ticket.created_by.name))
+                                  _c("img", {
+                                    staticClass: "user-image hover-img",
+                                    attrs: {
+                                      src:
+                                        "https://ui-avatars.com/api/?name=" +
+                                        ticket.created_by.name,
+                                      alt: "User Image"
+                                    }
+                                  }),
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(ticket.created_by.name) +
+                                      "\n                    "
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -30004,6 +30007,28 @@ var render = function() {
                                     ) + " ..."
                                   )
                                 ]),
+                                _vm._v(" "),
+                                ticket.status == 1
+                                  ? _c(
+                                      "td",
+                                      {
+                                        staticClass:
+                                          "mailbox-subject status-open"
+                                      },
+                                      [_vm._v("OPEN")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                ticket.status == 0
+                                  ? _c(
+                                      "td",
+                                      {
+                                        staticClass:
+                                          "mailbox-subject status-close"
+                                      },
+                                      [_vm._v("CLOSE")]
+                                    )
+                                  : _vm._e(),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-date" }, [
                                   _vm._v(_vm._s(ticket.created_at_format))
@@ -30057,6 +30082,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Subject")]),
         _vm._v(" "),
         _c("th", [_vm._v("Last Message")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Status")]),
         _vm._v(" "),
         _c("th", [_vm._v("Time")])
       ])
