@@ -33,7 +33,7 @@ const router = new VueRouter({
             component: NewTicketForm
         },
         {
-            path: '/mytickets',
+            path: '/my-tickets',
             name: 'UserTickets',
             component: UserTickets
         },
