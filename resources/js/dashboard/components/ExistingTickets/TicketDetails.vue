@@ -146,7 +146,7 @@ export default {
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
         setTimeout(function() {
-          $("box-body").scrollTop($("box-body")[0].scrollHeight);
+          $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
         }, 100);
         window.Echo.channel(response.data.token).listen("NewMessage", e => {
           this.messages.push(e.message);
@@ -156,7 +156,7 @@ export default {
           audio.play();
           audio.volume = 0.5;
           setTimeout(function() {
-            $("box-body").scrollTop($("box-body")[0].scrollHeight);
+            $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
           }, 100);
         });
       });
