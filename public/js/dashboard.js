@@ -13750,7 +13750,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_2_vue_router__["a" /* default */]({
         name: 'NewTicketForm',
         component: __WEBPACK_IMPORTED_MODULE_7__dashboard_components_NewTicket_NewTicketForm_vue___default.a
     }, {
-        path: '/mytickets',
+        path: '/my-tickets',
         name: 'UserTickets',
         component: __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue___default.a
     }, {
