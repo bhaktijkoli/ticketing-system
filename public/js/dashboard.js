@@ -28098,7 +28098,7 @@ var staticRenderFns = [
             _c("div", { staticClass: "box box-info" }, [
               _c("div", { staticClass: "box-header with-border" }, [
                 _c("h3", { staticClass: "box-title" }, [
-                  _vm._v("Change and save your settings here!")
+                  _vm._v("Frequently Asked Questions")
                 ])
               ]),
               _vm._v(" "),
@@ -29713,9 +29713,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header" }, [
-      _c("h3", { staticClass: "box-title" }, [
-        _vm._v("Data Table With Full Features")
-      ])
+      _c("h3", { staticClass: "box-title" }, [_vm._v("All Users")])
     ])
   },
   function() {

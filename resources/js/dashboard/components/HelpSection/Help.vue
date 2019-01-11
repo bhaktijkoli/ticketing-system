@@ -7,7 +7,7 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Change and save your settings here!</h3>
+              <h3 class="box-title">Frequently Asked Questions</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">

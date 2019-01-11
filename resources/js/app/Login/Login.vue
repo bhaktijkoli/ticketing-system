@@ -3,6 +3,12 @@
     <!--logo-->
     <div class="login-box">
       <div class="login-box-body">
+        <div class="text-center">
+          <img class="text-center" src="/images/logo.png" alt="logo">
+        </div>
+        <!-- <div class="text-center">
+        <img src="/images/logo.png" alt="logo">
+        </div> -->
         <p class="login-box-msg">Login to start your session</p>
         <p class="alert alert-danger" role="alert" v-if="error">
           Incorrect Credentials. Please Try again!
@@ -63,5 +69,8 @@ export default {
 <style scoped>
 .passwd {
   text-align: center;
+}
+.text-center{
+  height: 10vw;
 }
 </style>

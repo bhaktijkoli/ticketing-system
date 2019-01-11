@@ -13783,7 +13783,7 @@ exports = module.exports = __webpack_require__(29)(false);
 
 
 // module
-exports.push([module.i, "\n.passwd[data-v-3bec1f87] {\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.passwd[data-v-3bec1f87] {\n  text-align: center;\n}\n.text-center[data-v-3bec1f87]{\n  height: 10vw;\n}\n", ""]);
 
 // exports
 
@@ -13796,6 +13796,12 @@ exports.push([module.i, "\n.passwd[data-v-3bec1f87] {\n  text-align: center;\n}\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -13869,6 +13875,8 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "login-box" }, [
       _c("div", { staticClass: "login-box-body" }, [
+        _vm._m(0),
+        _vm._v(" "),
         _c("p", { staticClass: "login-box-msg" }, [
           _vm._v("Login to start your session")
         ]),
@@ -13951,7 +13959,7 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "button",
@@ -13962,7 +13970,7 @@ var render = function() {
               [_vm._v("Sign In")]
             ),
             _vm._v(" "),
-            _vm._m(1),
+            _vm._m(2),
             _vm._v(" "),
             _c("br")
           ]
@@ -13972,6 +13980,17 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c("img", {
+        staticClass: "text-center",
+        attrs: { src: "/images/logo.png", alt: "logo" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
