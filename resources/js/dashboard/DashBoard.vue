@@ -65,7 +65,7 @@
           </li>
           <!-- my ticket for users -->
           <li class="treeview" v-if="role == 2">
-            <router-link to="/mytickets">
+            <router-link to="/my-tickets">
               <i class="fa fa-ticket"></i>
               <span title="for admin">My Tickets</span>
               <span class="pull-right-container">
