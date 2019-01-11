@@ -91,7 +91,7 @@
           <li class="treeview">
             <router-link to="/settings">
               <i class="fa fa-cog"></i>
-              <span>Setting</span>
+              <span>Settings</span>
             </router-link>
           </li>
           <!-- Help section -->

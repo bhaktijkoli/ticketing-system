@@ -26945,7 +26945,7 @@ var render = function() {
                   _c("router-link", { attrs: { to: "/settings" } }, [
                     _c("i", { staticClass: "fa fa-cog" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Setting")])
+                    _c("span", [_vm._v("Settings")])
                   ])
                 ],
                 1
