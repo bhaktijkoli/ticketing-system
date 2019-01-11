@@ -107,3 +107,21 @@ export default {
   }
 };
 </script>
+<style scoped>
+.table {
+    border-bottom: 0px !important;
+}
+
+.table th,
+.table td {
+    border: 1px !important;
+}
+
+.fixed-table-container {
+    border: 0px !important;
+}
+
+.table tr {
+    height: 50px;
+}
+</style>
