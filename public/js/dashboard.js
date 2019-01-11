@@ -27171,13 +27171,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
   data: function data() {
     return {
-      tickets: [],
-      hover: false
+      tickets: []
     };
   },
   mounted: function mounted() {
@@ -27285,10 +27287,22 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("td", { staticClass: "mailbox-subject" }, [
                                   _vm._v(
-                                    _vm._s(
-                                      ticket.last_message.message.slice(0, 20)
-                                    ) + " ..."
-                                  )
+                                    "\n                      " +
+                                      _vm._s(
+                                        ticket.last_message.created_by.name
+                                      ) +
+                                      ":\n                      "
+                                  ),
+                                  _c("small", [
+                                    _vm._v(
+                                      _vm._s(
+                                        ticket.last_message.message.slice(
+                                          0,
+                                          120
+                                        )
+                                      ) + " ..."
+                                    )
+                                  ])
                                 ]),
                                 _vm._v(" "),
                                 ticket.status == 1
