@@ -31393,7 +31393,7 @@ var render = function() {
                               _c("small", [
                                 _vm._v(
                                   _vm._s(
-                                    ticket.last_message.message.slice(0, 100)
+                                    ticket.last_message.message.slice(0, 75)
                                   ) + " ..."
                                 )
                               ])

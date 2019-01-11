@@ -48,7 +48,7 @@
                     </td>
                     <td class="mailbox-subject">
                       {{ticket.last_message.created_by.name}}:
-                      <small>{{ticket.last_message.message.slice(0,100)}} ...</small>
+                      <small>{{ticket.last_message.message.slice(0,75)}} ...</small>
                     </td>
                     <td class="mailbox-subject">{{ticket.last_message.created_by.name}}</td>
                     <td v-if="ticket.status==1" class="mailbox-subject status-open">
