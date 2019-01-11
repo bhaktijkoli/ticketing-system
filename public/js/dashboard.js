@@ -27171,10 +27171,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
@@ -27234,118 +27230,117 @@ var render = function() {
               _c("div", { staticClass: "box box-primary" }, [
                 _vm._m(1),
                 _vm._v(" "),
-                _c("div", { staticClass: "box-body no-padding" }, [
-                  _c(
-                    "div",
-                    { staticClass: "table-responsive mailbox-messages" },
-                    [
+                _c(
+                  "div",
+                  { staticClass: "box-body table-responsive borderless" },
+                  [
+                    _c("table", { staticClass: "table" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
                       _c(
-                        "table",
-                        { staticClass: "table table-hover table-striped" },
-                        [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.tickets, function(ticket) {
-                              return _c("tr", [
-                                _c("td", [
-                                  _c("img", {
-                                    staticClass: "user-image hover-img",
-                                    attrs: {
-                                      src:
-                                        "https://ui-avatars.com/api/?name=" +
-                                        ticket.created_by.name,
-                                      alt: "User Image"
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(ticket.created_by.name) +
-                                      "\n                    "
-                                  )
-                                ]),
-                                _vm._v(" "),
+                        "tbody",
+                        _vm._l(_vm.tickets, function(ticket) {
+                          return _c("tr", [
+                            _c("td", [
+                              _c("img", {
+                                staticClass: "user-image hover-img",
+                                attrs: {
+                                  src:
+                                    "https://ui-avatars.com/api/?name=" +
+                                    ticket.created_by.name,
+                                  alt: "User Image"
+                                }
+                              }),
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(ticket.created_by.name) +
+                                  "\n                  "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "mailbox-subject" },
+                              [
                                 _c(
+                                  "router-link",
+                                  {
+                                    attrs: {
+                                      to: {
+                                        name: "TicketDetails",
+                                        params: { id: ticket.id }
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(ticket.subject))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(ticket.last_message.created_by.name) +
+                                  ":\n                    "
+                              ),
+                              _c("small", [
+                                _vm._v(
+                                  _vm._s(
+                                    ticket.last_message.message.slice(0, 100)
+                                  ) + " ..."
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                _vm._s(ticket.last_message.created_by.name)
+                              )
+                            ]),
+                            _vm._v(" "),
+                            ticket.status == 1
+                              ? _c(
                                   "td",
-                                  { staticClass: "mailbox-subject" },
+                                  {
+                                    staticClass: "mailbox-subject status-open"
+                                  },
                                   [
                                     _c(
-                                      "router-link",
-                                      {
-                                        attrs: {
-                                          to: {
-                                            name: "TicketDetails",
-                                            params: { id: ticket.id }
-                                          }
-                                        }
-                                      },
-                                      [_vm._v(_vm._s(ticket.subject))]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(
-                                        ticket.last_message.created_by.name
-                                      ) +
-                                      ":\n                      "
-                                  ),
-                                  _c("small", [
-                                    _vm._v(
-                                      _vm._s(
-                                        ticket.last_message.message.slice(
-                                          0,
-                                          100
-                                        )
-                                      ) + " ..."
-                                    )
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v(
-                                    _vm._s(ticket.last_message.created_by.name)
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                ticket.status == 1
-                                  ? _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "mailbox-subject status-open"
-                                      },
+                                      "span",
+                                      { staticClass: "label label-danger" },
                                       [_vm._v("OPEN")]
                                     )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                ticket.status == 0
-                                  ? _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "mailbox-subject status-close"
-                                      },
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            ticket.status == 0
+                              ? _c(
+                                  "td",
+                                  {
+                                    staticClass: "mailbox-subject status-close"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "label label-success" },
                                       [_vm._v("CLOSE")]
                                     )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-date" }, [
-                                  _vm._v(_vm._s(ticket.created_at_format))
-                                ])
-                              ])
-                            }),
-                            0
-                          )
-                        ]
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v(_vm._s(ticket.created_at_format))
+                            ])
+                          ])
+                        }),
+                        0
                       )
-                    ]
-                  )
-                ]),
+                    ])
+                  ]
+                ),
                 _vm._v(" "),
                 _vm._m(3)
               ])
@@ -27371,7 +27366,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
+    return _c("div", { staticClass: "box-header" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
     ])
   },
