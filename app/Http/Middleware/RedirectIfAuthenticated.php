@@ -18,7 +18,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-          if(Auth::user()->role == 0) {
+          if(Auth::user()->role == '0') {
             return redirect('/home');
           } else {
             return redirect('/my-tickets');

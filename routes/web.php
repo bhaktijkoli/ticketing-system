@@ -16,7 +16,7 @@ Route::get('/home', 'DashboardController@getHome');
 Route::get('/new-ticket', 'DashboardController@getHome');
 Route::get('/ticket', 'DashboardController@getHome');
 Route::get('ticket/{id}', 'DashboardController@getHome');
-Route::get('/mytickets', 'DashboardController@getHome');
+Route::get('/my-tickets', 'DashboardController@getHome');
 Route::get('/settings', 'DashboardController@getHome');
 Route::get('/users', 'DashboardController@getHome');
 Route::get('/user/{id}/edit', 'DashboardController@getHome');
