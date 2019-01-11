@@ -27,6 +27,7 @@
                       <th>Create By</th>
                       <th>Subject</th>
                       <th>Last Message</th>
+                      <th>Handled By</th>
                       <th>Status</th>
                       <th>Time</th>
                     </tr>
@@ -49,8 +50,9 @@
                       </td>
                       <td class="mailbox-subject">
                         {{ticket.last_message.created_by.name}}:
-                        <small>{{ticket.last_message.message.slice(0,120)}} ...</small>
+                        <small>{{ticket.last_message.message.slice(0,100)}} ...</small>
                       </td>
+                      <td class="mailbox-subject">{{ticket.last_message.created_by.name}}</td>
                       <td v-if="ticket.status==1" class="mailbox-subject status-open">OPEN</td>
                       <td v-if="ticket.status==0" class="mailbox-subject status-close">CLOSE</td>
                       <td class="mailbox-date">{{ticket.created_at_format}}</td>

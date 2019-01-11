@@ -27174,6 +27174,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
@@ -27298,11 +27300,17 @@ var render = function() {
                                       _vm._s(
                                         ticket.last_message.message.slice(
                                           0,
-                                          120
+                                          100
                                         )
                                       ) + " ..."
                                     )
                                   ])
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "mailbox-subject" }, [
+                                  _vm._v(
+                                    _vm._s(ticket.last_message.created_by.name)
+                                  )
                                 ]),
                                 _vm._v(" "),
                                 ticket.status == 1
@@ -27379,6 +27387,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("Subject")]),
         _vm._v(" "),
         _c("th", [_vm._v("Last Message")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Handled By")]),
         _vm._v(" "),
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
