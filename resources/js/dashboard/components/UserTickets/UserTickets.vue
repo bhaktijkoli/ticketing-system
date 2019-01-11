@@ -16,13 +16,11 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Inbox</h3>
-              <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
-            <div class="box-body no-padding">
-              <div class="table-responsive mailbox-messages">
-                <table class="table table-hover table-striped">
-                  <thead>
+            <div class="box-body table-responsive borderless">
+                <table class="table">
+                  <!-- <thead>
                     <tr>
                       <th>Create By</th>
                       <th>Subject</th>
@@ -30,33 +28,36 @@
                       <th>Status</th>
                       <th>Time</th>
                     </tr>
-                  </thead>
+                  </thead> -->
                   <tbody>
                     <tr v-for="ticket in tickets">
-                      <td>
-                        <img
-                          v-bind:src="'https://ui-avatars.com/api/?name='+ticket.created_by.name"
-                          class="user-image hover-img"
-                          alt="User Image"
-                        >
-                        {{ticket.created_by.name}}
+                      <td v-if="ticket.status==0">
+                        <i class="fa fa-circle text-green"></i>
                       </td>
-                      <td class="mailbox-subject">
-                        <!-- to make disable link on close :event="ticket.status==0 ? ticket.status==1 : 'click'" -->
-                        <router-link
-                          :to="{ name: 'TicketDetails', params: {id: ticket.id} }"
-                        >{{ticket.subject}}</router-link>
+                      <td v-if="ticket.status==1">
+                        <i class="fa fa-circle text-yellow"></i>
                       </td>
-                      <td class="mailbox-subject">{{ticket.last_message.message.slice(0,20)}} ...</td>
-                      <td v-if="ticket.status==1" class="mailbox-subject status-open">OPEN</td>
-                      <td v-if="ticket.status==0" class="mailbox-subject status-close">CLOSED</td>
-                      <td class="mailbox-date">{{ticket.created_at_format}}</td>
+                    <td class="mailbox-subject">
+                      <router-link
+                        :to="{ name: 'TicketDetails', params: {id: ticket.id} }"
+                      >{{ticket.subject}}</router-link>
+                    </td>
+                    <td class="mailbox-subject">
+                      {{ticket.last_message.created_by.name}}:
+                      <small>{{ticket.last_message.message.slice(0,75)}}...</small>
+                    </td>
+                    <td class="mailbox-subject">Attended by: {{ticket.last_message.created_by.name}}</td>
+                    <!-- <td v-if="ticket.status==1" class="mailbox-subject status-open">
+                      <span class="label label-danger">OPEN</span>
+                    </td>
+                    <td v-if="ticket.status==0" class="mailbox-subject status-close">
+                      <span class="label label-success">CLOSED</span>
+                    </td> -->
+                    <td class="mailbox-date">{{ticket.created_at_format}}</td>
                     </tr>
                   </tbody>
                 </table>
                 <!-- /.table -->
-              </div>
-              <!-- /.mail-box-messages -->
             </div>
             <!-- /.box-body -->
             <div class="box-footer no-padding">
@@ -107,3 +108,22 @@ export default {
   }
 };
 </script>
+<style scoped>
+.table {
+    border-bottom: 0px !important;
+}
+
+.table th,
+.table td {
+    border: 1px !important;
+}
+
+.fixed-table-container {
+    border: 0px !important;
+}
+
+.table tr {
+    height: 5
+}
+</style>
+

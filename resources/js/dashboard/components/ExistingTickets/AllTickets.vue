@@ -21,16 +21,16 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive borderless">
               <table class="table">
-                <thead>
+                <!-- <thead>
                   <tr>
-                    <th>Create By</th>
+                    <th>Created By</th>
                     <th>Subject</th>
                     <th>Last Message</th>
                     <th>Handled By</th>
                     <th>Status</th>
                     <th>Time</th>
                   </tr>
-                </thead>
+                </thead> -->
                 <tbody>
                   <tr v-for="ticket in tickets">
                     <td>
@@ -48,14 +48,14 @@
                     </td>
                     <td class="mailbox-subject">
                       {{ticket.last_message.created_by.name}}:
-                      <small>{{ticket.last_message.message.slice(0,75)}} ...</small>
+                      <small>{{ticket.last_message.message.slice(0,75)}}...</small>
                     </td>
-                    <td class="mailbox-subject">{{ticket.last_message.created_by.name}}</td>
+                    <td class="mailbox-subject">Attended by: {{ticket.last_message.created_by.name}}</td>
                     <td v-if="ticket.status==1" class="mailbox-subject status-open">
-                      <span class="label label-danger">OPEN</span>
+                      <span class="label label-warning">OPEN</span>
                     </td>
                     <td v-if="ticket.status==0" class="mailbox-subject status-close">
-                      <span class="label label-success">CLOSE</span>
+                      <span class="label label-success">CLOSED</span>
                     </td>
                     <td class="mailbox-date">{{ticket.created_at_format}}</td>
                   </tr>
@@ -110,6 +110,10 @@ export default {
 <style scoped>
 .table {
     border-bottom: 0px !important;
+}
+
+.table th{
+  display: none;
 }
 
 .table th,
