@@ -26753,9 +26753,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DashBoard",
@@ -26895,7 +26892,7 @@ var render = function() {
                       _c("router-link", { attrs: { to: "/my-tickets" } }, [
                         _c("i", { staticClass: "fa fa-ticket" }),
                         _vm._v(" "),
-                        _c("span", { attrs: { title: "for admin" } }, [
+                        _c("span", { attrs: { title: "Your tickets here" } }, [
                           _vm._v("My Tickets")
                         ]),
                         _vm._v(" "),
@@ -26912,17 +26909,19 @@ var render = function() {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "li",
-                [
-                  _c("router-link", { attrs: { to: "/new-ticket" } }, [
-                    _c("i", { staticClass: "fa fa-plus" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("New Ticket")])
-                  ])
-                ],
-                1
-              ),
+              _vm.role == 0 || _vm.role == 2
+                ? _c(
+                    "li",
+                    [
+                      _c("router-link", { attrs: { to: "/new-ticket" } }, [
+                        _c("i", { staticClass: "fa fa-plus" }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("New Ticket")])
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _vm.role == 0
                 ? _c(
