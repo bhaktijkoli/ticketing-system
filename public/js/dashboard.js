@@ -26945,7 +26945,7 @@ var render = function() {
                   _c("router-link", { attrs: { to: "/settings" } }, [
                     _c("i", { staticClass: "fa fa-cog" }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Setting")])
+                    _c("span", [_vm._v("Settings")])
                   ])
                 ],
                 1
@@ -29816,17 +29816,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(116)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(88)
 /* template */
-var __vue_template__ = __webpack_require__(89)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-6aca62c9"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29957,6 +29961,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserTickets",
@@ -29976,230 +29981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 89 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content" }, [
-      _c("h3", [_vm._v("All Ticket")]),
-      _vm._v(" "),
-      _vm.tickets == 0
-        ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "alert",
-                  "aria-hidden": "true"
-                }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(
-              "Sorry their is no ticket to show, create your ticket\n      "
-            ),
-            _c("a", { attrs: { href: "/new-ticket" } }, [_vm._v("here")]),
-            _vm._v("!\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.tickets != 0
-        ? _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xs-12" }, [
-              _c("div", { staticClass: "box box-primary" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "box-body no-padding" }, [
-                  _c(
-                    "div",
-                    { staticClass: "table-responsive mailbox-messages" },
-                    [
-                      _c(
-                        "table",
-                        { staticClass: "table table-hover table-striped" },
-                        [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c(
-                            "tbody",
-                            _vm._l(_vm.tickets, function(ticket) {
-                              return _c("tr", [
-                                _c("td", [
-                                  _c("img", {
-                                    staticClass: "user-image hover-img",
-                                    attrs: {
-                                      src:
-                                        "https://ui-avatars.com/api/?name=" +
-                                        ticket.created_by.name,
-                                      alt: "User Image"
-                                    }
-                                  }),
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(ticket.created_by.name) +
-                                      "\n                    "
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "td",
-                                  { staticClass: "mailbox-subject" },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        attrs: {
-                                          to: {
-                                            name: "TicketDetails",
-                                            params: { id: ticket.id }
-                                          }
-                                        }
-                                      },
-                                      [_vm._v(_vm._s(ticket.subject))]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v(
-                                    _vm._s(
-                                      ticket.last_message.message.slice(0, 20)
-                                    ) + " ..."
-                                  )
-                                ]),
-                                _vm._v(" "),
-                                ticket.status == 1
-                                  ? _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "mailbox-subject status-open"
-                                      },
-                                      [_vm._v("OPEN")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                ticket.status == 0
-                                  ? _c(
-                                      "td",
-                                      {
-                                        staticClass:
-                                          "mailbox-subject status-close"
-                                      },
-                                      [_vm._v("CLOSED")]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "mailbox-date" }, [
-                                  _vm._v(_vm._s(ticket.created_at_format))
-                                ])
-                              ])
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _vm._m(3)
-              ])
-            ])
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "clearfix" })
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h4", [
-      _c("i", { staticClass: "icon fa fa-info" }),
-      _vm._v(" Alert!\n      ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Create By")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Subject")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Last Message")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Time")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer no-padding" }, [
-      _c("div", { staticClass: "mailbox-controls" }, [
-        _c("div", { staticClass: "pull-right" }, [
-          _vm._v("50/200\n                "),
-          _c("div", { staticClass: "btn-group" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default btn-sm",
-                attrs: { type: "button" }
-              },
-              [_c("i", { staticClass: "fa fa-chevron-left" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default btn-sm",
-                attrs: { type: "button" }
-              },
-              [_c("i", { staticClass: "fa fa-chevron-right" })]
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6aca62c9", module.exports)
-  }
-}
-
-/***/ }),
+/* 89 */,
 /* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31523,6 +31305,256 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
+
+/***/ }),
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(117);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(12)("c8f5235c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.table[data-v-6aca62c9] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-6aca62c9],\n.table td[data-v-6aca62c9] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-6aca62c9] {\n    border: 0px !important;\n}\n.table tr[data-v-6aca62c9] {\n    height: 5\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("h3", [_vm._v("All Ticket")]),
+      _vm._v(" "),
+      _vm.tickets == 0
+        ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "alert",
+                  "aria-hidden": "true"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(
+              "Sorry their is no ticket to show, create your ticket\n      "
+            ),
+            _c("a", { attrs: { href: "/new-ticket" } }, [_vm._v("here")]),
+            _vm._v("!\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.tickets != 0
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xs-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "box-body table-responsive borderless" },
+                  [
+                    _c("table", { staticClass: "table" }, [
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.tickets, function(ticket) {
+                          return _c("tr", [
+                            ticket.status == 0
+                              ? _c("td", [
+                                  _c("i", {
+                                    staticClass: "fa fa-circle text-green"
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            ticket.status == 1
+                              ? _c("td", [
+                                  _c("i", {
+                                    staticClass: "fa fa-circle text-yellow"
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "mailbox-subject" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    attrs: {
+                                      to: {
+                                        name: "TicketDetails",
+                                        params: { id: ticket.id }
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(ticket.subject))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(ticket.last_message.created_by.name) +
+                                  ":\n                    "
+                              ),
+                              _c("small", [
+                                _vm._v(
+                                  _vm._s(
+                                    ticket.last_message.message.slice(0, 75)
+                                  ) + "..."
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                "Attended by: " +
+                                  _vm._s(ticket.last_message.created_by.name)
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v(_vm._s(ticket.created_at_format))
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "clearfix" })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h4", [
+      _c("i", { staticClass: "icon fa fa-info" }),
+      _vm._v(" Alert!\n      ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-footer no-padding" }, [
+      _c("div", { staticClass: "mailbox-controls" }, [
+        _c("div", { staticClass: "pull-right" }, [
+          _vm._v("50/200\n                "),
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-left" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-right" })]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6aca62c9", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
