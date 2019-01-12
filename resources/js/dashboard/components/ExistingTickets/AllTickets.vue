@@ -9,16 +9,13 @@
         </h4>Sorry their is no ticket to show, create your ticket
         <a href="/new-ticket">here</a>!
       </div>
-      <!--/.add user -->
       <div v-if="tickets != 0" class="row">
         <!-- Main content -->
         <div class="col-xs-12">
-          <!-- /.box -->
           <div class="box box-primary">
             <div class="box-header">
               <h3 class="box-title">Inbox</h3>
             </div>
-            <!-- /.box-header -->
             <div class="box-body table-responsive borderless">
               <table class="table">
                 <thead>
@@ -50,7 +47,16 @@
                       {{ticket.last_message.created_by.name}}:
                       <small>{{ticket.last_message.message.slice(0,75)}} ...</small>
                     </td>
-                    <td class="mailbox-subject">{{ticket.last_message.created_by.name}}</td>
+                    <!-- reply from admin side -->
+                    <td
+                      class="mailbox-subject"
+                      v-if="ticket.created_by.name!=ticket.last_message.created_by.name"
+                    >{{ticket.last_message.created_by.name}}</td>
+                    <!-- reply not come -->
+                    <td
+                      class="mailbox-subject"
+                      v-if="ticket.created_by.name==ticket.last_message.created_by.name"
+                    >Attending soon...</td>
                     <td v-if="ticket.status==1" class="mailbox-subject status-open">
                       <span class="label label-danger">OPEN</span>
                     </td>
@@ -64,7 +70,6 @@
             </div>
             <div class="box-footer no-padding">
               <div class="mailbox-controls">
-                <!-- Check all button -->
                 <div class="pull-right">50/200
                   <div class="btn-group">
                     <button type="button" class="btn btn-default btn-sm">
@@ -74,18 +79,12 @@
                       <i class="fa fa-chevron-right"></i>
                     </button>
                   </div>
-                  <!-- /.btn-group -->
                 </div>
-                <!-- /.pull-right -->
               </div>
             </div>
-            <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
     </section>
     <div class="clearfix"></div>
   </div>
@@ -109,19 +108,19 @@ export default {
 </script>
 <style scoped>
 .table {
-    border-bottom: 0px !important;
+  border-bottom: 0px !important;
 }
 
 .table th,
 .table td {
-    border: 1px !important;
+  border: 1px !important;
 }
 
 .fixed-table-container {
-    border: 0px !important;
+  border: 0px !important;
 }
 
 .table tr {
-    height: 50px;
+  height: 50px;
 }
 </style>
