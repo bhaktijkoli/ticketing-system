@@ -1,7 +1,7 @@
 <template>
   <div class="content-wrapper">
     <section class="content">
-      <h3>All Ticket</h3>
+      <h3>All Tickets</h3>
       <div v-if="tickets==0" class="alert alert-info alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4>
@@ -18,7 +18,7 @@
             </div>
             <div class="box-body table-responsive borderless">
               <table class="table">
-                <thead>
+                <!-- <thead>
                   <tr>
                     <th>Create By</th>
                     <th>Subject</th>
@@ -27,7 +27,7 @@
                     <th>Status</th>
                     <th>Time</th>
                   </tr>
-                </thead>
+                </thead> -->
                 <tbody>
                   <tr v-for="ticket in tickets">
                     <td>
@@ -51,17 +51,17 @@
                     <td
                       class="mailbox-subject"
                       v-if="ticket.created_by.name!=ticket.last_message.created_by.name"
-                    >{{ticket.last_message.created_by.name}}</td>
+                    >Handled by: <b>{{ticket.last_message.created_by.name}}</b></td>
                     <!-- reply not come -->
                     <td
                       class="mailbox-subject"
                       v-if="ticket.created_by.name==ticket.last_message.created_by.name"
-                    >Attending soon...</td>
+                    >Unhandled</td>
                     <td v-if="ticket.status==1" class="mailbox-subject status-open">
-                      <span class="label label-danger">OPEN</span>
+                      <span class="label label-danger">OPENED</span>
                     </td>
                     <td v-if="ticket.status==0" class="mailbox-subject status-close">
-                      <span class="label label-success">CLOSE</span>
+                      <span class="label label-success">CLOSED</span>
                     </td>
                     <td class="mailbox-date">{{ticket.created_at_format}}</td>
                   </tr>

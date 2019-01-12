@@ -1073,12 +1073,6 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(13);
-
-/***/ }),
-/* 11 */
 /***/ (function(module, exports) {
 
 /*
@@ -1160,7 +1154,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1386,6 +1380,12 @@ function applyToTag (styleElement, obj) {
   }
 }
 
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(13);
 
 /***/ }),
 /* 13 */
@@ -13712,10 +13712,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_components_Users_UsersTable_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__dashboard_components_Users_UsersTable_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__dashboard_components_UserTickets_UserTickets_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dashboard_components_Users_Settings_vue__ = __webpack_require__(90);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dashboard_components_Users_Settings_vue__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__dashboard_components_Users_Settings_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__dashboard_components_Users_Settings_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__dashboard_store_js__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__dashboard_store_js__ = __webpack_require__(95);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_axios__);
  //Pusher and Laravel-Echo
 
@@ -26590,7 +26590,7 @@ var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("32cb9daf", content, false, {});
+var update = __webpack_require__(11)("32cb9daf", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -26609,7 +26609,7 @@ if(false) {
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -26854,120 +26854,126 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("aside", { staticClass: "main-sidebar" }, [
-        _c("section", { staticClass: "sidebar" }, [
-          _c(
-            "ul",
-            { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
-            [
-              _vm.role == 0 || _vm.role == 1
-                ? _c(
-                    "li",
-                    { staticClass: "treeview" },
-                    [
-                      _c("router-link", { attrs: { to: "/home" } }, [
-                        _c("i", { staticClass: "fa fa-ticket" }),
-                        _vm._v(" "),
-                        _c("span", { attrs: { title: "for admin" } }, [
-                          _vm._v("All Tickets")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "pull-right-container" }, [
+        _c(
+          "section",
+          { staticClass: "sidebar", staticStyle: { height: "auto" } },
+          [
+            _c(
+              "ul",
+              { staticClass: "sidebar-menu", attrs: { "data-widget": "tree" } },
+              [
+                _vm.role == 0 || _vm.role == 1
+                  ? _c(
+                      "li",
+                      { staticClass: "treeview" },
+                      [
+                        _c("router-link", { attrs: { to: "/home" } }, [
+                          _c("i", { staticClass: "fa fa-ticket" }),
+                          _vm._v(" "),
+                          _c("span", { attrs: { title: "for admin" } }, [
+                            _vm._v("All Tickets")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "pull-right-container" }, [
+                            _c(
+                              "span",
+                              { staticClass: "label label-primary pull-right" },
+                              [_vm._v(_vm._s(_vm.ticket_length))]
+                            )
+                          ])
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.role == 2
+                  ? _c(
+                      "li",
+                      { staticClass: "treeview" },
+                      [
+                        _c("router-link", { attrs: { to: "/my-tickets" } }, [
+                          _c("i", { staticClass: "fa fa-ticket" }),
+                          _vm._v(" "),
                           _c(
                             "span",
-                            { staticClass: "label label-primary pull-right" },
-                            [_vm._v(_vm._s(_vm.ticket_length))]
-                          )
+                            { attrs: { title: "Your tickets here" } },
+                            [_vm._v("My Tickets")]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "pull-right-container" }, [
+                            _c(
+                              "span",
+                              { staticClass: "label label-primary pull-right" },
+                              [_vm._v(_vm._s(_vm.mytickets_length))]
+                            )
+                          ])
                         ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.role == 2
-                ? _c(
-                    "li",
-                    { staticClass: "treeview" },
-                    [
-                      _c("router-link", { attrs: { to: "/my-tickets" } }, [
-                        _c("i", { staticClass: "fa fa-ticket" }),
-                        _vm._v(" "),
-                        _c("span", { attrs: { title: "Your tickets here" } }, [
-                          _vm._v("My Tickets")
-                        ]),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "pull-right-container" }, [
-                          _c(
-                            "span",
-                            { staticClass: "label label-primary pull-right" },
-                            [_vm._v(_vm._s(_vm.mytickets_length))]
-                          )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.role == 0 || _vm.role == 2
+                  ? _c(
+                      "li",
+                      [
+                        _c("router-link", { attrs: { to: "/new-ticket" } }, [
+                          _c("i", { staticClass: "fa fa-plus" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("New Ticket")])
                         ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.role == 0 || _vm.role == 2
-                ? _c(
-                    "li",
-                    [
-                      _c("router-link", { attrs: { to: "/new-ticket" } }, [
-                        _c("i", { staticClass: "fa fa-plus" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("New Ticket")])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.role == 0
-                ? _c(
-                    "li",
-                    { staticClass: "treeview" },
-                    [
-                      _c("router-link", { attrs: { to: "/users" } }, [
-                        _c("i", { staticClass: "fa fa-users" }),
-                        _vm._v(" "),
-                        _c("span", [_vm._v("Users")])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "treeview" },
-                [
-                  _c("router-link", { attrs: { to: "/settings" } }, [
-                    _c("i", { staticClass: "fa fa-cog" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("Settings")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                { staticClass: "treeview" },
-                [
-                  _c("router-link", { attrs: { to: "/help" } }, [
-                    _c("i", { staticClass: "fa fa-question" }),
-                    _vm._v(" "),
-                    _c("span", [_vm._v("Help")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._m(2)
-            ]
-          )
-        ])
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.role == 0
+                  ? _c(
+                      "li",
+                      { staticClass: "treeview" },
+                      [
+                        _c("router-link", { attrs: { to: "/users" } }, [
+                          _c("i", { staticClass: "fa fa-users" }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v("Users")])
+                        ])
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "treeview" },
+                  [
+                    _c("router-link", { attrs: { to: "/settings" } }, [
+                      _c("i", { staticClass: "fa fa-cog" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Settings")])
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "treeview" },
+                  [
+                    _c("router-link", { attrs: { to: "/help" } }, [
+                      _c("i", { staticClass: "fa fa-question" }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Help")])
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("router-view")
@@ -27086,7 +27092,7 @@ var content = __webpack_require__(65);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("16723a59", content, false, {});
+var update = __webpack_require__(11)("16723a59", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -27105,7 +27111,7 @@ if(false) {
 /* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -27241,7 +27247,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "content-wrapper" }, [
     _c("section", { staticClass: "content" }, [
-      _c("h3", [_vm._v("All Ticket")]),
+      _c("h3", [_vm._v("All Tickets")]),
       _vm._v(" "),
       _vm.tickets == 0
         ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
@@ -27278,8 +27284,6 @@ var render = function() {
                   { staticClass: "box-body table-responsive borderless" },
                   [
                     _c("table", { staticClass: "table" }, [
-                      _vm._m(2),
-                      _vm._v(" "),
                       _c(
                         "tbody",
                         _vm._l(_vm.tickets, function(ticket) {
@@ -27339,16 +27343,21 @@ var render = function() {
                             ticket.created_by.name !=
                             ticket.last_message.created_by.name
                               ? _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v(
-                                    _vm._s(ticket.last_message.created_by.name)
-                                  )
+                                  _vm._v("Handled by: "),
+                                  _c("b", [
+                                    _vm._v(
+                                      _vm._s(
+                                        ticket.last_message.created_by.name
+                                      )
+                                    )
+                                  ])
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
                             ticket.created_by.name ==
                             ticket.last_message.created_by.name
                               ? _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v("Attending soon...")
+                                  _vm._v("Unhandled")
                                 ])
                               : _vm._e(),
                             _vm._v(" "),
@@ -27362,7 +27371,7 @@ var render = function() {
                                     _c(
                                       "span",
                                       { staticClass: "label label-danger" },
-                                      [_vm._v("OPEN")]
+                                      [_vm._v("OPENED")]
                                     )
                                   ]
                                 )
@@ -27378,7 +27387,7 @@ var render = function() {
                                     _c(
                                       "span",
                                       { staticClass: "label label-success" },
-                                      [_vm._v("CLOSE")]
+                                      [_vm._v("CLOSED")]
                                     )
                                   ]
                                 )
@@ -27395,7 +27404,7 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(3)
+                _vm._m(2)
               ])
             ])
           ])
@@ -27421,26 +27430,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Create By")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Subject")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Last Message")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Handled By")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Status")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Time")])
-      ])
     ])
   },
   function() {
@@ -28043,7 +28032,7 @@ var content = __webpack_require__(73);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("031c9de5", content, false, {});
+var update = __webpack_require__(11)("031c9de5", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -28062,7 +28051,7 @@ if(false) {
 /* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -29163,7 +29152,7 @@ var content = __webpack_require__(84);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(12)("f4fcf5b4", content, false, {});
+var update = __webpack_require__(11)("f4fcf5b4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -29182,7 +29171,7 @@ if(false) {
 /* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(11)(false);
+exports = module.exports = __webpack_require__(10)(false);
 // imports
 
 
@@ -29818,13 +29807,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(116)
+  __webpack_require__(88)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(88)
+var __vue_script__ = __webpack_require__(90)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(91)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -29864,6 +29853,46 @@ module.exports = Component.exports
 
 /***/ }),
 /* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(89);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(11)("c8f5235c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.table[data-v-6aca62c9] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-6aca62c9],\n.table td[data-v-6aca62c9] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-6aca62c9] {\n    border: 0px !important;\n}\n.table tr[data-v-6aca62c9] {\n    height: 5\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 90 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29981,16 +30010,204 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 89 */,
-/* 90 */
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _c("section", { staticClass: "content" }, [
+      _c("h3", [_vm._v("Your Tickets")]),
+      _vm._v(" "),
+      _vm.tickets == 0
+        ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: {
+                  type: "button",
+                  "data-dismiss": "alert",
+                  "aria-hidden": "true"
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v("Their is no ticket to show, create your ticket\n      "),
+            _c("a", { attrs: { href: "/new-ticket" } }, [_vm._v("here")]),
+            _vm._v("!\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.tickets != 0
+        ? _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-xs-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "box-body table-responsive borderless" },
+                  [
+                    _c("table", { staticClass: "table" }, [
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.tickets, function(ticket) {
+                          return _c("tr", [
+                            ticket.status == 0
+                              ? _c("td", [
+                                  _c("i", {
+                                    staticClass: "fa fa-circle text-green"
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            ticket.status == 1
+                              ? _c("td", [
+                                  _c("i", {
+                                    staticClass: "fa fa-circle text-red"
+                                  })
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "mailbox-subject" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    attrs: {
+                                      to: {
+                                        name: "TicketDetails",
+                                        params: { id: ticket.id }
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(ticket.subject))]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(ticket.last_message.created_by.name) +
+                                  ":\n                    "
+                              ),
+                              _c("small", [
+                                _vm._v(
+                                  _vm._s(
+                                    ticket.last_message.message.slice(0, 75)
+                                  ) + "..."
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-subject" }, [
+                              _vm._v(
+                                "Handled by: " +
+                                  _vm._s(ticket.last_message.created_by.name)
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "mailbox-date" }, [
+                              _vm._v(_vm._s(ticket.created_at_format))
+                            ])
+                          ])
+                        }),
+                        0
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(2)
+              ])
+            ])
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "clearfix" })
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h4", [
+      _c("i", { staticClass: "icon fa fa-info" }),
+      _vm._v(" Alert!\n      ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [
+        _vm._v("Your tickets here with their statuses")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-footer no-padding" }, [
+      _c("div", { staticClass: "mailbox-controls" }, [
+        _c("div", { staticClass: "pull-right" }, [
+          _vm._v("50/200\n                "),
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-left" })]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-default btn-sm",
+                attrs: { type: "button" }
+              },
+              [_c("i", { staticClass: "fa fa-chevron-right" })]
+            )
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6aca62c9", module.exports)
+  }
+}
+
+/***/ }),
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(91)
+var __vue_script__ = __webpack_require__(93)
 /* template */
-var __vue_template__ = __webpack_require__(92)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -30029,7 +30246,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30127,7 +30344,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -30325,14 +30542,14 @@ if (false) {
 }
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 
 
@@ -30362,7 +30579,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 }));
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31305,256 +31522,6 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
-
-/***/ }),
-/* 95 */,
-/* 96 */,
-/* 97 */,
-/* 98 */,
-/* 99 */,
-/* 100 */,
-/* 101 */,
-/* 102 */,
-/* 103 */,
-/* 104 */,
-/* 105 */,
-/* 106 */,
-/* 107 */,
-/* 108 */,
-/* 109 */,
-/* 110 */,
-/* 111 */,
-/* 112 */,
-/* 113 */,
-/* 114 */,
-/* 115 */,
-/* 116 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(117);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(12)("c8f5235c", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6aca62c9\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserTickets.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 117 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.table[data-v-6aca62c9] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-6aca62c9],\n.table td[data-v-6aca62c9] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-6aca62c9] {\n    border: 0px !important;\n}\n.table tr[data-v-6aca62c9] {\n    height: 5\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 118 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content" }, [
-      _c("h3", [_vm._v("All Ticket")]),
-      _vm._v(" "),
-      _vm.tickets == 0
-        ? _c("div", { staticClass: "alert alert-info alert-dismissible" }, [
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "alert",
-                  "aria-hidden": "true"
-                }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(
-              "Sorry their is no ticket to show, create your ticket\n      "
-            ),
-            _c("a", { attrs: { href: "/new-ticket" } }, [_vm._v("here")]),
-            _vm._v("!\n    ")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.tickets != 0
-        ? _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-xs-12" }, [
-              _c("div", { staticClass: "box box-primary" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "box-body table-responsive borderless" },
-                  [
-                    _c("table", { staticClass: "table" }, [
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.tickets, function(ticket) {
-                          return _c("tr", [
-                            ticket.status == 0
-                              ? _c("td", [
-                                  _c("i", {
-                                    staticClass: "fa fa-circle text-green"
-                                  })
-                                ])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            ticket.status == 1
-                              ? _c("td", [
-                                  _c("i", {
-                                    staticClass: "fa fa-circle text-yellow"
-                                  })
-                                ])
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c(
-                              "td",
-                              { staticClass: "mailbox-subject" },
-                              [
-                                _c(
-                                  "router-link",
-                                  {
-                                    attrs: {
-                                      to: {
-                                        name: "TicketDetails",
-                                        params: { id: ticket.id }
-                                      }
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(ticket.subject))]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-subject" }, [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(ticket.last_message.created_by.name) +
-                                  ":\n                    "
-                              ),
-                              _c("small", [
-                                _vm._v(
-                                  _vm._s(
-                                    ticket.last_message.message.slice(0, 75)
-                                  ) + "..."
-                                )
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-subject" }, [
-                              _vm._v(
-                                "Attended by: " +
-                                  _vm._s(ticket.last_message.created_by.name)
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-date" }, [
-                              _vm._v(_vm._s(ticket.created_at_format))
-                            ])
-                          ])
-                        }),
-                        0
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._m(2)
-              ])
-            ])
-          ])
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "clearfix" })
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h4", [
-      _c("i", { staticClass: "icon fa fa-info" }),
-      _vm._v(" Alert!\n      ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Inbox")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer no-padding" }, [
-      _c("div", { staticClass: "mailbox-controls" }, [
-        _c("div", { staticClass: "pull-right" }, [
-          _vm._v("50/200\n                "),
-          _c("div", { staticClass: "btn-group" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default btn-sm",
-                attrs: { type: "button" }
-              },
-              [_c("i", { staticClass: "fa fa-chevron-left" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-default btn-sm",
-                attrs: { type: "button" }
-              },
-              [_c("i", { staticClass: "fa fa-chevron-right" })]
-            )
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6aca62c9", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

@@ -1,12 +1,12 @@
 <template>
   <div class="content-wrapper">
     <section class="content">
-      <h3>All Ticket</h3>
+      <h3>Your Tickets</h3>
       <div v-if="tickets==0" class="alert alert-info alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4>
           <i class="icon fa fa-info"></i> Alert!
-        </h4>Sorry their is no ticket to show, create your ticket
+        </h4>Their is no ticket to show, create your ticket
         <a href="/new-ticket">here</a>!
       </div>
       <!--/.add user -->
@@ -15,7 +15,7 @@
         <div class="col-xs-12">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Inbox</h3>
+              <h3 class="box-title">Your tickets here with their statuses</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive borderless">
@@ -35,7 +35,7 @@
                         <i class="fa fa-circle text-green"></i>
                       </td>
                       <td v-if="ticket.status==1">
-                        <i class="fa fa-circle text-yellow"></i>
+                        <i class="fa fa-circle text-red"></i>
                       </td>
                     <td class="mailbox-subject">
                       <router-link
@@ -46,7 +46,7 @@
                       {{ticket.last_message.created_by.name}}:
                       <small>{{ticket.last_message.message.slice(0,75)}}...</small>
                     </td>
-                    <td class="mailbox-subject">Attended by: {{ticket.last_message.created_by.name}}</td>
+                    <td class="mailbox-subject">Handled by: {{ticket.last_message.created_by.name}}</td>
                     <!-- <td v-if="ticket.status==1" class="mailbox-subject status-open">
                       <span class="label label-danger">OPEN</span>
                     </td>

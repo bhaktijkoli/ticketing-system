@@ -964,14 +964,14 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 10 */
+/* 10 */,
+/* 11 */,
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(13);
 
 /***/ }),
-/* 11 */,
-/* 12 */,
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1877,7 +1877,7 @@ try {
     window.$ = window.jQuery = __webpack_require__(39);
     __webpack_require__(40);
 } catch (e) {}
-window.axios = __webpack_require__(10);
+window.axios = __webpack_require__(12);
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 var token = document.head.querySelector('meta[name="csrf-token"]');
 if (token) {
