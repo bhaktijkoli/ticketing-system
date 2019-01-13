@@ -113,7 +113,7 @@
       <!-- /.sidebar -->
     </aside>
     <router-view></router-view>
-    <!-- <footer class="main-footer">
+    <footer class="main-footer">
       <div class="pull-right hidden-xs">
         <b>Version</b> 2.4.0
       </div>
@@ -122,7 +122,7 @@
         <a href="http://www.kccemsr.edu.in/">KCCEMSR</a>.
       </strong> All rights
       reserved.
-    </footer>-->
+    </footer>
   </div>
 </template>
 
@@ -168,5 +168,8 @@ export default {
 .options {
   flex: 1 0 0;
   flex-grow: 1;
+}
+a:hover{
+  color: #3987a9;
 }
 </style>

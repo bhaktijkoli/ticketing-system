@@ -34,7 +34,7 @@
                       <img
                         v-bind:src="'https://ui-avatars.com/api/?name='+ticket.created_by.name"
                         class="user-image hover-img"
-                        alt="User Image"
+                        alt="user-img"
                       >
                       {{ticket.created_by.name}}
                     </td>
@@ -45,7 +45,7 @@
                     </td>
                     <td class="mailbox-subject">
                       {{ticket.last_message.created_by.name}}:
-                      <small>{{ticket.last_message.message.slice(0,75)}} ...</small>
+                      <small>{{ticket.last_message.message.slice(0,60)}} ...</small>
                     </td>
                     <!-- reply from admin side -->
                     <td
@@ -121,6 +121,6 @@ export default {
 }
 
 .table tr {
-  height: 50px;
+  height: 45px;
 }
 </style>

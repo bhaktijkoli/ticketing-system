@@ -26614,7 +26614,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.main-header[data-v-89e4e9ea]{\n  position: fixed;\n  width: 100%;\n}\n.main-sidebar[data-v-89e4e9ea]{\n  position: fixed;\n}\n.options[data-v-89e4e9ea] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\n", ""]);
+exports.push([module.i, "\n.main-header[data-v-89e4e9ea]{\n  position: fixed;\n  width: 100%;\n}\n.main-sidebar[data-v-89e4e9ea]{\n  position: fixed;\n}\n.options[data-v-89e4e9ea] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\na[data-v-89e4e9ea]:hover{\n  color: #3987a9;\n}\n", ""]);
 
 // exports
 
@@ -26976,7 +26976,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("router-view")
+      _c("router-view"),
+      _vm._v(" "),
+      _vm._m(3)
     ],
     1
   )
@@ -27018,6 +27020,26 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("span", [_vm._v("Logout")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("footer", { staticClass: "main-footer" }, [
+      _c("div", { staticClass: "pull-right hidden-xs" }, [
+        _c("b", [_vm._v("Version")]),
+        _vm._v(" 2.4.0\n    ")
+      ]),
+      _vm._v(" "),
+      _c("strong", [
+        _vm._v("\n      Copyright © 2019\n      "),
+        _c("a", { attrs: { href: "http://www.kccemsr.edu.in/" } }, [
+          _vm._v("KCCEMSR")
+        ]),
+        _vm._v(".\n    ")
+      ]),
+      _vm._v(" All rights\n    reserved.\n  ")
     ])
   }
 ]
@@ -27116,7 +27138,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-aedfa1ae] {\n  border-bottom: 0px !important;\n}\n.table th[data-v-aedfa1ae],\n.table td[data-v-aedfa1ae] {\n  border: 1px !important;\n}\n.fixed-table-container[data-v-aedfa1ae] {\n  border: 0px !important;\n}\n.table tr[data-v-aedfa1ae] {\n  height: 50px;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-aedfa1ae] {\n  border-bottom: 0px !important;\n}\n.table th[data-v-aedfa1ae],\n.table td[data-v-aedfa1ae] {\n  border: 1px !important;\n}\n.fixed-table-container[data-v-aedfa1ae] {\n  border: 0px !important;\n}\n.table tr[data-v-aedfa1ae] {\n  height: 45px;\n}\n", ""]);
 
 // exports
 
@@ -27295,7 +27317,7 @@ var render = function() {
                                   src:
                                     "https://ui-avatars.com/api/?name=" +
                                     ticket.created_by.name,
-                                  alt: "User Image"
+                                  alt: "user-img"
                                 }
                               }),
                               _vm._v(
@@ -27334,7 +27356,7 @@ var render = function() {
                               _c("small", [
                                 _vm._v(
                                   _vm._s(
-                                    ticket.last_message.message.slice(0, 75)
+                                    ticket.last_message.message.slice(0, 60)
                                   ) + " ..."
                                 )
                               ])
@@ -29894,7 +29916,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-6aca62c9] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-6aca62c9],\n.table td[data-v-6aca62c9] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-6aca62c9] {\n    border: 0px !important;\n}\n.table tr[data-v-6aca62c9] {\n    height: 5\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-6aca62c9] {\n    border-bottom: 0px !important;\n}\n.table th[data-v-6aca62c9],\n.table td[data-v-6aca62c9] {\n    border: 1px !important;\n}\n.fixed-table-container[data-v-6aca62c9] {\n    border: 0px !important;\n}\n.table tr[data-v-6aca62c9] {\n    height: 45px;\n}\n", ""]);
 
 // exports
 

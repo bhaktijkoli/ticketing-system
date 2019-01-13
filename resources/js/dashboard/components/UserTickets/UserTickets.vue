@@ -123,7 +123,7 @@ export default {
 }
 
 .table tr {
-    height: 5
+    height: 45px;
 }
 </style>
 
