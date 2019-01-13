@@ -5,7 +5,7 @@
       <div class="row">
         <!-- Main content -->
         <div class="col-xs-12">
-          <div class="box box-info">
+          <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Frequently Asked Questions</h3>
             </div>

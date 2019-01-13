@@ -13299,6 +13299,7 @@ a:focus {
 
 .box.box-info {
   border-top-color: #00c0ef;
+  margin-top: 45px;
 }
 
 .box.box-danger {

@@ -28137,7 +28137,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-xs-12" }, [
-            _c("div", { staticClass: "box box-info" }, [
+            _c("div", { staticClass: "box box-warning" }, [
               _c("div", { staticClass: "box-header with-border" }, [
                 _c("h3", { staticClass: "box-title" }, [
                   _vm._v("Frequently Asked Questions")
