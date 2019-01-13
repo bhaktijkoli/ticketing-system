@@ -158,6 +158,13 @@ export default {
 </script>
 
 <style scoped>
+.main-header{
+  position: fixed;
+  width: 100%;
+}
+.main-sidebar{
+  position: fixed;
+}
 .options {
   flex: 1 0 0;
   flex-grow: 1;
