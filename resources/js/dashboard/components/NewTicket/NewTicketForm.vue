@@ -14,7 +14,7 @@
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-success">
-            <form method="post">
+            <form @submit.prevent="newTicket(subject, message)" method="post">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>
               </div>
@@ -34,15 +34,16 @@
                 </div>
               </div>
               <div class="box-footer">
-                <!-- <button type="submit" class="btn btn-primary text-justify">
+                 <button type="submit" class="btn btn-primary text-justify" data-toggle="modal" data-target="#myModal">
+                <!-- <button type="submit" class="btn btn-primary text-justify"> -->
                   <i class="fa fa-paper-plane-o"></i> Send
-                </button> -->
-                <a 
+                </button>
+                <!-- <a 
                   @click="newTicket(subject,message)"
                   href="#myModal" 
                   class="btn btn-primary" 
                   data-toggle="modal"
-                > <i class="fa fa-paper-plane-o"></i> Send </a>
+                > <i class="fa fa-paper-plane-o"></i> Send </a> -->
                 <button type="reset" class="btn btn-danger text-justify">
                   <i class="fa fa-times"></i> Discard
                 </button>
@@ -54,6 +55,8 @@
         </div>
       </div>
       <!-- /.row -->
+
+      <!-- Modal HTML for Successful Creation of Ticket  -->
       <div v-if="success" id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
           <div class="modal-content">
@@ -61,10 +64,10 @@
               <div class="icon-box">
                 <i class="material-icons">&#xE876;</i>
               </div>
-              <h4 class="modal-title">Awesome!</h4>
+              <h4 class="modal-title">Success!</h4>
             </div>
             <div class="modal-body">
-              <p class="text-center">Your Ticket has been successfully raised!</p>
+              <p class="text-center">Your Ticket has been raised.</p>
             </div>
             <div class="modal-footer">
               <router-link to="/home">
@@ -74,6 +77,28 @@
           </div>
         </div>
       </div>
+
+        <!-- Modal HTML for Unsuccessful Creation of Ticket -->
+        <div v-else id="myModal" class="modal fade">
+          <div class="modal-dialog modal-fail">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="icon-box">
+                  <i class="material-icons">clear</i>
+                </div>
+                <h4 class="modal-title">Failed!</h4>
+              </div>
+              <div class="modal-body">
+                <p class="text-center">Ticket has not been raised.</p>
+              </div>
+              <div class="modal-footer">
+                <router-link to="/new-ticket">
+                  <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </div>
     </section>
   </div>
 </template>
@@ -90,10 +115,10 @@ export default {
   methods: {
     newTicket: function(subject, message) {
       axios.post("api/ticket/add", { subject, message }).then(res => {
-        this.subject = res.data.subject;
-        this.message = res.data.message;
         if (fh.is_success(res.data)) {
           this.success = true;
+          this.subject = res.data.subject;
+          this.message = res.data.message;
         } else {
           fh.set_multierrors(res.data);
         }

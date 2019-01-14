@@ -28347,6 +28347,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewTicketForm",
@@ -28363,10 +28388,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.post("api/ticket/add", { subject: subject, message: message }).then(function (res) {
-        _this.subject = res.data.subject;
-        _this.message = res.data.message;
         if (fh.is_success(res.data)) {
           _this.success = true;
+          _this.subject = res.data.subject;
+          _this.message = res.data.message;
         } else {
           fh.set_multierrors(res.data);
         }
@@ -28390,84 +28415,77 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xs-12" }, [
           _c("div", { staticClass: "box box-success" }, [
-            _c("form", { attrs: { method: "post" } }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("div", { staticClass: "box-body" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.subject,
-                        expression: "subject"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { id: "subject", placeholder: "Subject" },
-                    domProps: { value: _vm.subject },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+            _c(
+              "form",
+              {
+                attrs: { method: "post" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    _vm.newTicket(_vm.subject, _vm.message)
+                  }
+                }
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "box-body" }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.subject,
+                          expression: "subject"
                         }
-                        _vm.subject = $event.target.value
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "subject", placeholder: "Subject" },
+                      domProps: { value: _vm.subject },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.subject = $event.target.value
+                        }
                       }
-                    }
-                  })
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.message,
+                          expression: "message"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      staticStyle: { height: "300px" },
+                      attrs: {
+                        id: "message",
+                        placeholder: "Write Details Here..."
+                      },
+                      domProps: { value: _vm.message },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.message = $event.target.value
+                        }
+                      }
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.message,
-                        expression: "message"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    staticStyle: { height: "300px" },
-                    attrs: {
-                      id: "message",
-                      placeholder: "Write Details Here..."
-                    },
-                    domProps: { value: _vm.message },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.message = $event.target.value
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "box-footer" }, [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { href: "#myModal", "data-toggle": "modal" },
-                    on: {
-                      click: function($event) {
-                        _vm.newTicket(_vm.subject, _vm.message)
-                      }
-                    }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-paper-plane-o" }),
-                    _vm._v(" Send ")
-                  ]
-                ),
-                _vm._v(" "),
                 _vm._m(1)
-              ])
-            ])
+              ]
+            )
           ])
         ])
       ]),
@@ -28500,7 +28518,33 @@ var render = function() {
               ])
             ])
           ])
-        : _vm._e()
+        : _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
+            _c("div", { staticClass: "modal-dialog modal-fail" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(4),
+                _vm._v(" "),
+                _vm._m(5),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "modal-footer" },
+                  [
+                    _c("router-link", { attrs: { to: "/new-ticket" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success btn-block",
+                          attrs: { "data-dismiss": "modal" }
+                        },
+                        [_vm._v("OK")]
+                      )
+                    ])
+                  ],
+                  1
+                )
+              ])
+            ])
+          ])
     ])
   ])
 }
@@ -28517,14 +28561,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-danger text-justify", attrs: { type: "reset" } },
-      [
-        _c("i", { staticClass: "fa fa-times" }),
-        _vm._v(" Discard\n              ")
-      ]
-    )
+    return _c("div", { staticClass: "box-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary text-justify",
+          attrs: {
+            type: "submit",
+            "data-toggle": "modal",
+            "data-target": "#myModal"
+          }
+        },
+        [
+          _c("i", { staticClass: "fa fa-paper-plane-o" }),
+          _vm._v(" Send\n              ")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-danger text-justify",
+          attrs: { type: "reset" }
+        },
+        [
+          _c("i", { staticClass: "fa fa-times" }),
+          _vm._v(" Discard\n              ")
+        ]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -28535,7 +28600,7 @@ var staticRenderFns = [
         _c("i", { staticClass: "material-icons" }, [_vm._v("")])
       ]),
       _vm._v(" "),
-      _c("h4", { staticClass: "modal-title" }, [_vm._v("Awesome!")])
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Success!")])
     ])
   },
   function() {
@@ -28544,7 +28609,29 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "modal-body" }, [
       _c("p", { staticClass: "text-center" }, [
-        _vm._v("Your Ticket has been successfully raised!")
+        _vm._v("Your Ticket has been raised.")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("div", { staticClass: "icon-box" }, [
+        _c("i", { staticClass: "material-icons" }, [_vm._v("clear")])
+      ]),
+      _vm._v(" "),
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("Failed!")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("p", { staticClass: "text-center" }, [
+        _vm._v("Ticket has not been raised.")
       ])
     ])
   }
