@@ -27728,15 +27728,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     closeTicket: function closeTicket() {
-      var _this3 = this;
-
       var data = {
         ticket: this.$route.params.id,
         status: "0"
       };
       axios.post("/api/ticket/status", data).then(function (res) {
         if (fh.is_success(res.data)) {
-          console.log(_this3.status);
+          // console.log(this.status);
           window.location.href = "/home";
         } else {
           fh.set_multierrors(res.data);
@@ -28078,7 +28076,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-429d2e9c] {\n  width: 80%;\n  margin: 2em auto;\n}\nhr[data-v-429d2e9c] {\n  color: coral;\n}\ninput[data-v-429d2e9c] {\n  display: none;\n}\nh1[data-v-429d2e9c] {\n  font-size: 2em;\n  font-family: \"Trebuchet MS\", Helvetica, sans-serif;\n}\nh4[data-v-429d2e9c] {\n  margin: auto;\n  color: dimgrey;\n  float: left;\n  margin-right: 0.3em;\n}\np[data-v-429d2e9c] {\n  clear: both;\n}\nlabel > i[data-v-429d2e9c] {\n  float: right;\n  margin: 0.3em;\n  -webkit-transition: all 0.3s linear;\n  transition: all 0.3s linear;\n}\ninput:checked + label > i[data-v-429d2e9c] {\n  -webkit-transform: rotate(-180deg);\n          transform: rotate(-180deg);\n}\nlabel + p[data-v-429d2e9c] {\n  line-height: 0%;\n  color: darkslategray;\n  -webkit-transform: rotateX(90deg);\n          transform: rotateX(90deg);\n  -webkit-transition: all 0.3s linear;\n  transition: all 0.3s linear;\n}\ninput:checked + label + p[data-v-429d2e9c] {\n  -webkit-transform: rotateX(0);\n          transform: rotateX(0);\n  line-height: 100%;\n  line-height: auto;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-429d2e9c] {\n  width: 80%;\n  margin: 2em auto;\n}\nhr[data-v-429d2e9c] {\n  color: coral;\n}\ninput[data-v-429d2e9c] {\n  display: none;\n}\nh1[data-v-429d2e9c] {\n  font-size: 2em;\n  font-family: \"Trebuchet MS\", Helvetica, sans-serif;\n}\nh4[data-v-429d2e9c] {\n  margin: auto;\n  color: dimgrey;\n  float: left;\n  margin-right: 0.3em;\n}\np[data-v-429d2e9c] {\n  clear: both;\n}\nlabel > i[data-v-429d2e9c] {\n  float: right;\n  margin: 0.3em;\n  -webkit-transition: all 0.2s linear;\n  transition: all 0.2s linear;\n}\ninput:checked + label > i[data-v-429d2e9c] {\n  -webkit-transform: rotate(-180deg);\n          transform: rotate(-180deg);\n}\nlabel + p[data-v-429d2e9c] {\n  line-height: 0%;\n  color: darkslategray;\n  -webkit-transform: rotateX(90deg);\n          transform: rotateX(90deg);\n  -webkit-transition: all 0.2s linear;\n  transition: all 0.2s linear;\n}\ninput:checked + label + p[data-v-429d2e9c] {\n  -webkit-transform: rotateX(0);\n          transform: rotateX(0);\n  line-height: 100%;\n  line-height: auto;\n}\n", ""]);
 
 // exports
 
@@ -28089,6 +28087,11 @@ exports.push([module.i, "\n.container[data-v-429d2e9c] {\n  width: 80%;\n  margi
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -28194,7 +28197,17 @@ var staticRenderFns = [
                       _vm._v(" "),
                       _c("p", [_vm._v("Donald Tusk is 61 years old")]),
                       _vm._v(" "),
-                      _c("hr")
+                      _c("hr"),
+                      _vm._v(" "),
+                      _c("input", { attrs: { type: "checkbox", id: "faq2" } }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: "faq2" } }, [
+                        _c("h4", [_vm._v("Howdy Fam?")]),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "fa fa-angle-up" })
+                      ]),
+                      _vm._v(" "),
+                      _c("p", [_vm._v("Cool")])
                     ])
                   ]
                 )

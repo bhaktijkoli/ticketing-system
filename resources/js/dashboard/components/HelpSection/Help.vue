@@ -27,8 +27,13 @@
                     <i class="fa fa-angle-up"></i>
                   </label>
                   <p>Donald Tusk is 61 years old</p>
-
                   <hr>
+                  <input type="checkbox" id="faq2">
+                  <label for="faq2">
+                    <h4>Howdy Fam?</h4>
+                    <i class="fa fa-angle-up"></i>
+                  </label>
+                  <p>Cool</p>
                 </div>
               </div>
               <!-- /.mail-box-messages -->
@@ -81,7 +86,7 @@ p {
 label > i {
   float: right;
   margin: 0.3em;
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
 }
 
 input:checked + label > i {
@@ -92,7 +97,7 @@ label + p {
   line-height: 0%;
   color: darkslategray;
   transform: rotateX(90deg);
-  transition: all 0.3s linear;
+  transition: all 0.2s linear;
 }
 
 input:checked + label + p {
