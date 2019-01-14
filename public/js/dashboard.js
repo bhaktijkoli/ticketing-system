@@ -26614,7 +26614,7 @@ exports = module.exports = __webpack_require__(10)(false);
 
 
 // module
-exports.push([module.i, "\n.main-header[data-v-89e4e9ea]{\n  position: fixed;\n  width: 100%;\n}\n.main-sidebar[data-v-89e4e9ea]{\n  position: fixed;\n}\n.options[data-v-89e4e9ea] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\na[data-v-89e4e9ea]:hover{\n  color: #3987a9;\n}\n", ""]);
+exports.push([module.i, "\n.main-header[data-v-89e4e9ea]{\n  position: fixed;\n  width: 100%;\n}\n.main-sidebar[data-v-89e4e9ea]{\n  position: fixed;\n}\n.options[data-v-89e4e9ea] {\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 0px;\n          flex: 1 0 0;\n  -ms-flex-positive: 1;\n      flex-grow: 1;\n}\nfooter a[data-v-89e4e9ea]:hover{\n  color: #3987a9;\n}\n", ""]);
 
 // exports
 
@@ -27029,7 +27029,7 @@ var staticRenderFns = [
     return _c("footer", { staticClass: "main-footer" }, [
       _c("div", { staticClass: "pull-right hidden-xs" }, [
         _c("b", [_vm._v("Version")]),
-        _vm._v(" 2.4.0\n    ")
+        _vm._v(" 1.0\n    ")
       ]),
       _vm._v(" "),
       _c("strong", [

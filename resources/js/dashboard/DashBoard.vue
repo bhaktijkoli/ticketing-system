@@ -115,7 +115,7 @@
     <router-view></router-view>
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
-        <b>Version</b> 2.4.0
+        <b>Version</b> 1.0
       </div>
       <strong>
         Copyright &copy; 2019
@@ -169,7 +169,7 @@ export default {
   flex: 1 0 0;
   flex-grow: 1;
 }
-a:hover{
+footer a:hover{
   color: #3987a9;
 }
 </style>
