@@ -14,7 +14,7 @@
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-success">
-            <form @submit.prevent="newTicket(subject, message)" method="post">
+            <form method="post" @submit.prevent="newTicket(subject, message)">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>
               </div>
@@ -34,8 +34,7 @@
                 </div>
               </div>
               <div class="box-footer">
-                 <button type="submit" class="btn btn-primary text-justify" data-toggle="modal" data-target="#myModal">
-                <!-- <button type="submit" class="btn btn-primary text-justify"> -->
+                <button type="submit" class="btn btn-primary text-justify" data-toggle="modal" data-target="#myModal">
                   <i class="fa fa-paper-plane-o"></i> Send
                 </button>
                 <!-- <a 
