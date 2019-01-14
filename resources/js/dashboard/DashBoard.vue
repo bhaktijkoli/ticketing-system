@@ -158,18 +158,18 @@ export default {
 </script>
 
 <style scoped>
-.main-header{
+.main-header {
   position: fixed;
   width: 100%;
 }
-.main-sidebar{
+.main-sidebar {
   position: fixed;
 }
 .options {
   flex: 1 0 0;
   flex-grow: 1;
 }
-footer a:hover{
+footer a:hover {
   color: #3987a9;
 }
 </style>
