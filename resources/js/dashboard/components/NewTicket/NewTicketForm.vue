@@ -6,7 +6,7 @@
         <h4>
           <i class="icon fa fa-check"></i> Success!
         </h4>Your Ticket has been created successfully!
-      </div> -->
+      </div>-->
       <h3>New Ticket</h3>
       <!--/.add user -->
       <div class="row">
@@ -21,7 +21,7 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="form-group">
-                  <input class="form-control" v-model="subject" id="subject" placeholder="Subject">
+                  <input class="form-control" v-model="subject" id="subject" placeholder="Subject:">
                 </div>
                 <div class="form-group">
                   <textarea
@@ -32,9 +32,19 @@
                     placeholder="Write Details Here..."
                   ></textarea>
                 </div>
+                <small>Add files:</small>
+                <div class="btn btn-default btn-file">
+                  <i class="fa fa-paperclip"></i> Attachment
+                  <input type="file" name="attachment" multiple>
+                </div>
               </div>
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary text-justify" data-toggle="modal" data-target="#myModal">
+                <button
+                  type="submit"
+                  class="btn btn-primary text-justify"
+                  data-toggle="modal"
+                  data-target="#myModal"
+                >
                   <i class="fa fa-paper-plane-o"></i> Send
                 </button>
                 <!-- <a 
@@ -42,7 +52,7 @@
                   href="#myModal" 
                   class="btn btn-primary" 
                   data-toggle="modal"
-                > <i class="fa fa-paper-plane-o"></i> Send </a> -->
+                > <i class="fa fa-paper-plane-o"></i> Send </a>-->
                 <button type="reset" class="btn btn-danger text-justify">
                   <i class="fa fa-times"></i> Discard
                 </button>
@@ -54,7 +64,6 @@
         </div>
       </div>
       <!-- /.row -->
-
       <!-- Modal HTML for Successful Creation of Ticket  -->
       <div v-if="success" id="myModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
@@ -77,27 +86,27 @@
         </div>
       </div>
 
-        <!-- Modal HTML for Unsuccessful Creation of Ticket -->
-        <div v-else id="myModal" class="modal fade">
-          <div class="modal-dialog modal-fail">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="icon-box">
-                  <i class="material-icons">clear</i>
-                </div>
-                <h4 class="modal-title">Failed!</h4>
+      <!-- Modal HTML for Unsuccessful Creation of Ticket -->
+      <div v-else id="myModal" class="modal fade">
+        <div class="modal-dialog modal-fail">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="icon-box">
+                <i class="material-icons">clear</i>
               </div>
-              <div class="modal-body">
-                <p class="text-center">Ticket has not been raised.</p>
-              </div>
-              <div class="modal-footer">
-                <router-link to="/new-ticket">
-                  <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
-                </router-link>
-              </div>
+              <h4 class="modal-title">Failed!</h4>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">Ticket has not been raised.</p>
+            </div>
+            <div class="modal-footer">
+              <router-link to="/new-ticket">
+                <button class="btn btn-success btn-block" data-dismiss="modal">OK</button>
+              </router-link>
             </div>
           </div>
         </div>
+      </div>
     </section>
   </div>
 </template>
