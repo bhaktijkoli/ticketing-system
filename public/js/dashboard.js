@@ -26750,9 +26750,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "DashBoard",
@@ -27027,11 +27024,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("footer", { staticClass: "main-footer" }, [
-      _c("div", { staticClass: "pull-right hidden-xs" }, [
-        _c("b", [_vm._v("Version")]),
-        _vm._v(" 1.0\n    ")
-      ]),
-      _vm._v(" "),
       _c("strong", [
         _vm._v("\n      Copyright © 2019\n      "),
         _c("a", { attrs: { href: "http://www.kccemsr.edu.in/" } }, [
@@ -30143,6 +30135,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "UserTickets",
@@ -30261,12 +30261,26 @@ var render = function() {
                               ])
                             ]),
                             _vm._v(" "),
-                            _c("td", { staticClass: "mailbox-subject" }, [
-                              _vm._v(
-                                "Handled by: " +
-                                  _vm._s(ticket.last_message.created_by.name)
-                              )
-                            ]),
+                            ticket.created_by.name !=
+                            ticket.last_message.created_by.name
+                              ? _c("td", { staticClass: "mailbox-subject" }, [
+                                  _vm._v("Handled by: "),
+                                  _c("b", [
+                                    _vm._v(
+                                      _vm._s(
+                                        ticket.last_message.created_by.name
+                                      )
+                                    )
+                                  ])
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            ticket.created_by.name ==
+                            ticket.last_message.created_by.name
+                              ? _c("td", { staticClass: "mailbox-subject" }, [
+                                  _vm._v("Unhandled")
+                                ])
+                              : _vm._e(),
                             _vm._v(" "),
                             _c("td", { staticClass: "mailbox-date" }, [
                               _vm._v(_vm._s(ticket.created_at_format))
