@@ -46,7 +46,15 @@
                       {{ticket.last_message.created_by.name}}:
                       <small>{{ticket.last_message.message.slice(0,75)}}...</small>
                     </td>
-                    <td class="mailbox-subject">Handled by: {{ticket.last_message.created_by.name}}</td>
+                    <td
+                      class="mailbox-subject"
+                      v-if="ticket.created_by.name!=ticket.last_message.created_by.name"
+                    >Handled by: <b>{{ticket.last_message.created_by.name}}</b></td>
+                    <!-- reply not come -->
+                    <td
+                      class="mailbox-subject"
+                      v-if="ticket.created_by.name==ticket.last_message.created_by.name"
+                    >Unhandled</td>
                     <!-- <td v-if="ticket.status==1" class="mailbox-subject status-open">
                       <span class="label label-danger">OPEN</span>
                     </td>
