@@ -17581,3 +17581,17 @@ table.text-center th {
   height: 23px;
 }
 
+img.preview {
+  height: 250px;
+  width: 300px;
+  border-radius: 4px;
+  margin-left: 35px;
+}
+
+img.preview:hover {
+  -webkit-box-shadow: 2px 4px 20px 1px #96949469;
+          box-shadow: 2px 4px 20px 1px #96949469;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+

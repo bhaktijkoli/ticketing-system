@@ -28393,6 +28393,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewTicketForm",
@@ -28400,7 +28405,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     return {
       subject: "",
       message: "",
-      success: false
+      success: false,
+      image: "",
+      img_url: null
     };
   },
 
@@ -28417,6 +28424,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           fh.set_multierrors(res.data);
         }
       });
+    },
+    imgPreview: function imgPreview(event) {
+      var _this2 = this;
+
+      var input = event.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          _this2.image = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
   }
 });
@@ -28505,10 +28524,30 @@ var render = function() {
                   _vm._v(" "),
                   _c("small", [_vm._v("Add files:")]),
                   _vm._v(" "),
-                  _vm._m(1)
+                  _c("div", { staticClass: "btn btn-default btn-file" }, [
+                    _c("i", { staticClass: "fa fa-paperclip" }),
+                    _vm._v(" Attachment\n                "),
+                    _c("input", {
+                      attrs: { type: "file", name: "attachment", multiple: "" },
+                      on: { change: _vm.imgPreview }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _vm.image.length > 0
+                    ? _c("div", [
+                        _c("img", {
+                          staticClass: "preview",
+                          attrs: { src: _vm.image }
+                        })
+                      ])
+                    : _vm._e()
                 ]),
                 _vm._v(" "),
-                _vm._m(2)
+                _vm._m(1)
               ]
             )
           ])
@@ -28519,9 +28558,9 @@ var render = function() {
         ? _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
             _c("div", { staticClass: "modal-dialog modal-confirm" }, [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(3),
+                _vm._m(2),
                 _vm._v(" "),
-                _vm._m(4),
+                _vm._m(3),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -28546,9 +28585,9 @@ var render = function() {
         : _c("div", { staticClass: "modal fade", attrs: { id: "myModal" } }, [
             _c("div", { staticClass: "modal-dialog modal-fail" }, [
               _c("div", { staticClass: "modal-content" }, [
-                _vm._m(5),
+                _vm._m(4),
                 _vm._v(" "),
-                _vm._m(6),
+                _vm._m(5),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -28580,16 +28619,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Compose New Ticket")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "btn btn-default btn-file" }, [
-      _c("i", { staticClass: "fa fa-paperclip" }),
-      _vm._v(" Attachment\n                "),
-      _c("input", { attrs: { type: "file", name: "attachment", multiple: "" } })
     ])
   },
   function() {

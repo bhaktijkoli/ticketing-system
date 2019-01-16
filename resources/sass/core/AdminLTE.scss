@@ -6319,3 +6319,16 @@ table.text-center th {
     width: 23px;
     height: 23px;
 }
+
+// image preview for input file
+img.preview {
+    height: 250px;
+    width: 300px;
+    border-radius: 4px;
+    margin-left: 35px;
+}
+
+img.preview:hover {
+    box-shadow: 2px 4px 20px 1px #96949469;
+    transform: scale(1.1);
+}

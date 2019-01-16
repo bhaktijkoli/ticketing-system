@@ -35,7 +35,12 @@
                 <small>Add files:</small>
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> Attachment
-                  <input type="file" name="attachment" multiple>
+                  <input type="file" name="attachment" @change="imgPreview" multiple>
+                </div>
+                <br>
+                <br>
+                <div v-if="image.length > 0">
+                  <img class="preview" :src="image">
                 </div>
               </div>
               <div class="box-footer">
@@ -117,7 +122,9 @@ export default {
     return {
       subject: "",
       message: "",
-      success: false
+      success: false,
+      image: "",
+      img_url: null
     };
   },
   methods: {
@@ -131,6 +138,16 @@ export default {
           fh.set_multierrors(res.data);
         }
       });
+    },
+    imgPreview: function(event) {
+      var input = event.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = e => {
+          this.image = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
     }
   }
 };
