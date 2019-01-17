@@ -100,11 +100,19 @@
             <i class="fa fa-print"></i> Print
           </button>
           <button
+            v-if=" this.ticket_created_by_name==userid"
             v-on:click.prevent="closeTicket()"
             type="submit"
             class="btn btn-primary pull-right"
             style="margin-right: 5px;"
           >Close Ticket</button>
+          <button
+            v-if=" this.ticket_created_by_name!=userid"
+            class="btn btn-primary pull-right"
+            style="margin-right: 5px;"
+          >
+            <i class="fa fa-thumbs-o-up"></i> Handling
+          </button>
         </div>
       </div>
     </section>
@@ -118,6 +126,7 @@ export default {
   data() {
     return {
       ticket: "",
+      ticket_created_by_name: "",
       message: "",
       id: "",
       date: "",
@@ -128,6 +137,8 @@ export default {
     checkticket() {
       if (this.ticket == null) return null;
       return this.ticket;
+      if (this.ticket_created_by_name == null) return null;
+      return this.ticket_created_by_name;
     },
     checkdate() {
       if (this.date == null) return null;
@@ -143,6 +154,7 @@ export default {
       .get("/api/ticket/get/details/" + this.$route.params.id)
       .then(response => {
         this.ticket = response.data;
+        this.ticket_created_by_name = this.ticket.created_by.id;
         this.date = response.data.created_at_format_long;
         this.messages = response.data.messages;
         setTimeout(function() {

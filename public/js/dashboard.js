@@ -27654,12 +27654,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
   data: function data() {
     return {
       ticket: "",
+      ticket_created_by_name: "",
       message: "",
       id: "",
       date: "",
@@ -27671,6 +27680,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     checkticket: function checkticket() {
       if (this.ticket == null) return null;
       return this.ticket;
+      if (this.ticket_created_by_name == null) return null;
+      return this.ticket_created_by_name;
     },
     checkdate: function checkdate() {
       if (this.date == null) return null;
@@ -27686,6 +27697,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
       _this.ticket = response.data;
+      _this.ticket_created_by_name = _this.ticket.created_by.id;
       _this.date = response.data.created_at_format_long;
       _this.messages = response.data.messages;
       setTimeout(function () {
@@ -27917,21 +27929,37 @@ var render = function() {
           _vm._v(" "),
           _vm._m(2),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary pull-right",
-              staticStyle: { "margin-right": "5px" },
-              attrs: { type: "submit" },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  _vm.closeTicket()
-                }
-              }
-            },
-            [_vm._v("Close Ticket")]
-          )
+          this.ticket_created_by_name == _vm.userid
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary pull-right",
+                  staticStyle: { "margin-right": "5px" },
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.closeTicket()
+                    }
+                  }
+                },
+                [_vm._v("Close Ticket")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          this.ticket_created_by_name != _vm.userid
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary pull-right",
+                  staticStyle: { "margin-right": "5px" }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-thumbs-o-up" }),
+                  _vm._v(" Handling\n        ")
+                ]
+              )
+            : _vm._e()
         ])
       ])
     ])
