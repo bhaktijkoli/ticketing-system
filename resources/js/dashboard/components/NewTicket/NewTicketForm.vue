@@ -14,7 +14,7 @@
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-success">
-            <form method="post" @submit.prevent="newTicket(subject, message)">
+            <form method="post" id="new-ticket" @submit.prevent="newTicket(subject, message)">
               <div class="box-header with-border">
                 <h3 class="box-title">Compose New Ticket</h3>
               </div>

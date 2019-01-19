@@ -27,7 +27,7 @@
                     <th>Status</th>
                     <th>Time</th>
                   </tr>
-                </thead> -->
+                </thead>-->
                 <tbody>
                   <tr v-for="ticket in tickets">
                     <td>
@@ -51,7 +51,10 @@
                     <td
                       class="mailbox-subject"
                       v-if="ticket.created_by.name!=ticket.last_message.created_by.name"
-                    >Handled by: <b>{{ticket.last_message.created_by.name}}</b></td>
+                    >
+                      Handled by:
+                      <b>{{ticket.last_message.created_by.name}}</b>
+                    </td>
                     <!-- reply not come -->
                     <td
                       class="mailbox-subject"

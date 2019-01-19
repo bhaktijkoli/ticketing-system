@@ -27234,6 +27234,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AllTickets",
@@ -27357,7 +27360,9 @@ var render = function() {
                             ticket.created_by.name !=
                             ticket.last_message.created_by.name
                               ? _c("td", { staticClass: "mailbox-subject" }, [
-                                  _vm._v("Handled by: "),
+                                  _vm._v(
+                                    "\n                    Handled by:\n                    "
+                                  ),
                                   _c("b", [
                                     _vm._v(
                                       _vm._s(
@@ -27656,12 +27661,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -27738,7 +27737,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       };
       axios.post("/api/ticket/status", data).then(function (res) {
         if (fh.is_success(res.data)) {
-          // console.log(this.status);
           window.location.href = "/home";
         } else {
           fh.set_multierrors(res.data);
@@ -28478,7 +28476,7 @@ var render = function() {
             _c(
               "form",
               {
-                attrs: { method: "post" },
+                attrs: { method: "post", id: "new-ticket" },
                 on: {
                   submit: function($event) {
                     $event.preventDefault()

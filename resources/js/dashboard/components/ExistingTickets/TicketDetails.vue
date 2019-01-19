@@ -1,5 +1,4 @@
 <template>
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -10,7 +9,6 @@
     </section>
     <!-- Main content -->
     <section class="invoice">
-      <!-- title row -->
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -27,13 +25,11 @@
               <div class="box-header with-border">
                 <h3 class="box-title">Direct Chat</h3>
               </div>
-              <!-- /.box-header -->
               <div class="box-body">
                 <!-- Conversations are loaded here -->
                 <div v-for="msg in messages" class="direct-chat-messages">
                   <!-- Message. Default to the left -->
                   <div v-if="msg.created_by.id != userid" class="direct-chat-msg left">
-                    <!-- /.direct-chat-info -->
                     <img
                       class="direct-chat-img pull-left"
                       :src="'https://ui-avatars.com/api/?name='+msg.created_by.name"
@@ -61,9 +57,7 @@
                         <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
                     </div>
-                    <!-- /.direct-chat-text -->
                   </div>
-                  <!-- /.direct-chat-msg -->
                 </div>
               </div>
               <!-- /.box-body -->
@@ -194,7 +188,6 @@ export default {
       };
       axios.post("/api/ticket/status", data).then(res => {
         if (fh.is_success(res.data)) {
-          // console.log(this.status);
           window.location.href = "/home";
         } else {
           fh.set_multierrors(res.data);
