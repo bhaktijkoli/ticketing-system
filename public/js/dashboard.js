@@ -27497,17 +27497,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(118)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(69)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(120)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-48db9fc3"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -27545,6 +27549,14 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -27747,268 +27759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _c("section", { staticClass: "content-header" }, [
-      _c("h1", [
-        _vm._v("\n      Ticket\n      "),
-        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("section", { staticClass: "invoice" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("h2", { staticClass: "page-header" }, [
-            _c("i", { staticClass: "fa fa-hand-o-right" }),
-            _vm._v(
-              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
-            ),
-            _c("small", { staticClass: "pull-right" }, [
-              _vm._v("Date: " + _vm._s(this.date))
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-xs-12" }, [
-            _c(
-              "div",
-              {
-                staticClass: "box box-warning direct-chat direct-chat-warning"
-              },
-              [
-                _vm._m(0),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "box-body" },
-                  _vm._l(_vm.messages, function(msg) {
-                    return _c("div", { staticClass: "direct-chat-messages" }, [
-                      msg.created_by.id != _vm.userid
-                        ? _c("div", { staticClass: "direct-chat-msg left" }, [
-                            _c("img", {
-                              staticClass: "direct-chat-img pull-left",
-                              attrs: {
-                                src:
-                                  "https://ui-avatars.com/api/?name=" +
-                                  msg.created_by.name,
-                                alt: "message user image"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "direct-chat-text pull-left" },
-                              [
-                                _c("p", [
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(msg.message) +
-                                      "\n                      "
-                                  ),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "direct-chat-timestamp pull-right"
-                                    },
-                                    [_vm._v(_vm._s(msg.created_at_format))]
-                                  )
-                                ])
-                              ]
-                            )
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      msg.created_by.id == _vm.userid
-                        ? _c("div", { staticClass: "direct-chat-msg right" }, [
-                            _c("img", {
-                              staticClass: "direct-chat-img",
-                              attrs: {
-                                src:
-                                  "https://ui-avatars.com/api/?name=" +
-                                  msg.created_by.name,
-                                alt: "message user image"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "direct-chat-text pull-right" },
-                              [
-                                _c("p", [
-                                  _vm._v(
-                                    "\n                      " +
-                                      _vm._s(msg.message) +
-                                      "\n                      "
-                                  ),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass:
-                                        "direct-chat-timestamp pull-right"
-                                    },
-                                    [_vm._v(_vm._s(msg.created_at_format))]
-                                  )
-                                ])
-                              ]
-                            )
-                          ])
-                        : _vm._e()
-                    ])
-                  }),
-                  0
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "box-footer" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: { method: "post" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          _vm.addMessage()
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "input-group" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.message,
-                              expression: "message"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            name: "message",
-                            id: "newMessage",
-                            placeholder: "Type Message ..."
-                          },
-                          domProps: { value: _vm.message },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.message = $event.target.value
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm._m(1)
-                      ])
-                    ]
-                  )
-                ])
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-xs-12" }, [
-          _c("br"),
-          _vm._v(" "),
-          _vm._m(2),
-          _vm._v(" "),
-          this.ticket_created_by_name == _vm.userid
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary pull-right",
-                  staticStyle: { "margin-right": "5px" },
-                  attrs: { type: "submit" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.closeTicket()
-                    }
-                  }
-                },
-                [_vm._v("Close Ticket")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          this.ticket_created_by_name != _vm.userid
-            ? _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary pull-right",
-                  staticStyle: { "margin-right": "5px" }
-                },
-                [
-                  _c("i", { staticClass: "fa fa-thumbs-o-up" }),
-                  _vm._v(" Handling\n        ")
-                ]
-              )
-            : _vm._e()
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Direct Chat")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "input-group-btn" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-warning btn-flat", attrs: { type: "submit" } },
-        [_vm._v("Send")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-default pull-left",
-        staticStyle: { "margin-right": "5px" },
-        attrs: { type: "button", onclick: "window.print()" }
-      },
-      [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
-    )
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-48db9fc3", module.exports)
-  }
-}
-
-/***/ }),
+/* 70 */,
 /* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -31743,6 +31494,350 @@ var index_esm = {
 
 /* harmony default export */ __webpack_exports__["a"] = (index_esm);
 
+
+/***/ }),
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */,
+/* 106 */,
+/* 107 */,
+/* 108 */,
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */,
+/* 114 */,
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(119);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(11)("f9064dfc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48db9fc3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TicketDetails.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-48db9fc3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TicketDetails.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nsmall i[data-v-48db9fc3] {\n  color: gray;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content-wrapper" }, [
+    _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      Ticket\n      "),
+        _c("small", [_vm._v("#" + _vm._s(_vm.ticket.id))])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "invoice" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("h2", { staticClass: "page-header" }, [
+            _c("i", { staticClass: "fa fa-hand-o-right" }),
+            _vm._v(
+              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
+            ),
+            _c("small", { staticClass: "pull-right" }, [
+              _vm._v("Date: " + _vm._s(this.date))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-xs-12" }, [
+            _c(
+              "div",
+              {
+                staticClass: "box box-warning direct-chat direct-chat-warning"
+              },
+              [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "box-body" },
+                  _vm._l(_vm.messages, function(msg) {
+                    return _c("div", { staticClass: "direct-chat-messages" }, [
+                      msg.created_by.id != _vm.userid
+                        ? _c("div", { staticClass: "direct-chat-msg left" }, [
+                            _c("img", {
+                              staticClass: "direct-chat-img pull-left",
+                              attrs: {
+                                src:
+                                  "https://ui-avatars.com/api/?name=" +
+                                  msg.created_by.name,
+                                alt: "message user image"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "direct-chat-text pull-left" },
+                              [
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(msg.message) +
+                                      "\n                      "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "direct-chat-timestamp pull-right"
+                                    },
+                                    [_vm._v(_vm._s(msg.created_at_format))]
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      msg.created_by.id == _vm.userid
+                        ? _c("div", { staticClass: "direct-chat-msg right" }, [
+                            _c("img", {
+                              staticClass: "direct-chat-img",
+                              attrs: {
+                                src:
+                                  "https://ui-avatars.com/api/?name=" +
+                                  msg.created_by.name,
+                                alt: "message user image"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "direct-chat-text pull-right" },
+                              [
+                                _c("p", [
+                                  _vm._v(
+                                    "\n                      " +
+                                      _vm._s(msg.message) +
+                                      "\n                      "
+                                  ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "direct-chat-timestamp pull-right"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                        " +
+                                          _vm._s(msg.created_at_format) +
+                                          "\n                        "
+                                      ),
+                                      _vm._m(1, true),
+                                      _vm._v(" "),
+                                      _vm._m(2, true)
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "box-footer" }, [
+                  _c(
+                    "form",
+                    {
+                      attrs: { method: "post" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          _vm.addMessage()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "input-group" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.message,
+                              expression: "message"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            name: "message",
+                            id: "newMessage",
+                            placeholder: "Type Message ..."
+                          },
+                          domProps: { value: _vm.message },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.message = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ])
+                    ]
+                  )
+                ])
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-xs-12" }, [
+          _c("br"),
+          _vm._v(" "),
+          _vm._m(4),
+          _vm._v(" "),
+          this.ticket_created_by_name == _vm.userid
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary pull-right",
+                  staticStyle: { "margin-right": "5px" },
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.closeTicket()
+                    }
+                  }
+                },
+                [_vm._v("Close Ticket")]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          this.ticket_created_by_name != _vm.userid
+            ? _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary pull-right",
+                  staticStyle: { "margin-right": "5px" }
+                },
+                [
+                  _c("i", { staticClass: "fa fa-thumbs-o-up" }),
+                  _vm._v(" Handling\n        ")
+                ]
+              )
+            : _vm._e()
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Direct Chat")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", [_c("i", { staticClass: "fa fa-check" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", [_c("i", { staticClass: "fa fa-check" })])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "input-group-btn" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-warning btn-flat", attrs: { type: "submit" } },
+        [_vm._v("Send")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "btn btn-default pull-left",
+        staticStyle: { "margin-right": "5px" },
+        attrs: { type: "button", onclick: "window.print()" }
+      },
+      [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-48db9fc3", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

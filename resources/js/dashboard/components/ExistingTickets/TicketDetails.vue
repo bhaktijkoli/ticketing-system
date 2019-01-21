@@ -54,7 +54,15 @@
                       <p>
                         {{msg.message}}
                         <br>
-                        <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
+                        <span class="direct-chat-timestamp pull-right">
+                          {{msg.created_at_format}}
+                          <small>
+                            <i class="fa fa-check"></i>
+                          </small>
+                          <small>
+                            <i class="fa fa-check"></i>
+                          </small>
+                        </span>
                       </p>
                     </div>
                   </div>
@@ -197,3 +205,9 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+small i {
+  color: gray;
+}
+</style>
