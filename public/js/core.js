@@ -475,7 +475,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)))
 
 /***/ }),
 /* 2 */,
@@ -774,7 +774,9 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 9 */
+/* 9 */,
+/* 10 */,
+/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -964,8 +966,6 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 10 */,
-/* 11 */,
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 

@@ -56,11 +56,11 @@
                         <br>
                         <span class="direct-chat-timestamp pull-right">
                           {{msg.created_at_format}}
-                          <small>
-                            <i class="fa fa-check"></i>
-                          </small>
-                          <small>
-                            <i class="fa fa-check"></i>
+                          &nbsp;
+                          <small
+                            title="received"
+                          >
+                            <i class="fa fa-check" style="color:white;"></i>
                           </small>
                         </span>
                       </p>
