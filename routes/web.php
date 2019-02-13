@@ -40,4 +40,5 @@ Route::prefix('api')->group(function () {
   Route::post('/ticket/status', 'Api\TicketController@postStatus');
   // Message
   Route::post('/message/add', 'Api\MessageController@postAddMessage');
+  Route::post('/message/set/read', 'Api\MessageController@postSetRead');
 });

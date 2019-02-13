@@ -10,6 +10,7 @@ class Message extends Model
   {
     $data['id'] = $this->id;
     $data['message'] = $this->message;
+    $data['read'] = $this->read;
     $user = User::find($this->created_by);
     $data['created_by'] = $user->format();
     $data['created_at'] = $this->created_at;

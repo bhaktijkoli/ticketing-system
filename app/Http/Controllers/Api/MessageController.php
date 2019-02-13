@@ -33,4 +33,11 @@ class MessageController extends Controller
     event(new NewMessage($ticket, $message));
     return ResponseBuilder::send(true, "Message created.", "");
   }
+  public function postSetRead(Request $request) {
+    $message = Message::where('message', $request->input('id', '-1'))->first();
+    if(!$message) abort(404);
+    $message->read = '1';
+    $message->save();
+    return ResponseBuilder::send(true, "", "");
+  }
 }
