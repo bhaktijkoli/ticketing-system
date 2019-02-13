@@ -40,4 +40,12 @@ class MessageController extends Controller
     $message->save();
     return ResponseBuilder::send(true, "", "");
   }
+  public function postSetReadAll(Request $request) {
+    $messages = Message::where('ticket', $request->input('ticket', '-1'))->get();
+    foreach ($messages as $message) {
+      $message->read = '1';
+      $message->save();
+    }
+    return ResponseBuilder::send(true, "", "");
+  }
 }
