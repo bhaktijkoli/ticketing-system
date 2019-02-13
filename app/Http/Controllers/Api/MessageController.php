@@ -34,7 +34,7 @@ class MessageController extends Controller
     return ResponseBuilder::send(true, "Message created.", "");
   }
   public function postSetRead(Request $request) {
-    $message = Message::where('message', $request->input('id', '-1'))->first();
+    $message = Message::where('id', $request->input('message', '-1'))->first();
     if(!$message) abort(404);
     $message->read = '1';
     $message->save();
