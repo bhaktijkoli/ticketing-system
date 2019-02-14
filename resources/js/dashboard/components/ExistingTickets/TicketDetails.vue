@@ -132,7 +132,8 @@ export default {
       message: "",
       id: "",
       date: "",
-      messages: []
+      messages: [],
+      success:''
     };
   },
   computed: {
@@ -174,7 +175,26 @@ export default {
           }, 100);
         });
       });
+      let data={
+        ticket:this.$route.params.id
+      }
+      axios
+      .post("/api/message/set/read/all", data).then(res=>{
+        this.success=res.data.success;
+        console.log(this.success)
+      });
+      //   // msg:this.$route.params.messages.id
+      //   for(let i in this.messages.length){
+      //     let data = {
+      //       ticket:this.$route.params.messages[i]
+      //       }
+      //   }
+      // axios
+      // .post("/api/message/set/read",data).then(res=>{
+      //   console.log(res.data)
+      // })
   },
+
   methods: {
     addMessage: function() {
       let data = {
