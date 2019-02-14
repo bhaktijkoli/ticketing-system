@@ -41,7 +41,7 @@ class MessageController extends Controller
     return ResponseBuilder::send(true, "", "");
   }
   public function postSetReadAll(Request $request) {
-    $messages = Message::where('ticket', $request->input('ticket', '-1'))->get();
+    $messages = Message::where('ticket', $request->input('ticket', '-1'))->where('created_by', Auth::user()->id)->get();
     foreach ($messages as $message) {
       $message->read = '1';
       $message->save();
