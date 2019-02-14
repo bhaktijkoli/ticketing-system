@@ -28484,6 +28484,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -28528,9 +28535,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }, 100);
       window.Echo.channel(response.data.token).listen("NewMessage", function (e) {
         _this.messages.push(e.message);
-        var audio = new Audio("http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3");
-        audio.play();
-        audio.volume = 0.5;
+        console.log(e.message.id);
+        if (e.message.created_by.id != _this.$store.state.user.id) {
+          var _data = {
+            message: e.message.id
+          };
+          axios.post("/api/message/set/read", _data).then(function (res) {
+            _this.success = res.data.success;
+          });
+          var audio = new Audio("http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3");
+          audio.play();
+          audio.volume = 0.5;
+        } else {}
         setTimeout(function () {
           $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
         }, 100);
@@ -28541,18 +28557,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
     axios.post("/api/message/set/read/all", data).then(function (res) {
       _this.success = res.data.success;
-      console.log(_this.success);
+      // console.log(this.success)
     });
-    //   // msg:this.$route.params.messages.id
-    //   for(let i in this.messages.length){
-    //     let data = {
-    //       ticket:this.$route.params.messages[i]
-    //       }
-    //   }
-    // axios
-    // .post("/api/message/set/read",data).then(res=>{
-    //   console.log(res.data)
-    // })
   },
 
 
@@ -28707,7 +28713,31 @@ var render = function() {
                                           _vm._s(msg.created_at_format) +
                                           "\n                         \n                        "
                                       ),
-                                      _vm._m(1, true)
+                                      this.success == true
+                                        ? _c(
+                                            "small",
+                                            { attrs: { title: "received" } },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-check",
+                                                staticStyle: { color: "blue" }
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      this.success == false
+                                        ? _c(
+                                            "small",
+                                            { attrs: { title: "received" } },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-check",
+                                                staticStyle: { color: "white" }
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ])
@@ -28761,7 +28791,7 @@ var render = function() {
                           }
                         }),
                         _vm._v(" "),
-                        _vm._m(2)
+                        _vm._m(1)
                       ])
                     ]
                   )
@@ -28774,7 +28804,7 @@ var render = function() {
         _c("div", { staticClass: "col-xs-12" }, [
           _c("br"),
           _vm._v(" "),
-          _vm._m(3),
+          _vm._m(2),
           _vm._v(" "),
           this.ticket_created_by_name == _vm.userid
             ? _c(
@@ -28819,14 +28849,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Direct Chat")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("small", { attrs: { title: "received" } }, [
-      _c("i", { staticClass: "fa fa-check", staticStyle: { color: "white" } })
     ])
   },
   function() {

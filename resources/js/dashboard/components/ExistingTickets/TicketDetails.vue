@@ -59,6 +59,13 @@
                           &nbsp;
                           <small
                             title="received"
+                            v-if="this.success==true"
+                          >
+                            <i class="fa fa-check" style="color:blue;"></i>
+                          </small>
+                          <small
+                            title="received"
+                            v-if="this.success==false"
                           >
                             <i class="fa fa-check" style="color:white;"></i>
                           </small>
@@ -165,11 +172,22 @@ export default {
         }, 100);
         window.Echo.channel(response.data.token).listen("NewMessage", e => {
           this.messages.push(e.message);
+          console.log(e.message.id);
+          if(e.message.created_by.id != this.$store.state.user.id){
+          let data ={
+            message:e.message.id
+          }
+          axios
+          .post("/api/message/set/read",data).then(res=>{
+          this.success=res.data.success
+          })
           var audio = new Audio(
             "http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3"
           );
           audio.play();
           audio.volume = 0.5;
+          }
+          else{}
           setTimeout(function() {
             $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
           }, 100);
@@ -181,18 +199,8 @@ export default {
       axios
       .post("/api/message/set/read/all", data).then(res=>{
         this.success=res.data.success;
-        console.log(this.success)
+        // console.log(this.success)
       });
-      //   // msg:this.$route.params.messages.id
-      //   for(let i in this.messages.length){
-      //     let data = {
-      //       ticket:this.$route.params.messages[i]
-      //       }
-      //   }
-      // axios
-      // .post("/api/message/set/read",data).then(res=>{
-      //   console.log(res.data)
-      // })
   },
 
   methods: {
