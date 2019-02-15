@@ -28460,37 +28460,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -28618,9 +28587,7 @@ var render = function() {
         _c("div", { staticClass: "col-xs-12" }, [
           _c("h2", { staticClass: "page-header" }, [
             _c("i", { staticClass: "fa fa-hand-o-right" }),
-            _vm._v(
-              "\n          " + _vm._s(_vm.ticket.subject) + "\n          "
-            ),
+            _vm._v(" " + _vm._s(_vm.ticket.subject) + "\n          "),
             _c("small", { staticClass: "pull-right" }, [
               _vm._v("Date: " + _vm._s(this.date))
             ])
@@ -28712,9 +28679,9 @@ var render = function() {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                        " +
+                                        "\n                          " +
                                           _vm._s(msg.created_at_format) +
-                                          "\n                         \n                        "
+                                          "\n                           \n                          "
                                       ),
                                       _c(
                                         "small",
@@ -28771,7 +28738,7 @@ var render = function() {
                               expression: "message"
                             }
                           ],
-                          staticClass: "form-control",
+                          staticClass: "form-control input-chat",
                           attrs: {
                             type: "text",
                             name: "message",
@@ -28831,7 +28798,7 @@ var render = function() {
                 },
                 [
                   _c("i", { staticClass: "fa fa-thumbs-o-up" }),
-                  _vm._v(" Handling\n        ")
+                  _vm._v(" Handling\n          ")
                 ]
               )
             : _vm._e()
@@ -28856,7 +28823,7 @@ var staticRenderFns = [
     return _c("span", { staticClass: "input-group-btn" }, [
       _c(
         "button",
-        { staticClass: "btn btn-warning btn-flat", attrs: { type: "submit" } },
+        { staticClass: "btn btn-warning btn-chat", attrs: { type: "submit" } },
         [_vm._v("Send")]
       )
     ])
@@ -28872,7 +28839,7 @@ var staticRenderFns = [
         staticStyle: { "margin-right": "5px" },
         attrs: { type: "button", onclick: "window.print()" }
       },
-      [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n        ")]
+      [_c("i", { staticClass: "fa fa-print" }), _vm._v(" Print\n          ")]
     )
   }
 ]

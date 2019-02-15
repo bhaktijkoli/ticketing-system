@@ -17599,3 +17599,11 @@ img.preview:hover {
           transform: scale(1.1);
 }
 
+.input-chat {
+  border-radius: 4px 0px 0px 4px;
+}
+
+.btn-chat {
+  border-radius: 0px 4px 4px 0px;
+}
+
