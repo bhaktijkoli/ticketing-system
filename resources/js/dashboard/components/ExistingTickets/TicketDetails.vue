@@ -193,10 +193,10 @@ export default {
             $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
           }, 100);
         });
-      });
-      window.Echo.channel(response.data.token).listen("MessageRead", e => {
+         window.Echo.channel(response.data.token).listen("MessageRead", e => {
         console.log(e);
-      })
+      });
+      });
       let data={
         ticket:this.$route.params.id
       }

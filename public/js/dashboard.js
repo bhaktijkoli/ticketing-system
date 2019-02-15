@@ -28551,6 +28551,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
         }, 100);
       });
+      window.Echo.channel(response.data.token).listen("MessageRead", function (e) {
+        console.log(e);
+      });
     });
     var data = {
       ticket: this.$route.params.id
