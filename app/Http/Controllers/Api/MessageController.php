@@ -37,6 +37,7 @@ class MessageController extends Controller
   public function postSetRead(Request $request) {
     $message = Message::where('id', $request->input('message', '-1'))->first();
     if(!$message) abort(404);
+    $ticket = Ticket::where('id', $message->ticket);
     $message->read = '1';
     $message->save();
     event(new MessageRead($ticket, $message));
