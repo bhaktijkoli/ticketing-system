@@ -28502,7 +28502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       id: "",
       date: "",
       messages: [],
-      success: ''
+      read: false
     };
   },
 
@@ -28541,7 +28541,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             message: e.message.id
           };
           axios.post("/api/message/set/read", _data).then(function (res) {
-            _this.success = res.data.success;
+            _this.read = res.data.success;
           });
           var audio = new Audio("http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3");
           audio.play();
@@ -28713,31 +28713,26 @@ var render = function() {
                                           _vm._s(msg.created_at_format) +
                                           "\n                         \n                        "
                                       ),
-                                      this.success == true
-                                        ? _c(
-                                            "small",
-                                            { attrs: { title: "received" } },
-                                            [
-                                              _c("i", {
-                                                staticClass: "fa fa-check",
-                                                staticStyle: { color: "blue" }
-                                              })
-                                            ]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      this.success == false
-                                        ? _c(
-                                            "small",
-                                            { attrs: { title: "received" } },
-                                            [
-                                              _c("i", {
-                                                staticClass: "fa fa-check",
-                                                staticStyle: { color: "white" }
-                                              })
-                                            ]
-                                          )
-                                        : _vm._e()
+                                      _c(
+                                        "small",
+                                        {
+                                          directives: [
+                                            {
+                                              name: "show",
+                                              rawName: "v-show",
+                                              value: _vm.read,
+                                              expression: "read"
+                                            }
+                                          ],
+                                          attrs: { title: "read" }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-check",
+                                            staticStyle: { color: "blue" }
+                                          })
+                                        ]
+                                      )
                                     ]
                                   )
                                 ])

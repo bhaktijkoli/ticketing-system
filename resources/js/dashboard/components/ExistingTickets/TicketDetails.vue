@@ -58,17 +58,17 @@
                           {{msg.created_at_format}}
                           &nbsp;
                           <small
-                            title="received"
-                            v-if="this.success==true"
+                            title="read"
+                            v-show="read"
                           >
                             <i class="fa fa-check" style="color:blue;"></i>
                           </small>
-                          <small
+                          <!-- <small
                             title="received"
-                            v-if="this.success==false"
+                            v-show="!read"
                           >
                             <i class="fa fa-check" style="color:white;"></i>
-                          </small>
+                          </small> -->
                         </span>
                       </p>
                     </div>
@@ -140,7 +140,7 @@ export default {
       id: "",
       date: "",
       messages: [],
-      success:''
+      read:false
     };
   },
   computed: {
@@ -179,15 +179,16 @@ export default {
           }
           axios
           .post("/api/message/set/read",data).then(res=>{
-          this.success=res.data.success
+          this.read=res.data.success
           })
-          var audio = new Audio(
+            var audio = new Audio(
             "http://soundbible.com/mp3/Elevator Ding-SoundBible.com-685385892.mp3"
           );
           audio.play();
           audio.volume = 0.5;
           }
-          else{}
+          else{
+          }
           setTimeout(function() {
             $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
           }, 100);
