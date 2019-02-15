@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddMessageRequest;
 
 use App\Events\NewMessage;
+use App\Events\MessageRead;
 
 use App\User;
 use App\Ticket;
@@ -38,6 +39,7 @@ class MessageController extends Controller
     if(!$message) abort(404);
     $message->read = '1';
     $message->save();
+    event(new MessageRead($ticket, $message));
     return ResponseBuilder::send(true, "", "");
   }
   public function postSetReadAll(Request $request) {
