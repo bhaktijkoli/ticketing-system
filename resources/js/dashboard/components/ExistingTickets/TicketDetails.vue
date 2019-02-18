@@ -50,16 +50,16 @@
                             &nbsp;
                             <small
                               title="read"
-                              v-show="read"
+                              v-if="read == 1"
                             >
                               <i class="fa fa-check" style="color:blue;"></i>
                             </small>
-                            <!-- <small
+                            <small
                               title="received"
-                              v-show="!read"
+                              v-else-if="read == 0"
                             >
                               <i class="fa fa-check" style="color:white;"></i>
-                            </small> -->
+                            </small>
                           </span>
                       </p>
                     </div>
@@ -109,7 +109,7 @@
         id: "",
         date: "",
         messages: [],
-        read: false
+        read: null
       };
     },
     computed: {
@@ -141,7 +141,6 @@
           }, 100);
           window.Echo.channel(response.data.token).listen("NewMessage", e => {
             this.messages.push(e.message);
-            console.log(e.message.id);
             if (e.message.created_by.id != this.$store.state.user.id) {
               let data = {
                 message: e.message.id
@@ -161,7 +160,8 @@
             }, 100);
           });
           window.Echo.channel(response.data.token).listen("MessageRead", e => {
-            console.log(e);
+            this.read= e.message.read;
+            console.log(this.read)
           });
         });
       let data = {
@@ -170,7 +170,6 @@
       axios
         .post("/api/message/set/read/all", data).then(res => {
           this.success = res.data.success;
-          // console.log(this.success)
         });
     },
   

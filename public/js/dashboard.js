@@ -28471,7 +28471,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       id: "",
       date: "",
       messages: [],
-      read: false
+      read: null
     };
   },
 
@@ -28504,7 +28504,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }, 100);
       window.Echo.channel(response.data.token).listen("NewMessage", function (e) {
         _this.messages.push(e.message);
-        console.log(e.message.id);
         if (e.message.created_by.id != _this.$store.state.user.id) {
           var _data = {
             message: e.message.id
@@ -28521,7 +28520,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }, 100);
       });
       window.Echo.channel(response.data.token).listen("MessageRead", function (e) {
-        console.log(e);
+        _this.read = e.message.read;
+        console.log(_this.read);
       });
     });
     var data = {
@@ -28529,7 +28529,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
     axios.post("/api/message/set/read/all", data).then(function (res) {
       _this.success = res.data.success;
-      // console.log(this.success)
     });
   },
 
@@ -28683,26 +28682,29 @@ var render = function() {
                                           _vm._s(msg.created_at_format) +
                                           "\n                           \n                          "
                                       ),
-                                      _c(
-                                        "small",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "show",
-                                              rawName: "v-show",
-                                              value: _vm.read,
-                                              expression: "read"
-                                            }
-                                          ],
-                                          attrs: { title: "read" }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-check",
-                                            staticStyle: { color: "blue" }
-                                          })
-                                        ]
-                                      )
+                                      _vm.read == 1
+                                        ? _c(
+                                            "small",
+                                            { attrs: { title: "read" } },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-check",
+                                                staticStyle: { color: "blue" }
+                                              })
+                                            ]
+                                          )
+                                        : _vm.read == 0
+                                        ? _c(
+                                            "small",
+                                            { attrs: { title: "received" } },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-check",
+                                                staticStyle: { color: "white" }
+                                              })
+                                            ]
+                                          )
+                                        : _vm._e()
                                     ]
                                   )
                                 ])
