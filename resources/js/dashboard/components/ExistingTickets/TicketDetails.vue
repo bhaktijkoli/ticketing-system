@@ -54,12 +54,6 @@
                             >
                               <i class="fa fa-check" style="color:blue;"></i>
                             </small>
-                            <small
-                              title="received"
-                              v-else-if="read == 0"
-                            >
-                              <i class="fa fa-check" style="color:white;"></i>
-                            </small>
                           </span>
                       </p>
                     </div>

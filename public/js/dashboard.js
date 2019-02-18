@@ -28454,12 +28454,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -28690,17 +28684,6 @@ var render = function() {
                                               _c("i", {
                                                 staticClass: "fa fa-check",
                                                 staticStyle: { color: "blue" }
-                                              })
-                                            ]
-                                          )
-                                        : _vm.read == 0
-                                        ? _c(
-                                            "small",
-                                            { attrs: { title: "received" } },
-                                            [
-                                              _c("i", {
-                                                staticClass: "fa fa-check",
-                                                staticStyle: { color: "white" }
                                               })
                                             ]
                                           )
