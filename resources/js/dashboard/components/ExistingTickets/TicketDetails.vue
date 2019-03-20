@@ -33,7 +33,7 @@
                     <div class="direct-chat-text pull-left">
                       <p>
                         {{msg.message}}
-                        <!-- <img v-bind:src="msg.messages.files" class="img-fluid"> -->
+                        <!-- <img :src="msg.messages.files" class="img-fluid"> -->
                         <br>
                         <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
@@ -127,7 +127,7 @@
       axios
         .get("/api/ticket/get/details/" + this.$route.params.id)
         .then(response => {
-          console.log(response.data.messages[0].files[0].url);
+          console.log(response.data.messages);
           this.ticket = response.data;
           this.ticket_created_by_name = this.ticket.created_by.id;
           this.date = response.data.created_at_format_long;

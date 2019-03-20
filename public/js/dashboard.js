@@ -28490,7 +28490,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      console.log(response.data.messages[0].files[0].url);
+      console.log(response.data.messages);
       _this.ticket = response.data;
       _this.ticket_created_by_name = _this.ticket.created_by.id;
       _this.date = response.data.created_at_format_long;
