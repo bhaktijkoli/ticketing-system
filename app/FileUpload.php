@@ -10,7 +10,7 @@ class FileUpload extends Model
 {
   private $path = "/public/files";
   public function getUrl() {
-    return url($this->path . $this->filename);
+    return url($this->path . '/' . $this->filename);
   }
 
   public function uploadFile($file)

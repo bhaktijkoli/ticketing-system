@@ -16,10 +16,11 @@ class Message extends Model
     $data['created_at'] = $this->created_at;
     $data['created_at_format'] = $this->created_at->diffForHumans();
     $filesDetails = [];
-    foreach ($this->files as $fileid) {
+    foreach (json_decode($this->files) as $fileid) {
       $fp = FileUpload::find($fileid);
-      $filesDetails.push($fp->format());
+      array_push($filesDetails, $fp->format());
     }
+    $data['files'] = $filesDetails;
     return $data;
   }
 }
