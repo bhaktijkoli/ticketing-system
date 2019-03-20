@@ -34,4 +34,12 @@ class FileUpload extends Model
     File::delete($pathDir . $this->filename);
   }
 
+  public function format()
+  {
+    $data['id'] = $this->id;
+    $data['name'] = $this->name;
+    $data['url'] = $this->getUrl();
+    return $data;
+  }
+
 }
