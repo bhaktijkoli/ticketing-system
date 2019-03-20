@@ -13,6 +13,7 @@ use App\Events\MessageRead;
 use App\User;
 use App\Ticket;
 use App\Message;
+use App\FileUpload;
 use App\ResponseBuilder;
 use Auth;
 
@@ -30,6 +31,18 @@ class MessageController extends Controller
     $message->ticket = $ticket->id;
     $message->created_by = Auth::user()->id;
     $message->message = $request->input('message', '');
+    $filesID = [];
+    $files = $request->files;
+    if($files) {
+      foreach ($files as $file) {
+        $fp = new FileUpload();
+        $fp->uploadFile($file);
+        $fp->user = Auth::user()->id;
+        $fp->save();
+        array_push($filesID, $fp->id);
+      }
+    }
+    $message->files = json_encode($filesID);
     $message->save();
     event(new NewMessage($ticket, $message));
     return ResponseBuilder::send(true, "Message created.", "");
