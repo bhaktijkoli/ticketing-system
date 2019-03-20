@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
       $table->integer('created_by');
       $table->longtext('message');
       $table->enum('read', [0,1]);
+      $table->string('files');
       $table->timestamps();
     });
   }

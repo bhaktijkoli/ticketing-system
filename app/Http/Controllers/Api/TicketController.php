@@ -27,6 +27,11 @@ class TicketController extends Controller
     $ticket->subject = $request->input('subject', '');
     $ticket->created_by = Auth::user()->id;
     $ticket->generateToken();
+    $ticket->save();
+    $message = new Message();
+    $message->ticket = $ticket->id;
+    $message->created_by = Auth::user()->id;
+    $message->message = $request->input('message', '');
     $filesID = [];
     $files = $request->files;
     if($files) {
@@ -38,12 +43,7 @@ class TicketController extends Controller
         array_push($filesID, $fp->id);
       }
     }
-    $ticket->files = json_encode($filesID);
-    $ticket->save();
-    $message = new Message();
-    $message->ticket = $ticket->id;
-    $message->created_by = Auth::user()->id;
-    $message->message = $request->input('message', '');
+    $message->files = json_encode($filesID);
     $message->save();
     return ResponseBuilder::send(true, "Ticket created.", "");
   }

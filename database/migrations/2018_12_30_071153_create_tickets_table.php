@@ -20,7 +20,6 @@ class CreateTicketsTable extends Migration
       $table->string('subject');
       $table->string('token');
       $table->enum('status', [0,1])->default(1);
-      $table->string('files');
       $table->timestamps();
     });
   }
