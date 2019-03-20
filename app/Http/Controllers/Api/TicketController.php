@@ -10,6 +10,7 @@ use App\Http\Requests\AddTicketRequest;
 use App\User;
 use App\Ticket;
 use App\Message;
+use App\FileUpload;
 use App\ResponseBuilder;
 use Auth;
 
@@ -26,11 +27,22 @@ class TicketController extends Controller
     $ticket->subject = $request->input('subject', '');
     $ticket->created_by = Auth::user()->id;
     $ticket->generateToken();
-    $ticket->save();
     $message = new Message();
     $message->ticket = $ticket->id;
     $message->created_by = Auth::user()->id;
     $message->message = $request->input('message', '');
+    $filesID = [];
+    $files = $request->files;
+    if($files) {
+      foreach ($files as $file) {
+        $file = new FileUpload();
+        $file->uploadFile($file);
+        $file->save();
+        array_push($filesID, $file->id);
+      }
+    }
+    $ticket->files = json_encode($filesID);
+    $ticket->save();
     $message->save();
     return ResponseBuilder::send(true, "Ticket created.", "");
   }
