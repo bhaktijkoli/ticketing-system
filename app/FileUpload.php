@@ -16,8 +16,9 @@ class FileUpload extends Model
   public function uploadFile($file)
   {
     $this->checkDirs();
-    $filename = uniqid() . '.' . $file->clientExtension();
-    $file->move(public_path($path), $filename);
+    $filename = uniqid();
+    $file->move(public_path($this->path), $filename);
+    $this->name = 'something';
     $this->filename = $filename;
     return $filename;
   }

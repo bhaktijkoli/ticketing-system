@@ -21,11 +21,12 @@
               <!-- /.box-header -->
               <div class="box-body">
                 <div class="form-group">
-                  <input class="form-control" v-model="subject" id="subject" placeholder="Subject:">
+                  <input class="form-control" name="subject" v-model="subject" id="subject" placeholder="Subject:">
                 </div>
                 <div class="form-group">
                   <textarea
                     id="message"
+                    name="message"
                     v-model="message"
                     class="form-control"
                     style="height: 300px"
@@ -35,13 +36,13 @@
                 <small>Add files:</small>
                 <div class="btn btn-default btn-file">
                   <i class="fa fa-paperclip"></i> Attachment
-                  <input type="file" name="attachment" @change="imgPreview" multiple>
+                  <input type="file" name="files" @change="imgPreview" multiple>
                 </div>
                 <br>
                 <br>
-                <div v-if="image.length > 0">
-                  <img class="preview" :src="image">
-                </div>
+                <!-- <div v-if="files.length > 0">
+                  <img class="preview" :src="files">
+                </div> -->
               </div>
               <div class="box-footer">
                 <button
@@ -123,17 +124,21 @@ export default {
       subject: "",
       message: "",
       success: false,
-      image: "",
-      img_url: null
+      img_url: null,
+      files:[]
     };
   },
   methods: {
     newTicket: function(subject, message) {
-      axios.post("api/ticket/add", { subject, message }).then(res => {
+      let data = new FormData(
+        document.getElementById('new-ticket')
+      );
+      axios.post("api/ticket/add", data).then(res => {
         if (fh.is_success(res.data)) {
           this.success = true;
           this.subject = res.data.subject;
           this.message = res.data.message;
+          this.files = res.data.files;
         } else {
           fh.set_multierrors(res.data);
         }
@@ -144,7 +149,8 @@ export default {
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = e => {
-          this.image = e.target.result;
+          console.log(e)
+          this.files = e.target.result;
         };
         reader.readAsDataURL(input.files[0]);
       }

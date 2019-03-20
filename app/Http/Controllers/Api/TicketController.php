@@ -31,10 +31,11 @@ class TicketController extends Controller
     $files = $request->files;
     if($files) {
       foreach ($files as $file) {
-        $file = new FileUpload();
-        $file->uploadFile($file);
-        $file->save();
-        array_push($filesID, $file->id);
+        $fp = new FileUpload();
+        $fp->uploadFile($file);
+        $fp->user = Auth::user()->id;
+        $fp->save();
+        array_push($filesID, $fp->id);
       }
     }
     $ticket->files = json_encode($filesID);
