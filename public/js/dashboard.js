@@ -28455,6 +28455,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -28490,7 +28495,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     var _this = this;
 
     axios.get("/api/ticket/get/details/" + this.$route.params.id).then(function (response) {
-      console.log(response.data.messages);
+      console.log(response.data.messages[0].files[0]);
       _this.ticket = response.data;
       _this.ticket_created_by_name = _this.ticket.created_by.id;
       _this.date = response.data.created_at_format_long;
@@ -28623,7 +28628,7 @@ var render = function() {
                                 _c("p", [
                                   _vm._v(
                                     "\n                      " +
-                                      _vm._s(msg.message) +
+                                      _vm._s(msg.files[0].url) +
                                       "\n                      "
                                   ),
                                   _vm._v(" "),
@@ -28665,6 +28670,15 @@ var render = function() {
                                       _vm._s(msg.message) +
                                       "\n                      "
                                   ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("a", { attrs: { href: "#" } }, [
+                                    _c("img", {
+                                      staticClass: "img-chat",
+                                      attrs: { src: msg.files[0].url }
+                                    })
+                                  ]),
+                                  _vm._v(" "),
                                   _c("br"),
                                   _vm._v(" "),
                                   _c(

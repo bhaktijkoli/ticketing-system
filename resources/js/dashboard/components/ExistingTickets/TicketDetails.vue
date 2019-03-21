@@ -32,8 +32,9 @@
                     <img class="direct-chat-img pull-left" :src="'https://ui-avatars.com/api/?name='+msg.created_by.name" alt="message user image">
                     <div class="direct-chat-text pull-left">
                       <p>
-                        {{msg.message}}
-                        <!-- <img :src="msg.messages.files" class="img-fluid"> -->
+                        <!-- {{msg.message}} -->
+                        {{msg.files[0].url}}
+                        <!-- <img :src="msg.files.url" class="img-fluid"> -->
                         <br>
                         <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
@@ -45,6 +46,10 @@
                     <div class="direct-chat-text pull-right">
                       <p>
                         {{msg.message}}
+                        <br>
+                        <a href="#">
+                          <img :src="msg.files[0].url" class="img-chat">
+                        </a>
                         <br>
                         <span class="direct-chat-timestamp pull-right">
                             {{msg.created_at_format}}
@@ -127,7 +132,7 @@
       axios
         .get("/api/ticket/get/details/" + this.$route.params.id)
         .then(response => {
-          console.log(response.data.messages);
+          console.log(response.data.messages[0].files[0]);
           this.ticket = response.data;
           this.ticket_created_by_name = this.ticket.created_by.id;
           this.date = response.data.created_at_format_long;
