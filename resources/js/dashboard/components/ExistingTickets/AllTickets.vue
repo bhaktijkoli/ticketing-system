@@ -36,7 +36,7 @@
                         class="user-image hover-img"
                         alt="user-img"
                       >
-                      {{ticket.created_by.name}}
+                      <!-- {{ticket.created_by.name}} -->
                     </td>
                     <td class="mailbox-subject">
                       <router-link

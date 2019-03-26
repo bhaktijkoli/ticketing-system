@@ -1,16 +1,8 @@
 <template>
   <div class="content-wrapper">
     <section class="content">
-      <!-- <div v-show="success" class="alert alert-success alert-dismissible">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <h4>
-          <i class="icon fa fa-check"></i> Success!
-        </h4>Your Ticket has been created successfully!
-      </div>-->
       <h3>New Ticket</h3>
-      <!--/.add user -->
       <div class="row">
-        <!-- /.box -->
         <!-- Main content -->
         <div class="col-xs-12">
           <div class="box box-success">
@@ -40,9 +32,9 @@
                 </div>
                 <br>
                 <br>
-                <!-- <div v-if="files.length > 0">
+                <div v-if="files.length > 0">
                   <img class="preview" :src="files">
-                </div> -->
+                </div>
               </div>
               <div class="box-footer">
                 <button
@@ -127,6 +119,12 @@ export default {
       img_url: null,
       files:[]
     };
+  },
+  computed:{
+    files_length(){
+      if (this.files.length == null) return "";
+      return this.files.length;
+    }
   },
   methods: {
     newTicket: function(subject, message) {

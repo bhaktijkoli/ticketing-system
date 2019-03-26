@@ -68,10 +68,14 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <form @submit.prevent="addMessage()" method="post">
+                <form @submit.prevent="addMessage()" id="add-message" method="post">
                   <div class="input-group">
                     <input type="text" name="message" v-model="message" id="newMessage" placeholder="Type Message ..." class="form-control input-chat">
                     <span class="input-group-btn">
+                        <div class="btn btn-default btn-file">
+                          <img src="../../../../../public/images/attachment.png" alt="">
+                            <input type="file" name="files" multiple>
+                        </div>
                         <button type="submit" class="btn btn-warning btn-chat">Send</button>
                       </span>
                   </div>
@@ -176,10 +180,14 @@
   
     methods: {
       addMessage: function() {
-        let data = {
-          ticket: this.$route.params.id,
-          message: this.message
-        };
+      let data = new FormData(
+        document.getElementById('add-message')
+      );
+      // addMessage: function() {
+      //   let data = {
+      //     ticket: this.$route.params.id,
+      //     message: this.message
+      //   };
         axios.post("/api/message/add", data).then(response => {
           if (fh.is_success(response.data)) {
             this.message = "";
