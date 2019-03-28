@@ -32,9 +32,11 @@
                     <img class="direct-chat-img pull-left" :src="'https://ui-avatars.com/api/?name='+msg.created_by.name" alt="message user image">
                     <div class="direct-chat-text pull-left">
                       <p>
-                        <!-- {{msg.message}} -->
-                        {{msg.files[0].url}}
-                        <!-- <img :src="msg.files.url" class="img-fluid"> -->
+                        {{msg.message}}
+                        <br>
+                        <a href="#">
+                          <img :src="msg.files[0].url" class="img-chat">
+                        </a>
                         <br>
                         <span class="direct-chat-timestamp pull-right">{{msg.created_at_format}}</span>
                       </p>
@@ -69,6 +71,7 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <form @submit.prevent="addMessage()" id="add-message" method="post">
+                  <input type="hidden" name="ticket" :value="$route.params.id">
                   <div class="input-group">
                     <input type="text" name="message" v-model="message" id="newMessage" placeholder="Type Message ..." class="form-control input-chat">
                     <span class="input-group-btn">
@@ -130,6 +133,10 @@
       userid() {
         if (this.$store.state.user == null) return "";
         return this.$store.state.user.id;
+      },
+      url(){
+        if (this.files[0].url == null) return "";
+        return this.files[0].url;
       }
     },
     mounted() {
@@ -141,6 +148,7 @@
           this.ticket_created_by_name = this.ticket.created_by.id;
           this.date = response.data.created_at_format_long;
           this.messages = response.data.messages;
+          
           setTimeout(function() {
             $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
           }, 100);

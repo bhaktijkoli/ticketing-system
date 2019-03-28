@@ -28462,9 +28462,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TicketDetails",
@@ -28494,6 +28491,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     userid: function userid() {
       if (this.$store.state.user == null) return "";
       return this.$store.state.user.id;
+    },
+    url: function url() {
+      if (this.files[0].url == null) return "";
+      return this.files[0].url;
     }
   },
   mounted: function mounted() {
@@ -28505,6 +28506,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.ticket_created_by_name = _this.ticket.created_by.id;
       _this.date = response.data.created_at_format_long;
       _this.messages = response.data.messages;
+
       setTimeout(function () {
         $(".box-body").scrollTop($(".box-body")[0].scrollHeight);
       }, 100);
@@ -28543,10 +28545,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     addMessage: function addMessage() {
       var _this2 = this;
 
-      var data = {
-        ticket: this.$route.params.id,
-        message: this.message
-      };
+      var data = new FormData(document.getElementById('add-message'));
+      // addMessage: function() {
+      //   let data = {
+      //     ticket: this.$route.params.id,
+      //     message: this.message
+      //   };
       axios.post("/api/message/add", data).then(function (response) {
         if (fh.is_success(response.data)) {
           _this2.message = "";
@@ -28633,9 +28637,17 @@ var render = function() {
                                 _c("p", [
                                   _vm._v(
                                     "\n                      " +
-                                      _vm._s(msg.files[0].url) +
+                                      _vm._s(msg.message) +
                                       "\n                      "
                                   ),
+                                  _c("br"),
+                                  _vm._v(" "),
+                                  _c("a", { attrs: { href: "#" } }, [
+                                    _c("img", {
+                                      staticClass: "img-chat",
+                                      attrs: { src: msg.files[0].url }
+                                    })
+                                  ]),
                                   _vm._v(" "),
                                   _c("br"),
                                   _vm._v(" "),
@@ -28726,7 +28738,7 @@ var render = function() {
                   _c(
                     "form",
                     {
-                      attrs: { method: "post" },
+                      attrs: { id: "add-message", method: "post" },
                       on: {
                         submit: function($event) {
                           $event.preventDefault()
@@ -28735,6 +28747,11 @@ var render = function() {
                       }
                     },
                     [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "ticket" },
+                        domProps: { value: _vm.$route.params.id }
+                      }),
+                      _vm._v(" "),
                       _c("div", { staticClass: "input-group" }, [
                         _c("input", {
                           directives: [
@@ -28874,7 +28891,7 @@ if (false) {
 /* 74 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/attachment.png?e33a862ed7fcf2f12cb1cfde1532209f";
+module.exports = "/images/attachment.png?eb9e11a55773f4befbfc0bad6b20cb17";
 
 /***/ }),
 /* 75 */
@@ -29292,8 +29309,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   computed: {
     files_length: function files_length() {
-      if (this.files.length == null) return "";
-      return this.files.length;
+      if (this.files[0].length == null) return "";
+      return this.files[0].length;
     }
   },
   methods: {

@@ -122,8 +122,8 @@ export default {
   },
   computed:{
     files_length(){
-      if (this.files.length == null) return "";
-      return this.files.length;
+      if (this.files[0].length == null) return "";
+      return this.files[0].length;
     }
   },
   methods: {
